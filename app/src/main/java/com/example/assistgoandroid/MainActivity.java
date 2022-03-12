@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button contactLabelBtn, callLabelBtn, messageLabelBtn, translateLabelBtn;
-    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn;
+    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn;
     TextView emergencyLabel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
         callImageBtn = findViewById(R.id.callImageBtn);
         messageImageBtn = findViewById(R.id.messageImageBtn);
         translateImageBtn = findViewById(R.id.translateImageBtn);
+        settingsImageBtn = findViewById(R.id.settingsImageBtn);
+
+        settingsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, settingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         contactImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
