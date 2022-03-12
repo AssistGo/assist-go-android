@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topToolbarMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/teal_700"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/settingmenu" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bottomToolbarMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/blankmenu" />
+
+    <TableLayout
+        android:id="@+id/homeTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/contactLayout"
+                    android:layout_width="134dp"
+                    android:layout_height="175dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/contactImageBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="129dp"
+                        android:background="@color/white"
+                        app:srcCompat="@drawable/account_foreground" />
+
+                    <Button
+                        android:id="@+id/contactBtnLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@color/white"
+                        android:text="Contact"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/callLayout"
+                    android:layout_width="134dp"
+                    android:layout_height="175dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/callImageBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="129dp"
+                        android:background="@color/white"
+                        app:srcCompat="@drawable/phone_foreground" />
+
+                    <Button
+                        android:id="@+id/callBtnLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Call"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/messageLayout"
+                    android:layout_width="134dp"
+                    android:layout_height="175dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/messageImageBtn"
+                        android:layout_width="130dp"
+                        android:layout_height="129dp"
+                        android:background="@color/white"
+                        app:srcCompat="@drawable/chat_foreground" />
+
+                    <Button
+                        android:id="@+id/messageBtnLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Message"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/translateLayout"
+                    android:layout_width="134dp"
+                    android:layout_height="175dp"
+                    android:orientation="vertical">>
+
+                    <ImageButton
+                        android:id="@+id/translateImageBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@color/white"
+                        app:srcCompat="@drawable/translate_foreground" />
+
+                    <Button
+                        android:id="@+id/translateBtnLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Translate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+    <TextView
+        android:id="@+id/emergencyBtn"
+        android:layout_width="300dp"
+        android:layout_height="51dp"
+        android:background="#FF0000"
+        android:text="Emergency"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

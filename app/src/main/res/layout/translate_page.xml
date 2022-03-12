@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topToolbarMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/settingmenu" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bottomToolbarMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/settingmenu" />
+
+    <LinearLayout
+        android:layout_width="331dp"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topToolbarMainActivity">
+
+        <Button
+            android:id="@+id/inputLanguageBtn"
+            style="?android:spinnerStyle"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:onClick="openDatePickerDeadline"
+            android:text="Detected Language"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/outputLanugageBtn"
+            style="?android:spinnerStyle"
+            android:layout_width="161dp"
+            android:layout_height="match_parent"
+            android:onClick="openDatePickerDeadline"
+            android:text="English"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="350dp"
+        android:layout_height="366dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/translatePhraseInput"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:background="@drawable/roundedborder"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:hint="Enter Text"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/roundedborder"
+            android:text="Translation"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
