@@ -11,7 +11,7 @@
         android:id="@+id/tvContactName"
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="@color/teal_200"
+        android:background="@color/TitleBackground"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -23,6 +23,7 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/ivContactProfilePicture"
         android:layout_width="match_parent"
         android:layout_height="258dp"
@@ -48,21 +49,21 @@
             android:layout_width="205dp"
             android:layout_height="63dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/call_icon" />
+            android:src="@drawable/call_icon" />
 
         <ImageView
             android:id="@+id/ivVideoChatButton"
             android:layout_width="wrap_content"
             android:layout_height="63dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/video_chat_icon" />
+            android:src="@drawable/video_chat_icon" />
 
         <ImageView
             android:id="@+id/ivMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/message_icon" />
+            android:src="@drawable/message_icon" />
     </LinearLayout>
 
     <Button
