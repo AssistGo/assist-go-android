@@ -12,6 +12,7 @@
         android:layout_height="91dp"
         android:background="@color/teal_200"
         android:text="@string/contact_list"
+        android:padding="10dp"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="55sp"
@@ -23,6 +24,7 @@
         android:layout_height="44dp"
         android:background="@drawable/search_bar_background"
         app:iconifiedByDefault="false"
+        android:layout_margin="10dp"
         app:queryHint="Search Contact...">
 
     </androidx.appcompat.widget.SearchView>
@@ -30,14 +32,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContacts"
         android:layout_width="match_parent"
-        android:layout_height="540dp" />
+        android:layout_height="520dp" />
 
     <!--Add onclick function-->
     <ImageView
         android:id="@+id/ivAddContactButton"
         android:layout_width="53dp"
         android:layout_height="56dp"
-        android:layout_marginLeft="357dp"
+        android:layout_gravity="right"
         app:srcCompat="@drawable/add_icon" />
 
 </LinearLayout>
