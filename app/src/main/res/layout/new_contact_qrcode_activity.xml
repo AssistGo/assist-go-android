@@ -10,11 +10,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="@color/teal_200"
+        android:background="@color/TitleBackground"
         android:text="@string/new_contact"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="55sp"
         android:textStyle="bold" />
+
+    <com.dynamsoft.dce.DCECameraView
+        android:id="@+id/dce_viewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

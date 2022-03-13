@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="@color/teal_200"
+        android:background="@color/TitleBackground"
         android:text="@string/contact_list"
         android:padding="10dp"
         android:textAlignment="center"
@@ -40,6 +40,6 @@
         android:layout_width="53dp"
         android:layout_height="56dp"
         android:layout_gravity="right"
-        app:srcCompat="@drawable/add_icon" />
+        android:src="@drawable/add_icon" />
 
 </LinearLayout>
