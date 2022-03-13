@@ -40,7 +40,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Enter your Full Name"
+        android:text="Allison Botosh"
         android:textSize="30sp"/>
 
     <TextView
@@ -58,7 +58,7 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="(XXX) XXX-XXXX"
+        android:text="(111) 111-1111"
         android:textSize="30sp"/>
 
     <LinearLayout
