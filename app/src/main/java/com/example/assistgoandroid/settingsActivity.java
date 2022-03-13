@@ -28,7 +28,7 @@ public class settingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_page_layout);
 
-        searchView = findViewById(R.id.searchView);
+        searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();
 
         listView = findViewById(R.id.listView);
