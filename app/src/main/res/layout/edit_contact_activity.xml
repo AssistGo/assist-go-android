@@ -13,8 +13,77 @@
         android:background="@color/teal_200"
         android:text="@string/edit_contact"
         android:textAlignment="center"
+        android:padding="10dp"
         android:textColor="#000"
         android:textSize="55sp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivContactProfilePicture"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/editContactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Enter your Full Name"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Phone Number"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/editContactPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:text="(XXX) XXX-XXXX"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/SaveContactChangesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save Changes"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/green"/>
+
+        <Button
+            android:id="@+id/DeleteContactButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete Contact"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/red"/>
+    </LinearLayout>
 
 </LinearLayout>
