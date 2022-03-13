@@ -23,7 +23,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
-        android:maxWidth="200"
+        android:maxWidth="200dp"
         android:text="Firstname Lastname"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="12pt"
