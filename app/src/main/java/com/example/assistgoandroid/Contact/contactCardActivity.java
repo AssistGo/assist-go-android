@@ -1,7 +1,9 @@
-package com.example.assistgoandroid;
+package com.example.assistgoandroid.Contact;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.assistgoandroid.R;
 
 public class contactCardActivity extends AppCompatActivity {
     @Override
