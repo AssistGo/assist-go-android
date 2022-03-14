@@ -31,7 +31,8 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:layout_margin="10dp"
-        android:text="Change Picture" />
+        android:text="Change Picture"
+        android:textColor="@color/teal_700"/>
 
     <TextView
         android:id="@+id/textView2"
