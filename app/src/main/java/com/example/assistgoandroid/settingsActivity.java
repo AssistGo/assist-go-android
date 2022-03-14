@@ -2,10 +2,12 @@ package com.example.assistgoandroid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,6 +37,17 @@ public class settingsActivity extends AppCompatActivity {
         // now create an adapter class
         MyAdapter adapter = new MyAdapter(this, title, images);
         listView.setAdapter(adapter);
+        //onclick listener for each cell
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position ==  0) {
+                    Intent intent = new Intent(settingsActivity.this, profileActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
     }
     class MyAdapter extends ArrayAdapter<String> {
