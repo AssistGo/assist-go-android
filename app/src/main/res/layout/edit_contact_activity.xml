@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="@color/teal_200"
+        android:background="@color/TitleBackground"
         android:text="@string/edit_contact"
         android:textAlignment="center"
         android:padding="10dp"
@@ -25,12 +25,20 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/tvChangeProfilePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:text="Change Picture" />
+
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Full Name"
-        android:textSize="25sp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editContactName"
