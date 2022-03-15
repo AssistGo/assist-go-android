@@ -93,11 +93,16 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
 
             itemView.setOnClickListener(this);
 
+            //todo bug: cannot select again after unselecting
             favoriteHeart.setOnClickListener(view -> {
-                Log.i("favorite", "inside favorite listener");
-                if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState())
+                if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState()) {
+                    Log.i("favorite", "selected favorite");
                     Glide.with(context).load(R.drawable.filled_heart_icon).into(favoriteHeart);
-                else Glide.with(context).load(R.drawable.empty_heart_icon).into(favoriteHeart);
+                }
+                else {
+                    Log.i("favorite", "unselected favorite");
+                    Glide.with(context).load(R.drawable.empty_heart_icon).into(favoriteHeart);
+                }
             });
         }
 
