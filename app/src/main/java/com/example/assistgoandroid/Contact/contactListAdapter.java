@@ -1,19 +1,20 @@
 package com.example.assistgoandroid.Contact;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
-
 import java.util.ArrayList;
-
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
@@ -21,8 +22,9 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
  */
 
 public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.ViewHolder> {
+    final String CONTACT_CARD = "CONTACT_CARD";
     Activity activity;
-    private ArrayList<Contact> contactsList = new ArrayList<Contact>();
+    private ArrayList<Contact> contactsList;
     Context context;
 
     public contactListAdapter(Activity activity, ArrayList<Contact> contactsList) {
@@ -62,7 +64,8 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
         return contactsList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+    public class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         TextView contactName;
@@ -79,7 +82,19 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
             contactName = itemView.findViewById(R.id.tvContactName);
             contactProfilePicture = itemView.findViewById(R.id.ivContactProfilePicture);
             favoriteHeart = itemView.findViewById(R.id.ivFavoriteHeart);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            //get notified of particular movie which was clicked on
+            Contact contact = contactsList.get(getAdapterPosition());
+            Toast.makeText(context, contact.name, Toast.LENGTH_SHORT).show();
+            //Use the intent system to navigate to the new activity
+            Intent intent = new Intent(context, contactCardActivity.class);
+            intent.putExtra(CONTACT_CARD, contact);
+            context.startActivity(intent);
         }
     }
-
 }
