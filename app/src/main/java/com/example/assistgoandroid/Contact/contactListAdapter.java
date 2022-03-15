@@ -1,5 +1,6 @@
 package com.example.assistgoandroid.Contact;
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
 
 import java.util.ArrayList;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Adapter for contact list
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.ViewHolder> {
     Activity activity;
     private ArrayList<Contact> contactsList = new ArrayList<Contact>();
+    Context context;
 
     public contactListAdapter(Activity activity, ArrayList<Contact> contactsList) {
         this.activity = activity;
@@ -29,7 +34,8 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
     @NonNull
     @Override
     public contactListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
 
         return new ViewHolder(view);
     }
@@ -39,7 +45,15 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
         Contact contact = contactsList.get(position);
 
         holder.contactName.setText(contact.getName());
-        //todo set contact picture from contact list
+        Glide.with(context)
+                .load(contact.getContactPicture())
+                    .override(400, 400)
+                    .centerCrop()
+                    .fitCenter() // scale to fit entire image within ImageView
+                    .transform(new RoundedCornersTransformation(200,10))
+                .placeholder(R.drawable.loading_contact)
+                .error(R.drawable.loading_contact)
+                .into(holder.contactProfilePicture);
         //todo set favorite on click
     }
 

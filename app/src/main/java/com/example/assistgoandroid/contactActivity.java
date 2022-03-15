@@ -59,15 +59,19 @@ public class contactActivity extends AppCompatActivity {
             while(cursor.moveToNext()){
                 String id = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+                String photo = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_URI));
                 Uri uriPhone = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
                 String selection = ContactsContract.CommonDataKinds.Phone.CONTACT_ID+" =?";
                 Cursor phoneCursor = getContentResolver().query(uriPhone, null, selection, new String[]{id}, null);
 
                 if (phoneCursor.moveToNext()){
                     String number = phoneCursor.getString(phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
                     Contact contact = new Contact();
+                    contact.setContactID(id);
                     contact.setName(name);
-                    contact.setName(number);
+                    contact.setPhoneNumber(number);
+                    contact.setContactPicture(photo);
                     contactsList.add(contact);
                     phoneCursor.close();
                 }
