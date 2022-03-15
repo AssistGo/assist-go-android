@@ -93,7 +93,7 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
 
             itemView.setOnClickListener(this);
 
-            //todo bug: cannot select again after unselecting
+            //todo bug: cannot select again after unselecting. Sort favorites on top
             favoriteHeart.setOnClickListener(view -> {
                 if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState()) {
                     Log.i("favorite", "selected favorite");
