@@ -44,5 +44,6 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha27"
     implementation 'com.dynamsoft:dynamsoftcameraenhancer:2.1.0@aar'
     //end of qr code dependencies
+    implementation 'com.google.android.material:material:1.2.1'
 
 }
