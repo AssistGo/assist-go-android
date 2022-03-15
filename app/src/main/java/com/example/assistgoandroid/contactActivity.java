@@ -50,7 +50,7 @@ public class contactActivity extends AppCompatActivity {
         //Initialize uri
         Uri uri = ContactsContract.Contacts.CONTENT_URI;
         //sort by asc
-        String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+"ASC";
+        String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" ASC";
         //initialize cursor
         Cursor cursor = getContentResolver().query(uri, null, null, null, sort);
 
