@@ -2,7 +2,7 @@ package com.example.assistgoandroid.Contact;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +57,12 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
                 .error(R.drawable.loading_contact)
                 .into(holder.contactProfilePicture);
         //todo set favorite on click
+//        Runnable onSelectFavClick = () -> {
+//            if (holder.favoriteHeart.getImageAlpha() == R.drawable.empty_heart_icon)
+//                holder.favoriteHeart.setImageResource(R.drawable.filled_heart_icon);
+//            else holder.favoriteHeart.setImageResource(R.drawable.empty_heart_icon);
+//        };
+//        onSelectFavClick.run();
     }
 
     @Override
@@ -71,6 +77,7 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
         TextView contactName;
         ImageView contactProfilePicture;
         ImageView favoriteHeart;
+        ImageView addNewContactButton;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -82,8 +89,16 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
             contactName = itemView.findViewById(R.id.tvContactName);
             contactProfilePicture = itemView.findViewById(R.id.ivContactProfilePicture);
             favoriteHeart = itemView.findViewById(R.id.ivFavoriteHeart);
+            addNewContactButton = itemView.findViewById(R.id.ivAddNewContactButton);
 
             itemView.setOnClickListener(this);
+
+            favoriteHeart.setOnClickListener(view -> {
+                Log.i("favorite", "inside favorite listener");
+                if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState())
+                    Glide.with(context).load(R.drawable.filled_heart_icon).into(favoriteHeart);
+                else Glide.with(context).load(R.drawable.empty_heart_icon).into(favoriteHeart);
+            });
         }
 
         @Override
