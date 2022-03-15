@@ -1,10 +1,13 @@
 package com.example.assistgoandroid;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,8 +18,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.Contact.Contact;
+import com.example.assistgoandroid.Contact.contactCardActivity;
 import com.example.assistgoandroid.Contact.contactListAdapter;
+import com.example.assistgoandroid.Contact.newContactCardActivity;
+
 import java.util.ArrayList;
 
 public class contactActivity extends AppCompatActivity {
@@ -93,5 +100,10 @@ public class contactActivity extends AppCompatActivity {
             Toast.makeText(contactActivity.this, "Permission Denied.", Toast.LENGTH_SHORT).show();
             checkPermission();
         }
+    }
+
+    public void onNewContactClick(View view){
+        Intent intent = new Intent(contactActivity.this, newContactCardActivity.class);
+        startActivity(intent);
     }
 }
