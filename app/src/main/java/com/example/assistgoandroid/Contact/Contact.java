@@ -1,9 +1,7 @@
 package com.example.assistgoandroid.Contact;
 
-import java.util.ArrayList;
-
 public class Contact {
-    int contactID;
+    String contactID;
     String name;
     String phoneNumber;
     String contactPicture;
@@ -24,16 +22,19 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getContactID() {
+    public String getContactID() {
         return contactID;
     }
-//    private static int lastContactId = 0;
-//    public static ArrayList<Contact> createContactsList(int numContacts) {
-//        ArrayList<Contact> contacts = new ArrayList<Contact>();
-//        for (int i = 1; i <= numContacts; i++) {
-//            contacts.add(new Contact(++lastContactId, "", "", ""));
-//        }
-//
-//        return contacts;
-//    }
+
+    public void setContactID(String contactID) {
+        this.contactID = contactID;
+    }
+
+    public void setContactPicture(String contactPicture) {
+        this.contactPicture = contactPicture;
+    }
+
+    public String getContactPicture() {
+        return contactPicture;
+    }
 }
