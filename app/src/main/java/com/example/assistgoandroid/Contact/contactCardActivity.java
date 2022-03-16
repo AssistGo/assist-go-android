@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.callActivity;
+import com.example.assistgoandroid.messageActivity;
 
 public class contactCardActivity extends AppCompatActivity {
     @Override
@@ -37,10 +38,12 @@ public class contactCardActivity extends AppCompatActivity {
     }
 
     public void onMessageClick(View view){
-
+        Intent intent = new Intent(this, messageActivity.class);
+        this.startActivity(intent);
     }
 
     public void onEditContactClick(View view){
-
+        Intent intent = new Intent(this, editContactCardActivity.class);
+        this.startActivity(intent);
     }
 }
