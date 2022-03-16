@@ -75,4 +75,14 @@ public class Contact implements Parcelable {
         parcel.writeString(phoneNumber);
         parcel.writeString(contactPicture);
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactID='" + contactID + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", contactPicture='" + contactPicture + '\'' +
+                '}';
+    }
 }
