@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.assistgoandroid">
 
+    <!--Camera permissions-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--Save images or videos to your phone-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--Network Permissions-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--Contact list Retrieval Permissions-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
 
     <application
         android:allowBackup="true"
@@ -31,8 +43,13 @@
         <activity android:name=".messageActivity"></activity>
         <activity android:name=".emergencyActivity"></activity>
         <activity android:name=".settingsActivity"></activity>
-        <activity android:name=".profileActivity"></activity>
 
+        <activity android:name=".Contact.contactCardActivity"></activity>
+        <activity android:name=".Contact.newContactCardActivity"></activity>
+        <activity android:name=".Contact.editContactCardActivity"></activity>
+        <activity android:name=".Contact.newContactQRCodeActivity"></activity>
+
+        <activity android:name=".profileActivity"></activity>
 
 
     </application>

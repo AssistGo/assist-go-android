@@ -18,7 +18,7 @@
       android:textStyle="bold" />
 
   <androidx.appcompat.widget.SearchView
-      android:id="@+id/searchView"
+      android:id="@+id/svContactSearch"
       android:layout_width="352dp"
       android:layout_height="44dp"
       android:layout_marginLeft="27dp"
