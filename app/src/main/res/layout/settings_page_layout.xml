@@ -10,7 +10,7 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="91dp"
-      android:background="@color/teal_200"
+      android:background="#99F5F0"
       android:text="Settings"
       android:textAlignment="center"
       android:textColor="#000"
@@ -23,9 +23,8 @@
       android:layout_height="44dp"
       android:layout_marginLeft="27dp"
       android:background="@drawable/search_bar_background"
-      app:queryHint="Search Something...."
       app:iconifiedByDefault="false"
-      >
+      app:queryHint="Search Something....">
 
   </androidx.appcompat.widget.SearchView>
 
