@@ -49,21 +49,27 @@
             android:layout_width="205dp"
             android:layout_height="63dp"
             android:layout_weight="1"
-            android:src="@drawable/call_icon" />
+            android:src="@drawable/call_icon"
+            android:onClick="onCallClick"
+            android:contentDescription="call"/>
 
         <ImageView
             android:id="@+id/ivVideoChatButton"
             android:layout_width="wrap_content"
             android:layout_height="63dp"
             android:layout_weight="1"
-            android:src="@drawable/video_chat_icon" />
+            android:src="@drawable/video_chat_icon"
+            android:onClick="onVideoCallClick"
+            android:contentDescription="videocall"/>
 
         <ImageView
             android:id="@+id/ivMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/message_icon" />
+            android:src="@drawable/message_icon"
+            android:onClick="onMessageClick"
+            android:contentDescription="message"/>
     </LinearLayout>
 
     <Button
@@ -73,7 +79,8 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:text="@string/edit_contact"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:onClick="onEditContactClick"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
