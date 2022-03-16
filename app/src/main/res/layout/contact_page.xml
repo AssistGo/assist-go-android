@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="91dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/TitleBackground"
+        android:background="@color/app_color"
         android:padding="10dp"
         android:text="@string/contact_list"
         android:textAlignment="center"
@@ -45,24 +45,43 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContacts"
-        android:layout_width="415dp"
-        android:layout_height="497dp"
+        android:layout_width="411dp"
+        android:layout_height="504dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/svContactSearch"
         tools:listitem="@layout/item_contact" />
 
-    <ImageView
-        android:id="@+id/ivAddNewContactButton"
-        android:layout_width="56dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="3dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="409dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvContacts"
-        android:src="@drawable/add_icon"
-        android:contentDescription="@string/add_new_contact"
-        android:onClick="onNewContactClick"/>
+        android:background="@color/app_color">
+
+        <ImageView
+            android:id="@+id/ivAddNewContactButton"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="3dp"
+            android:contentDescription="@string/add_new_contact"
+            android:onClick="onNewContactClick"
+            android:src="@drawable/add_icon" />
+
+        <ImageView
+            android:id="@+id/ivMicButton"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_icon" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:id="@+id/tvContactName"
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="@color/TitleBackground"
+        android:background="@color/app_color"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -74,5 +74,31 @@
         android:layout_margin="20dp"
         android:text="@string/edit_contact"
         android:textSize="20sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="409dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="1dp"
+            android:background="@color/app_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivMicButton"
+                android:layout_width="69dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/mic_icon" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
