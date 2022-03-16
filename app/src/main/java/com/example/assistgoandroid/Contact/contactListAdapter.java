@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
-import java.util.ArrayList;
+import java.util.List;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
@@ -24,10 +23,10 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.ViewHolder> {
     final String CONTACT_CARD = "CONTACT_CARD";
     Activity activity;
-    private ArrayList<Contact> contactsList;
+    private List<Contact> contactsList;
     Context context;
 
-    public contactListAdapter(Activity activity, ArrayList<Contact> contactsList) {
+    public contactListAdapter(Activity activity, List<Contact> contactsList) {
         this.activity = activity;
         this.contactsList = contactsList;
         notifyDataSetChanged();
@@ -56,13 +55,6 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
                 .placeholder(R.drawable.loading_contact)
                 .error(R.drawable.loading_contact)
                 .into(holder.contactProfilePicture);
-        //todo set favorite on click
-//        Runnable onSelectFavClick = () -> {
-//            if (holder.favoriteHeart.getImageAlpha() == R.drawable.empty_heart_icon)
-//                holder.favoriteHeart.setImageResource(R.drawable.filled_heart_icon);
-//            else holder.favoriteHeart.setImageResource(R.drawable.empty_heart_icon);
-//        };
-//        onSelectFavClick.run();
     }
 
     @Override
@@ -77,7 +69,6 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
         TextView contactName;
         ImageView contactProfilePicture;
         ImageView favoriteHeart;
-        ImageView addNewContactButton;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -89,11 +80,11 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
             contactName = itemView.findViewById(R.id.tvContactName);
             contactProfilePicture = itemView.findViewById(R.id.ivContactProfilePicture);
             favoriteHeart = itemView.findViewById(R.id.ivFavoriteHeart);
-            addNewContactButton = itemView.findViewById(R.id.ivAddNewContactButton);
 
             itemView.setOnClickListener(this);
 
             //todo bug: cannot select again after unselecting. Sort favorites on top
+            //https://android-developers.googleblog.com/2009/05/drawable-mutations.html?m=1
             favoriteHeart.setOnClickListener(view -> {
                 if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState()) {
                     Log.i("favorite", "selected favorite");
@@ -116,5 +107,10 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
             intent.putExtra(CONTACT_CARD, contact);
             context.startActivity(intent);
         }
+    }
+
+    public void setFilterList(List<Contact> filteredList){
+        this.contactsList = filteredList;
+        notifyDataSetChanged();
     }
 }

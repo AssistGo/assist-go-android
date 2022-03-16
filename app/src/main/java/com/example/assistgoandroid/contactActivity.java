@@ -7,29 +7,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.Contact.Contact;
-import com.example.assistgoandroid.Contact.contactCardActivity;
 import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.Contact.newContactCardActivity;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class contactActivity extends AppCompatActivity {
     contactListAdapter adapter;
     RecyclerView rvContactList;
-    private ArrayList<Contact> contactsList = new ArrayList<Contact>();
+    SearchView searchView;
+    private List<Contact> contactsList = new ArrayList<Contact>();
     static final String TAG = "ContactListActivity";
 
     @Override
@@ -37,9 +35,41 @@ public class contactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_page);
 
+        searchView = findViewById(R.id.svContactSearch);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
         rvContactList = findViewById(R.id.rvContacts);
 
         checkPermission();
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rvContactList.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void filterList(String text) {
+        List<Contact> filteredContactList = new ArrayList<Contact>();
+        for(Contact contact : contactsList){
+            if (contact.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredContactList.add(contact);
+            }
+        }
+        if (filteredContactList.isEmpty()) {
+            Toast.makeText(this, "No results found", Toast.LENGTH_LONG).show();
+        }
+        else {
+            adapter.setFilterList(filteredContactList);
+        }
     }
 
     private void checkPermission() {
