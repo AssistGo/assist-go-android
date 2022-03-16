@@ -23,11 +23,11 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:layout_marginTop="10dp"
         android:id="@+id/ivContactProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="258dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="307dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/loading_contact" />
 
     <TextView
         android:id="@+id/tvPhoneNumber"
@@ -95,8 +95,10 @@
             android:background="@color/app_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
             <ImageView
                 android:id="@+id/ivMicButton"
