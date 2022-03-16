@@ -14,6 +14,7 @@
     <!--Contact list Retrieval Permissions-->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -42,10 +43,14 @@
         <activity android:name=".messageActivity"></activity>
         <activity android:name=".emergencyActivity"></activity>
         <activity android:name=".settingsActivity"></activity>
+
         <activity android:name=".Contact.contactCardActivity"></activity>
         <activity android:name=".Contact.newContactCardActivity"></activity>
         <activity android:name=".Contact.editContactCardActivity"></activity>
         <activity android:name=".Contact.newContactQRCodeActivity"></activity>
+
+        <activity android:name=".profileActivity"></activity>
+
 
     </application>
 
