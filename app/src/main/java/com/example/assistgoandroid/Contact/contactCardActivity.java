@@ -1,5 +1,6 @@
 package com.example.assistgoandroid.Contact;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,8 +19,6 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class contactCardActivity extends AppCompatActivity {
     String TAG = "ContactCard";
-    final String CONTACT_CARD = "CONTACT_CARD";
-    Contact contact;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class contactCardActivity extends AppCompatActivity {
         TextView contactName = findViewById(R.id.tvContactName);
         TextView contactPhoneNumber = findViewById(R.id.tvPhoneNumber);
 
-        contact = (Contact) getIntent().getParcelableExtra(CONTACT_CARD);
+        Contact contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");
         Log.i(TAG, "Contact is " + contact);
 
         contactName.setText(contact.getName());
@@ -62,7 +61,6 @@ public class contactCardActivity extends AppCompatActivity {
 
     public void onEditContactClick(View view){
         Intent intent = new Intent(this, editContactCardActivity.class);
-        intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
 }
