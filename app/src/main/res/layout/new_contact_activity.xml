@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/ivContactProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="227dp"
         android:src="@drawable/loading_contact" />
 
     <TextView
@@ -49,7 +49,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Enter Full Name"
+        android:hint="Firstname Lastname"
         android:textSize="30sp"/>
 
     <TextView
@@ -67,7 +67,7 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="(XXX) XXX-XXXX"
+        android:hint="(XXX) XXX-XXXX"
         android:textSize="30sp"/>
 
     <LinearLayout
@@ -117,10 +117,10 @@
         <!--Set on clickable-->
         <ImageView
             android:id="@+id/qrCodeButton"
-            android:layout_width="98dp"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/qr_code_icon"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:src="@drawable/qr_code_icon" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>
