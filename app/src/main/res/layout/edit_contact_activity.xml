@@ -32,7 +32,8 @@
         android:textSize="20sp"
         android:layout_margin="10dp"
         android:text="Change Picture"
-        android:textColor="@color/teal_700"/>
+        android:textColor="@color/teal_700"
+        android:onClick="onChangePictureCall"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -49,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Allison Botosh"
+        android:hint="Firstname Lastname"
         android:textSize="30sp"/>
 
     <TextView
@@ -67,7 +68,7 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="(111) 111-1111"
+        android:hint="(XXX) XXX-XXXX"
         android:textSize="30sp"/>
 
     <LinearLayout
@@ -83,7 +84,8 @@
             android:layout_weight="1"
             android:text="Save Changes"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/green"/>
+            android:backgroundTint="@color/green"
+            android:onClick="onSaveChangesCall"/>
 
         <Button
             android:id="@+id/DeleteContactButton"
@@ -92,7 +94,8 @@
             android:layout_weight="1"
             android:text="Delete Contact"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/red"/>
+            android:backgroundTint="@color/red"
+            android:onClick="onDeleteContactCall"/>
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="409dp"
