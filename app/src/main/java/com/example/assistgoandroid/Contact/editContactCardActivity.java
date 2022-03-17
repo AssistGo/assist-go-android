@@ -33,8 +33,7 @@ public class editContactCardActivity extends AppCompatActivity {
     String TAG = "EditContact";
     Contact contact, temp;
 
-    private static final int IMAGE_PICK_CODE = 1000;
-    private static final int PERMISSION_CODE = 1001;
+    private static final int PERMISSION_CODE = 101;
 
     ImageView contactProfilePicture;
     EditText contactName, contactPhoneNumber;
@@ -76,23 +75,6 @@ public class editContactCardActivity extends AppCompatActivity {
             selectImageFromGallery();
     }
 
-    // OnActivityResult method is deprecated fix: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
-//    private void selectImageFromGallery() {
-//        Intent intent = new Intent(Intent.ACTION_PICK);
-//        intent.setType("image/*");
-//        startActivityForResult(intent, IMAGE_PICK_CODE);
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-//            if(data != null)
-//                contactProfilePicture.setImageURI(data.getData());
-//        }
-//    }
-
-    // new way
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
