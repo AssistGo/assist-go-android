@@ -80,7 +80,6 @@ public class contactActivity extends AppCompatActivity {
         else {
             populateContactList();
         }
-
     }
 
     private void populateContactList() {

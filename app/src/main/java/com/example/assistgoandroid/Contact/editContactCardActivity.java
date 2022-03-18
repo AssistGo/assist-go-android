@@ -10,11 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -25,7 +22,6 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.contactActivity;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -33,7 +29,10 @@ public class editContactCardActivity extends AppCompatActivity {
     String TAG = "EditContact";
     Contact contact, temp;
 
-    private static final int PERMISSION_CODE = 101;
+    private static final int GALLERY_PERMISSION_CODE = 101;
+    private static final int DELETE_PERMISSION_CODE = 102;
+    private static final int EDIT_PERMISSION_CODE = 103;
+
 
     ImageView contactProfilePicture;
     EditText contactName, contactPhoneNumber;
@@ -70,7 +69,7 @@ public class editContactCardActivity extends AppCompatActivity {
     public void onChangePictureCall(View view){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            checkPermission();
+            checkPermissionForGallery();
         else
             selectImageFromGallery();
     }
@@ -99,34 +98,86 @@ public class editContactCardActivity extends AppCompatActivity {
         someActivityResultLauncher.launch(intent);
     }
 
+    // Apply changes on contact
+    public void onSaveChangesCall(View view) {
+        //todo https://www.youtube.com/watch?v=sW0xia1E7yw&t=777s honestly just use setters on contact that's it
+        if (contactName.getText().toString().isEmpty() ||
+            contactPhoneNumber.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            checkPermissionForEdit();
+
+            contact.setName(contactName.getText().toString().trim());
+            contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
+
+        }
+    }
+
+    public void editContact() {
+
+    }
+
+    // Delete contact
+    public void onDeleteContactCall(View view) {
+        //todo
+        checkPermissionForDelete();
+    }
+
+    public void deleteContact() {
+
+    }
+
     // check permission to access gallery
-    private void checkPermission() {
+    private void checkPermissionForGallery() {
         if (ContextCompat.checkSelfPermission(editContactCardActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, GALLERY_PERMISSION_CODE);
         }
         else {
             selectImageFromGallery();
         }
     }
 
+    private void checkPermissionForDelete(){
+        if (ContextCompat.checkSelfPermission(editContactCardActivity.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, DELETE_PERMISSION_CODE);
+        }
+        else {
+            Log.i("EditContact", "Delete permission given");
+            deleteContact();
+        }
+    }
+
+    private void checkPermissionForEdit(){
+        if (ContextCompat.checkSelfPermission(editContactCardActivity.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, EDIT_PERMISSION_CODE);
+        }
+        else {
+            Log.i("EditContact", "Edit permission given");
+            editContact();
+        }
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_CODE) {
+        if (requestCode == GALLERY_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 selectImageFromGallery();
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    // Apply changes on contact
-    public void onSaveChangesCall(View view) {
-        //todo https://www.youtube.com/watch?v=sW0xia1E7yw&t=777s honestly just use setters on contact that's it
-    }
-
-    // Delete contact
-    public void onDeleteContactCall(View view) {
-        //todo https://www.youtube.com/watch?v=uS7cVb9WBNA
+        else if (requestCode == DELETE_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                deleteContact();
+            else
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+        else if (requestCode == EDIT_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                editContact();
+            else
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+        }
     }
 }
