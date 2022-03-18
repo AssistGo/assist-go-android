@@ -2,10 +2,13 @@ package com.example.assistgoandroid.Contact;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentProviderOperation;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -106,25 +109,35 @@ public class editContactCardActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
         }
         else {
-            checkPermissionForEdit();
-
-            contact.setName(contactName.getText().toString().trim());
-            contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                checkPermissionForEdit();
+            else
+                editContact();
 
         }
     }
 
+    //todo https://www.youtube.com/watch?v=uS7cVb9WBNA&t=1s
     public void editContact() {
+        contact.setName(contactName.getText().toString().trim());
+        contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
+
+        Uri uri = ContactsContract.Contacts.CONTENT_URI;
+        //ContentProviderOperation.newUpdate()
 
     }
 
     // Delete contact
     public void onDeleteContactCall(View view) {
         //todo
-        checkPermissionForDelete();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            checkPermissionForDelete();
+        else
+            deleteContact();
     }
 
     public void deleteContact() {
+        //ContentProviderOperation.newDelete()
 
     }
 

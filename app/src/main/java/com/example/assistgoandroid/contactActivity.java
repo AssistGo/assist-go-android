@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.Contact.newContactCardActivity;
@@ -27,6 +30,7 @@ public class contactActivity extends AppCompatActivity {
     contactListAdapter adapter;
     RecyclerView rvContactList;
     SearchView searchView;
+    SwipeRefreshLayout swipeRefreshLayout;
     private List<Contact> contactsList = new ArrayList<Contact>();
     static final String TAG = "ContactListActivity";
 
@@ -55,6 +59,25 @@ public class contactActivity extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rvContactList.addItemDecoration(dividerItemDecoration);
+
+        swipeRefreshLayout = findViewById(R.id.swipeContainer);
+
+        // Setup refresh listener which triggers new data loading
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                populateContactList();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        // Configure the refreshing colors
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
     private void filterList(String text) {
@@ -103,12 +126,15 @@ public class contactActivity extends AppCompatActivity {
                 if (phoneCursor.moveToNext()){
                     String number = phoneCursor.getString(phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
 
-                    Contact contact = new Contact();
-                    contact.setContactID(id);
-                    contact.setName(name);
-                    contact.setPhoneNumber(number);
-                    contact.setContactPicture(photo);
-                    contactsList.add(contact);
+                    if (avoidDuplicates(id)){
+                        Contact contact = new Contact();
+                        contact.setContactID(id);
+                        contact.setName(name);
+                        contact.setPhoneNumber(number);
+                        contact.setContactPicture(photo);
+                        contactsList.add(contact);
+                    }
+
                     phoneCursor.close();
                 }
             }
@@ -117,6 +143,14 @@ public class contactActivity extends AppCompatActivity {
         rvContactList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new contactListAdapter(this, contactsList);
         rvContactList.setAdapter(adapter);
+    }
+
+    private boolean avoidDuplicates(String id){
+        for (Contact c : contactsList) {
+            if (c.getContactID().equals(id))
+                return false;
+        }
+        return true;
     }
 
     @Override
