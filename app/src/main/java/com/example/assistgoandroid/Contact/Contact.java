@@ -3,6 +3,8 @@ package com.example.assistgoandroid.Contact;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Comparator;
+
 public class Contact implements Parcelable {
     String contactID;
     String name;
@@ -85,4 +87,14 @@ public class Contact implements Parcelable {
                 ", contactPicture='" + contactPicture + '\'' +
                 '}';
     }
+
+    public static Comparator<Contact> ContactComparator
+            = (contact1, contact2) -> {
+
+                String contactName1 = contact1.getName();
+                String contactName2 = contact2.getName();
+
+                //ascending order
+                return contactName1.compareTo(contactName2);
+            };
 }
