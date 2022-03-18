@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -19,11 +18,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.Contact.newContactCardActivity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class contactActivity extends AppCompatActivity {
@@ -106,10 +105,11 @@ public class contactActivity extends AppCompatActivity {
     }
 
     private void populateContactList() {
+        contactsList.clear();
         //Initialize uri
         Uri uri = ContactsContract.Contacts.CONTENT_URI;
         //sort by asc
-        String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" ASC";
+        String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
         //initialize cursor
         Cursor cursor = getContentResolver().query(uri, null, null, null, sort);
 
@@ -141,6 +141,7 @@ public class contactActivity extends AppCompatActivity {
             cursor.close();
         }
         rvContactList.setLayoutManager(new LinearLayoutManager(this));
+        Collections.sort(contactsList, Contact.ContactComparator);
         adapter = new contactListAdapter(this, contactsList);
         rvContactList.setAdapter(adapter);
     }
