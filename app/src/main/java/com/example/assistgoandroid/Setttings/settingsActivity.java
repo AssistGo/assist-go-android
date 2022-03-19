@@ -1,4 +1,4 @@
-package com.example.assistgoandroid;
+package com.example.assistgoandroid.Setttings;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+
+import com.example.assistgoandroid.R;
 
 public class settingsActivity extends AppCompatActivity {
     ListView listView;
