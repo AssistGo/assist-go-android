@@ -23,10 +23,10 @@ import androidx.core.content.ContextCompat;
 import com.example.assistgoandroid.MainActivity;
 import com.example.assistgoandroid.R;
 
-public class profileActivity extends AppCompatActivity {
+public class profileActivity extends AppCompatActivity implements ChangeUserNameDialog.ChangeUserNameDialogListener {
 
     private static final int PERMISSION_CODE = 101;
-    Button editProfilePicture,changeNumber;
+    Button editProfilePicture,changeNumber,editName;
     ImageView userProfilePicture;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +34,13 @@ public class profileActivity extends AppCompatActivity {
         setContentView(R.layout.profile_page);
         userProfilePicture = findViewById(R.id.userProfilePicture);
         editProfilePicture = findViewById(R.id.editProfilePicture);
+        editName = findViewById(R.id.editName);
+        editName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChangeUserNameDialog();
+            }
+        });
         editProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +66,7 @@ public class profileActivity extends AppCompatActivity {
     }
 
     public void setFirstAndLastName(String firstName, String lastName){
-        TextView name = findViewById(R.id.editName);
+        TextView name = findViewById(R.id.username);
         name.setText(firstName + " " + lastName);
     }
 
@@ -104,4 +111,8 @@ public class profileActivity extends AppCompatActivity {
         someActivityResultLauncher.launch(intent);
     }
 
+    public void openChangeUserNameDialog() {
+        ChangeUserNameDialog changeUserNameDialog = new ChangeUserNameDialog();
+        changeUserNameDialog.show(getSupportFragmentManager(),"changeUserName");
+    }
 }
