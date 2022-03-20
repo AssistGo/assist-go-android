@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save Contact"
+            android:text="@string/save_contact"
             android:layout_margin="10dp"
             android:backgroundTint="@color/green"/>
 
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:layout_margin="10dp"
             android:backgroundTint="@color/red"/>
     </LinearLayout>
