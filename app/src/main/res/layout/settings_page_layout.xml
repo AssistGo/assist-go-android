@@ -11,7 +11,7 @@
       android:layout_width="match_parent"
       android:layout_height="91dp"
       android:background="#99F5F0"
-      android:text="Settings"
+      android:text="@string/settings"
       android:textAlignment="center"
       android:textColor="#000"
       android:textSize="55sp"

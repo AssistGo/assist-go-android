@@ -24,7 +24,7 @@
             android:layout_width="315dp"
             android:layout_height="103dp"
             android:layout_margin="5dp"
-            android:text="Main Title"
+            android:text="@string/main_title"
             android:textColor="#000"
             android:textSize="50sp"
             android:textStyle="bold" />

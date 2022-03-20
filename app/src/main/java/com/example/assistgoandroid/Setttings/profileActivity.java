@@ -72,7 +72,7 @@ public class profileActivity extends AppCompatActivity implements ChangeUserName
 
     public void setNumber(String number){
         TextView phoneNumber = findViewById(R.id.phoneNumber);
-        phoneNumber.setText("Number: " + number);
+        phoneNumber.setText(getResources().getString(R.string.number) +":" + " "+ number);
     }
     // check permission to access gallery
     private void checkPermission() {
