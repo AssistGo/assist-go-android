@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="#99F5F0"
-        android:text="Change Number"
+        android:text="@string/change_number"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="45sp"
@@ -38,7 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="27dp"
         android:layout_marginTop="150dp"
-        android:text="New Number"
+        android:text="@string/new_number"
         android:textColor="#000"
         android:textSize="36sp"
         android:textStyle="bold" />
@@ -52,7 +52,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="239dp"
         android:ems="10"
-        android:hint="Enter New Phone Number"
+        android:hint="@string/enter_new_phone_number"
         android:inputType="phone" />
 
     <Button
@@ -63,7 +63,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="31dp"
         android:layout_marginTop="328dp"
-        android:text="Change Number" />
+        android:text="@string/change_number" />
 
 
 </RelativeLayout>
