@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
@@ -38,6 +39,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class editContactCardActivity extends AppCompatActivity {
     String TAG = "EditContact";
     Contact contact, temp;
+    String selectedImage;
 
     private static final int GALLERY_PERMISSION_CODE = 101;
     private static final int DELETE_PERMISSION_CODE = 102;
@@ -90,15 +92,16 @@ public class editContactCardActivity extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     // There are no request codes
                     Intent data = result.getData();
-                    if(data != null)
-                        //contactProfilePicture.setImageURI(data.getData());
+                    if(data != null) {
+                        selectedImage = String.valueOf(data.getData());
                         Glide.with(this)
                                 .load(data.getData())
                                 .centerCrop()
                                 .override(400, 400)
                                 .fitCenter() // scale to fit entire image within ImageView
-                                .transform(new RoundedCornersTransformation(500,10))
+                                .transform(new RoundedCornersTransformation(500, 10))
                                 .into(contactProfilePicture);
+                    }
                 }
             });
 
@@ -110,7 +113,6 @@ public class editContactCardActivity extends AppCompatActivity {
 
     // Apply changes on contact
     public void onSaveChangesCall(View view) {
-        //todo https://www.youtube.com/watch?v=sW0xia1E7yw&t=777s honestly just use setters on contact that's it
         if (contactName.getText().toString().isEmpty() ||
             contactPhoneNumber.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
@@ -119,24 +121,62 @@ public class editContactCardActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 checkPermissionForEdit();
             else
-                editContact();
+                editContact(getContentResolver());
 
         }
     }
 
-    //todo https://www.youtube.com/watch?v=uS7cVb9WBNA&t=1s
-    public void editContact() {
+    //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
+    public void editContact(ContentResolver contactHelper) {
         contact.setName(contactName.getText().toString().trim());
         contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
+        contact.setContactPicture(selectedImage);
 
-        Uri uri = ContactsContract.Contacts.CONTENT_URI;
-        //ContentProviderOperation.newUpdate()
+        ContentValues contentValues = new ContentValues();
 
+        contentValues.put(ContactsContract.CommonDataKinds.Phone.NUMBER, contact.getPhoneNumber());
+//        contentValues.put(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, contact.getName());
+//        contentValues.put(ContactsContract.CommonDataKinds.Phone.PHOTO_URI, contact.getContactPicture());
+
+        // Create query condition, query with the raw contact id.
+        StringBuffer whereClauseBuf = new StringBuffer();
+
+        // Specify the update contact id.
+        whereClauseBuf.append(ContactsContract.Data.RAW_CONTACT_ID);
+        whereClauseBuf.append("=");
+        whereClauseBuf.append(contact.getContactID());
+
+        // Specify the row data mimetype to phone mimetype( vnd.android.cursor.item/phone_v2 )
+        whereClauseBuf.append(" and ");
+        whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
+        whereClauseBuf.append(" = '");
+        String mimetype = ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE;
+        whereClauseBuf.append(mimetype);
+        whereClauseBuf.append("'");
+
+        // Specify phone type.
+        whereClauseBuf.append(" and ");
+        whereClauseBuf.append(ContactsContract.CommonDataKinds.Phone.TYPE);
+        whereClauseBuf.append(" = ");
+        whereClauseBuf.append(ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
+
+        // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
+        Uri dataUri = ContactsContract.Data.CONTENT_URI;
+
+        // Get update data count.
+        contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
+
+        Log.i("EditContact", "Contact " + contact.getName() + " has been changed: " + contact);
+
+        // Go back to contact list
+        Intent intent = new Intent(this, contactActivity.class);
+        startActivity(intent);
+
+        Toast.makeText(this, "Contact " + contact.getName() + " has been updated.", Toast.LENGTH_SHORT).show();
     }
 
     // Delete contact
     public void onDeleteContactCall(View view) {
-        //todo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             checkPermissionForDelete();
         else
@@ -194,7 +234,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else {
             Log.i("EditContact", "Edit permission given");
-            editContact();
+            editContact(getContentResolver());
         }
     }
 
@@ -215,7 +255,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else if (requestCode == EDIT_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                editContact();
+                editContact(getContentResolver());
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
