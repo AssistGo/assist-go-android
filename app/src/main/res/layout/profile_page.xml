@@ -31,7 +31,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/Username"
+        android:id="@+id/username"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
