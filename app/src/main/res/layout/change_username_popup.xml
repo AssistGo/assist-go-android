@@ -25,7 +25,7 @@
             android:layout_marginStart="29dp"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="17dp"
-            android:text="Enter New Name"
+            android:text="@string/enter_new_name"
             android:textAlignment="center"
             android:textColor="#3E6471"
             android:textSize="35sp"
@@ -42,7 +42,7 @@
             android:layout_marginEnd="45dp"
             android:layout_marginBottom="192dp"
             android:ems="10"
-            android:hint="Enter First Name"
+            android:hint="@string/enter_first_name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_marginEnd="45dp"
             android:layout_marginBottom="105dp"
             android:ems="10"
-            android:hint="Enter Last Name"
+            android:hint="@string/enter_last_name"
             android:inputType="textPersonName" />
 
     </RelativeLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AssistGoAndroid</string>
+    <string name="contact_list">Kişi listesi</string>
+    <string name="new_contact">Yeni bağlantı</string>
+    <string name="edit_contact">Kişiyi Düzenle</string>
+    <string name="add_new_contact">" Yeni Kişi ekle"</string>
+    <string name="settings">Ayarlar</string>
+    <string name="profile">" Profil"</string>
+    <string name="edit_name">" Adı Düzenle"</string>
+    <string name="edit_profile_picture">"Profil resmini düzenle "</string>
+    <string name="change_number">Numara değiştir</string>
+    <string name="new_number">"Yeni numara "</string>
+    <string name="enter_new_phone_number">"Yeni Numara Girin "</string>
+    <string name="enter_new_name">Yeni numara gir</string>
+    <string name="enter_first_name">Yeni ad gir</string>
+    <string name="enter_last_name">Ad gir</string>
+    <string name="enter_verification_code">Soyad gir</string>
+    <string name="contact">Kişi</string>
+    <string name="call">Ara</string>
+    <string name="message">Mesaj</string>
+    <string name="translate">Çevir</string>
+    <string name="emergency">Acil Durum</string>
+    <string name="save_changes">Değişiklikleri Kaydet</string>
+    <string name="delete_contact">Kişiyi sil</string>
+    <string name="save_contact">Kişiyi kaydet</string>
+    <string name="cancel">İptal et</string>
+    <string name="preferences">Seçenekler</string>
+    <string name="about">Hakkımızda</string>
+    <string name="number">Numara</string>
+</resources>

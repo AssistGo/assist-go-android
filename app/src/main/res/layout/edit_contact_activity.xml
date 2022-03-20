@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save Changes"
+            android:text="@string/save_changes"
             android:layout_margin="10dp"
             android:backgroundTint="@color/green"
             android:onClick="onSaveChangesCall"/>
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete Contact"
+            android:text="@string/delete_contact"
             android:layout_margin="10dp"
             android:backgroundTint="@color/red"
             android:onClick="onDeleteContactCall"/>
