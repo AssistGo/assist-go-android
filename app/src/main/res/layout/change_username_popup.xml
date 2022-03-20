@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="390dp"
+    android:layout_height="390dp"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="388dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:layout_width="344dp"
+            android:layout_height="86dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="17dp"
+            android:text="Enter New Name"
+            android:textAlignment="center"
+            android:textColor="#3E6471"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/newFirstName"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="192dp"
+            android:ems="10"
+            android:hint="Enter First Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/newLastName"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="105dp"
+            android:ems="10"
+            android:hint="Enter Last Name"
+            android:inputType="textPersonName" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
