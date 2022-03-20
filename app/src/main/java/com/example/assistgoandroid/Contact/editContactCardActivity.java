@@ -3,11 +3,14 @@ package com.example.assistgoandroid.Contact;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +28,10 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.contactActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -133,13 +140,33 @@ public class editContactCardActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             checkPermissionForDelete();
         else
-            deleteContact();
+            deleteContact(getContentResolver());
     }
 
-    public void deleteContact() {
-        //ContentProviderOperation.newDelete()
+    //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
+    public void deleteContact(ContentResolver contactHelper) {
 
+        // Data table content process uri.
+        Uri dataContentUri = ContactsContract.Data.CONTENT_URI;
+
+        // Create data table where clause.
+        StringBuffer dataWhereClauseBuf = new StringBuffer();
+        dataWhereClauseBuf.append(ContactsContract.Data.RAW_CONTACT_ID);
+        dataWhereClauseBuf.append(" = ");
+        dataWhereClauseBuf.append(contact.getContactID());
+
+        // Delete all this contact related data in data table.
+        contactHelper.delete(dataContentUri, dataWhereClauseBuf.toString(), null);
+
+        Log.i("EditContact", "Contact " + contact.getName() + " deleted.");
+
+        // Go back to contact list
+        Intent intent = new Intent(this, contactActivity.class);
+        startActivity(intent);
+
+        Toast.makeText(this, "Contact " + contact.getName() + " deleted.", Toast.LENGTH_SHORT).show();
     }
+
 
     // check permission to access gallery
     private void checkPermissionForGallery() {
@@ -157,7 +184,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else {
             Log.i("EditContact", "Delete permission given");
-            deleteContact();
+            deleteContact(getContentResolver());
         }
     }
 
@@ -182,7 +209,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else if (requestCode == DELETE_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                deleteContact();
+                deleteContact(getContentResolver());
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }

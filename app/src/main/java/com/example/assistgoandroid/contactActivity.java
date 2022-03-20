@@ -119,6 +119,7 @@ public class contactActivity extends AppCompatActivity {
                 String id = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
                 String photo = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_URI));
+                String lookupKey = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.LOOKUP_KEY));
                 Uri uriPhone = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
                 String selection = ContactsContract.CommonDataKinds.Phone.CONTACT_ID+" =?";
                 Cursor phoneCursor = getContentResolver().query(uriPhone, null, selection, new String[]{id}, null);
@@ -132,6 +133,7 @@ public class contactActivity extends AppCompatActivity {
                         contact.setName(name);
                         contact.setPhoneNumber(number);
                         contact.setContactPicture(photo);
+                        contact.setLookupKey(lookupKey);
                         contactsList.add(contact);
                     }
 

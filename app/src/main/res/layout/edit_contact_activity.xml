@@ -51,7 +51,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Firstname Lastname"
+        android:hint="Enter name here"
         android:textSize="30sp"/>
 
     <TextView
