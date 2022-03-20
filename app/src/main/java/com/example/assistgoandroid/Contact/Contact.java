@@ -1,5 +1,6 @@
 package com.example.assistgoandroid.Contact;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,6 +11,7 @@ public class Contact implements Parcelable {
     String name;
     String phoneNumber;
     String contactPicture;
+    String lookupKey;
 
     protected Contact(Parcel in) {
         contactID = in.readString();
@@ -63,6 +65,14 @@ public class Contact implements Parcelable {
 
     public String getContactPicture() {
         return contactPicture;
+    }
+
+    public String getLookupKey() {
+        return lookupKey;
+    }
+
+    public void setLookupKey(String lookupKey) {
+        this.lookupKey = lookupKey;
     }
 
     @Override
