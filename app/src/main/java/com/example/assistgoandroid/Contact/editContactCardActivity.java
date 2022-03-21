@@ -2,15 +2,18 @@ package com.example.assistgoandroid.Contact;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +34,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class editContactCardActivity extends AppCompatActivity {
@@ -224,10 +229,11 @@ public class editContactCardActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/17789256/change-contact-picture-programmatically
     //http://wptrafficanalyzer.in/blog/programatically-adding-contacts-with-photo-using-contacts-provider-in-android-example/
     private void changeProfilePicture(ContentResolver contactHelper) {
-        ContentValues contentValues = new ContentValues();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         mBitmap.compress(Bitmap.CompressFormat.PNG , 75, stream);
 
+        // First Approach
+        ContentValues contentValues = new ContentValues();
         contentValues.put(ContactsContract.CommonDataKinds.Photo.PHOTO, stream.toByteArray());
 
         // Create query condition, query with the raw contact id.
@@ -256,6 +262,22 @@ public class editContactCardActivity extends AppCompatActivity {
         // Get update data count.
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
 
+        //Second approach
+        final ArrayList<ContentProviderOperation> ops = new ArrayList<>();
+        ops.add(ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, Integer.parseInt(contact.getContactID()))
+                .withValue(ContactsContract.Data.IS_SUPER_PRIMARY, 1)
+                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO,stream.toByteArray())
+                .build());
+
+        try {
+            getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+        } catch (OperationApplicationException | RemoteException e) {
+            e.printStackTrace();
+        }
+
+        // Flush stream
         try {
             stream.flush();
         }
