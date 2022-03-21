@@ -2,23 +2,21 @@ package com.example.assistgoandroid.Contact;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -26,20 +24,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.contactActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class editContactCardActivity extends AppCompatActivity {
     String TAG = "EditContact";
-    Contact contact, temp;
-    String selectedImage;
+    Contact contact;
+    Bitmap mBitmap;
+    //Uri selectedImage;
 
     private static final int GALLERY_PERMISSION_CODE = 101;
     private static final int DELETE_PERMISSION_CODE = 102;
@@ -58,8 +56,7 @@ public class editContactCardActivity extends AppCompatActivity {
         contactName = findViewById(R.id.editContactName);
         contactPhoneNumber = findViewById(R.id.editContactPhoneNumber);
 
-        contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");
-        temp = contact;
+        contact = getIntent().getParcelableExtra("CONTACT_CARD");
 
         Log.i(TAG, contact.toString());
 
@@ -93,14 +90,21 @@ public class editContactCardActivity extends AppCompatActivity {
                     // There are no request codes
                     Intent data = result.getData();
                     if(data != null) {
-                        selectedImage = String.valueOf(data.getData());
-                        Glide.with(this)
-                                .load(data.getData())
-                                .centerCrop()
-                                .override(400, 400)
-                                .fitCenter() // scale to fit entire image within ImageView
-                                .transform(new RoundedCornersTransformation(500, 10))
-                                .into(contactProfilePicture);
+                        Uri selectedImage = data.getData();
+                        InputStream imageStream = null;
+
+                        try {
+                            // Getting InputStream of the selected image
+                            imageStream = getContentResolver().openInputStream(selectedImage);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        // Creating bitmap of the selected image from its inputstream
+                        mBitmap = BitmapFactory.decodeStream(imageStream);
+
+                        contactProfilePicture.setImageBitmap(mBitmap);
+
+                        contact.setContactPicture(String.valueOf(selectedImage));
                     }
                 }
             });
@@ -139,13 +143,11 @@ public class editContactCardActivity extends AppCompatActivity {
             changeName(getContentResolver());
         }
 
-        //todo Null reference error
-//        if(!contact.getContactPicture().equals(selectedImage)) {
-//            contact.setContactPicture(selectedImage);
-//            changeProfilePicture(getContentResolver());
-//        }
+            if(mBitmap != null) {
+                changeProfilePicture(getContentResolver());
+            }
 
-        Log.i("EditContact", "Contact " + contact.getName() + " has been changed: " + contact);
+        Log.i(TAG, "Contact " + contact.getName() + " has been changed: " + contact);
 
         // Go back to contact list
         Intent intent = new Intent(this, contactActivity.class);
@@ -191,7 +193,6 @@ public class editContactCardActivity extends AppCompatActivity {
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
-    //todo doesnt work https://stackoverflow.com/questions/6465905/how-to-update-e-mail-address-nickname-etc-of-a-contact-in-android/6530159#6530159
     private void changeName(ContentResolver contactHelper) {
         ContentValues contentValues = new ContentValues();
 
@@ -205,7 +206,7 @@ public class editContactCardActivity extends AppCompatActivity {
         whereClauseBuf.append("=");
         whereClauseBuf.append(contact.getContactID());
 
-        // Specify the row data mimetype to phone mimetype( vnd.android.cursor.item/phone_v2 )
+        // Specify the row data mimetype to name mimetype
         whereClauseBuf.append(" and ");
         whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
         whereClauseBuf.append(" = '");
@@ -220,10 +221,14 @@ public class editContactCardActivity extends AppCompatActivity {
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
+    //https://stackoverflow.com/questions/17789256/change-contact-picture-programmatically
+    //http://wptrafficanalyzer.in/blog/programatically-adding-contacts-with-photo-using-contacts-provider-in-android-example/
     private void changeProfilePicture(ContentResolver contactHelper) {
         ContentValues contentValues = new ContentValues();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        mBitmap.compress(Bitmap.CompressFormat.PNG , 75, stream);
 
-        contentValues.put(ContactsContract.CommonDataKinds.Phone.PHOTO_URI, contact.getContactPicture());
+        contentValues.put(ContactsContract.CommonDataKinds.Photo.PHOTO, stream.toByteArray());
 
         // Create query condition, query with the raw contact id.
         StringBuffer whereClauseBuf = new StringBuffer();
@@ -233,19 +238,30 @@ public class editContactCardActivity extends AppCompatActivity {
         whereClauseBuf.append("=");
         whereClauseBuf.append(contact.getContactID());
 
-        // Specify the row data mimetype to phone mimetype( vnd.android.cursor.item/phone_v2 )
         whereClauseBuf.append(" and ");
         whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
         whereClauseBuf.append(" = '");
-        String mimetype = ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE;
+        String mimetype = ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE;
         whereClauseBuf.append(mimetype);
         whereClauseBuf.append("'");
+
+        whereClauseBuf.append(" and ");
+        whereClauseBuf.append(ContactsContract.Data.IS_SUPER_PRIMARY);
+        whereClauseBuf.append(" = ");
+        whereClauseBuf.append(1);
 
         // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
         Uri dataUri = ContactsContract.Data.CONTENT_URI;
 
         // Get update data count.
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
+
+        try {
+            stream.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Delete contact
