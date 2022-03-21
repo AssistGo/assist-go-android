@@ -121,22 +121,43 @@ public class editContactCardActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 checkPermissionForEdit();
             else
-                editContact(getContentResolver());
+                editContact();
 
         }
     }
 
     //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
-    public void editContact(ContentResolver contactHelper) {
-        contact.setName(contactName.getText().toString().trim());
-        contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
-        contact.setContactPicture(selectedImage);
+    public void editContact() {
 
+        if(!contact.getPhoneNumber().equals(contactPhoneNumber.getText().toString().trim())) {
+            contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
+            changePhoneNumber(getContentResolver());
+        }
+
+        if(!contact.getName().equals(contactName.getText().toString().trim())) {
+            contact.setName(contactName.getText().toString().trim());
+            changeName(getContentResolver());
+        }
+
+        //todo Null reference error
+//        if(!contact.getContactPicture().equals(selectedImage)) {
+//            contact.setContactPicture(selectedImage);
+//            changeProfilePicture(getContentResolver());
+//        }
+
+        Log.i("EditContact", "Contact " + contact.getName() + " has been changed: " + contact);
+
+        // Go back to contact list
+        Intent intent = new Intent(this, contactActivity.class);
+        startActivity(intent);
+
+        Toast.makeText(this, "Contact " + contact.getName() + " has been updated.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void changePhoneNumber(ContentResolver contactHelper) {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(ContactsContract.CommonDataKinds.Phone.NUMBER, contact.getPhoneNumber());
-//        contentValues.put(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, contact.getName());
-//        contentValues.put(ContactsContract.CommonDataKinds.Phone.PHOTO_URI, contact.getContactPicture());
 
         // Create query condition, query with the raw contact id.
         StringBuffer whereClauseBuf = new StringBuffer();
@@ -154,6 +175,9 @@ public class editContactCardActivity extends AppCompatActivity {
         whereClauseBuf.append(mimetype);
         whereClauseBuf.append("'");
 
+        Log.i(TAG, ContactsContract.Data.MIMETYPE);
+        Log.i(TAG, mimetype);
+
         // Specify phone type.
         whereClauseBuf.append(" and ");
         whereClauseBuf.append(ContactsContract.CommonDataKinds.Phone.TYPE);
@@ -165,14 +189,63 @@ public class editContactCardActivity extends AppCompatActivity {
 
         // Get update data count.
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
+    }
 
-        Log.i("EditContact", "Contact " + contact.getName() + " has been changed: " + contact);
+    //todo doesnt work https://stackoverflow.com/questions/6465905/how-to-update-e-mail-address-nickname-etc-of-a-contact-in-android/6530159#6530159
+    private void changeName(ContentResolver contactHelper) {
+        ContentValues contentValues = new ContentValues();
 
-        // Go back to contact list
-        Intent intent = new Intent(this, contactActivity.class);
-        startActivity(intent);
+        contentValues.put(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, contact.getName());
 
-        Toast.makeText(this, "Contact " + contact.getName() + " has been updated.", Toast.LENGTH_SHORT).show();
+        // Create query condition, query with the raw contact id.
+        StringBuffer whereClauseBuf = new StringBuffer();
+
+        // Specify the update contact id.
+        whereClauseBuf.append(ContactsContract.Data.RAW_CONTACT_ID);
+        whereClauseBuf.append("=");
+        whereClauseBuf.append(contact.getContactID());
+
+        // Specify the row data mimetype to phone mimetype( vnd.android.cursor.item/phone_v2 )
+        whereClauseBuf.append(" and ");
+        whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
+        whereClauseBuf.append(" = '");
+        String mimetype = ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE;
+        whereClauseBuf.append(mimetype);
+        whereClauseBuf.append("'");
+
+        // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
+        Uri dataUri = ContactsContract.Data.CONTENT_URI;
+
+        // Get update data count.
+        contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
+    }
+
+    private void changeProfilePicture(ContentResolver contactHelper) {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ContactsContract.CommonDataKinds.Phone.PHOTO_URI, contact.getContactPicture());
+
+        // Create query condition, query with the raw contact id.
+        StringBuffer whereClauseBuf = new StringBuffer();
+
+        // Specify the update contact id.
+        whereClauseBuf.append(ContactsContract.Data.RAW_CONTACT_ID);
+        whereClauseBuf.append("=");
+        whereClauseBuf.append(contact.getContactID());
+
+        // Specify the row data mimetype to phone mimetype( vnd.android.cursor.item/phone_v2 )
+        whereClauseBuf.append(" and ");
+        whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
+        whereClauseBuf.append(" = '");
+        String mimetype = ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE;
+        whereClauseBuf.append(mimetype);
+        whereClauseBuf.append("'");
+
+        // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
+        Uri dataUri = ContactsContract.Data.CONTENT_URI;
+
+        // Get update data count.
+        contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
     // Delete contact
@@ -223,7 +296,6 @@ public class editContactCardActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, DELETE_PERMISSION_CODE);
         }
         else {
-            Log.i("EditContact", "Delete permission given");
             deleteContact(getContentResolver());
         }
     }
@@ -233,8 +305,7 @@ public class editContactCardActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, EDIT_PERMISSION_CODE);
         }
         else {
-            Log.i("EditContact", "Edit permission given");
-            editContact(getContentResolver());
+            editContact();
         }
     }
 
@@ -255,7 +326,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else if (requestCode == EDIT_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                editContact(getContentResolver());
+                editContact();
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
