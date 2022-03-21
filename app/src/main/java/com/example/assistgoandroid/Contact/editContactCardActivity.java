@@ -4,10 +4,12 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -227,54 +229,68 @@ public class editContactCardActivity extends AppCompatActivity {
     }
 
     //https://stackoverflow.com/questions/17789256/change-contact-picture-programmatically
-    //http://wptrafficanalyzer.in/blog/programatically-adding-contacts-with-photo-using-contacts-provider-in-android-example/
     private void changeProfilePicture(ContentResolver contactHelper) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        mBitmap.compress(Bitmap.CompressFormat.PNG , 75, stream);
+        mBitmap.compress(Bitmap.CompressFormat.PNG , 100, stream);
 
-        // First Approach
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(ContactsContract.CommonDataKinds.Photo.PHOTO, stream.toByteArray());
+        Uri rawContactUri = null;
+        Cursor rawContactCursor = managedQuery(
+                ContactsContract.RawContacts.CONTENT_URI,
+                new String[] {
+                        ContactsContract.RawContacts._ID
+                },
+                ContactsContract.RawContacts.CONTACT_ID + " = " + contact.getContactID(),
+                null,
+                null);
+        if (!rawContactCursor.isAfterLast()) {
+            rawContactCursor.moveToFirst();
+            rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendPath("" + rawContactCursor.getLong(0)).build();
+        }
+        rawContactCursor.close();
 
-        // Create query condition, query with the raw contact id.
-        StringBuffer whereClauseBuf = new StringBuffer();
+        ContentValues values = new ContentValues();
+        int photoRow = -1;
+        String where111 = ContactsContract.Data.RAW_CONTACT_ID + " == " +
+                ContentUris.parseId(rawContactUri) + " AND " + ContactsContract.Data.MIMETYPE + "=='" +
+                ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "'";
+        Cursor cursor = managedQuery(
+                ContactsContract.Data.CONTENT_URI,
+                null,
+                where111,
+                null,
+                null);
+        int idIdx = cursor.getColumnIndexOrThrow(ContactsContract.Data._ID);
+        if (cursor.moveToFirst()) {
+            photoRow = cursor.getInt(idIdx);
+        }
 
-        // Specify the update contact id.
-        whereClauseBuf.append(ContactsContract.Data.RAW_CONTACT_ID);
-        whereClauseBuf.append("=");
-        whereClauseBuf.append(contact.getContactID());
+        cursor.close();
 
-        whereClauseBuf.append(" and ");
-        whereClauseBuf.append(ContactsContract.Data.MIMETYPE);
-        whereClauseBuf.append(" = '");
-        String mimetype = ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE;
-        whereClauseBuf.append(mimetype);
-        whereClauseBuf.append("'");
 
-        whereClauseBuf.append(" and ");
-        whereClauseBuf.append(ContactsContract.Data.IS_SUPER_PRIMARY);
-        whereClauseBuf.append(" = ");
-        whereClauseBuf.append(1);
-
-        // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
-        Uri dataUri = ContactsContract.Data.CONTENT_URI;
-
-        // Get update data count.
-        contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
-
-        //Second approach
         final ArrayList<ContentProviderOperation> ops = new ArrayList<>();
-        ops.add(ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, Integer.parseInt(contact.getContactID()))
-                .withValue(ContactsContract.Data.IS_SUPER_PRIMARY, 1)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO,stream.toByteArray())
-                .build());
+        values.put(ContactsContract.Data.RAW_CONTACT_ID,
+                ContentUris.parseId(rawContactUri));
+        values.put(ContactsContract.Data.IS_SUPER_PRIMARY, 1);
+        values.put(ContactsContract.CommonDataKinds.Photo.PHOTO, stream.toByteArray());
+        values.put(ContactsContract.Data.MIMETYPE,
+                ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE);
 
+        ops.add(ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI).withValues(values).build());
+
+        if (photoRow >= 0) {
+            contactHelper.update(
+                    ContactsContract.Data.CONTENT_URI,
+                    values,
+                    ContactsContract.Data._ID + " = " + photoRow, null);
+        } else {
+            contactHelper.insert(
+                    ContactsContract.Data.CONTENT_URI,
+                    values);
+        }
         try {
-            getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
-        } catch (OperationApplicationException | RemoteException e) {
-            e.printStackTrace();
+            contactHelper.applyBatch(ContactsContract.AUTHORITY, ops);
+        } catch (Exception e) {
+            Log.e(TAG, e + "");
         }
 
         // Flush stream
