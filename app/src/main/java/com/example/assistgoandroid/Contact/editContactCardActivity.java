@@ -40,7 +40,7 @@ import java.util.ArrayList;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-public class editContactCardActivity extends AppCompatActivity {
+public class editContactCardActivity extends AppCompatActivity implements deleteContactDialog.deleteContactDialogListener{
     String TAG = "EditContact";
     Contact contact;
     Bitmap mBitmap;
@@ -319,11 +319,13 @@ public class editContactCardActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             checkPermissionForDelete();
         else
-            deleteContact(getContentResolver());
+            openDialog();
+            //deleteContact();
     }
 
     //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
-    public void deleteContact(ContentResolver contactHelper) {
+    @Override
+    public void deleteContact() {
 
         // Data table content process uri.
         Uri dataContentUri = ContactsContract.Data.CONTENT_URI;
@@ -335,7 +337,7 @@ public class editContactCardActivity extends AppCompatActivity {
         dataWhereClauseBuf.append(contact.getContactID());
 
         // Delete all this contact related data in data table.
-        contactHelper.delete(dataContentUri, dataWhereClauseBuf.toString(), null);
+        getContentResolver().delete(dataContentUri, dataWhereClauseBuf.toString(), null);
 
         Log.i("EditContact", "Contact " + contact.getName() + " deleted.");
 
@@ -344,6 +346,11 @@ public class editContactCardActivity extends AppCompatActivity {
         startActivity(intent);
 
         Toast.makeText(this, "Contact " + contact.getName() + " deleted.", Toast.LENGTH_SHORT).show();
+    }
+
+    public void openDialog() {
+        deleteContactDialog deleteContactDialog = new deleteContactDialog();
+        deleteContactDialog.show(getSupportFragmentManager(), "deleteContactDialog");
     }
 
 
@@ -363,7 +370,7 @@ public class editContactCardActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, DELETE_PERMISSION_CODE);
         }
         else {
-            deleteContact(getContentResolver());
+            openDialog();//deleteContact();
         }
     }
 
@@ -388,7 +395,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
         else if (requestCode == DELETE_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                deleteContact(getContentResolver());
+                openDialog(); //deleteContact();
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
