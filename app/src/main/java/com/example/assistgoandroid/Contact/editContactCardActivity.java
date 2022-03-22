@@ -44,12 +44,14 @@ public class editContactCardActivity extends AppCompatActivity {
     String TAG = "EditContact";
     Contact contact;
     Bitmap mBitmap;
-    //Uri selectedImage;
 
     private static final int GALLERY_PERMISSION_CODE = 101;
+
+    // These two permissions are basically the same permissions
+    // but I am using this approach to differentiate the operations
+    // for delete/contact since they have different functionalities
     private static final int DELETE_PERMISSION_CODE = 102;
     private static final int EDIT_PERMISSION_CODE = 103;
-
 
     ImageView contactProfilePicture;
     EditText contactName, contactPhoneNumber;
@@ -90,6 +92,14 @@ public class editContactCardActivity extends AppCompatActivity {
             selectImageFromGallery();
     }
 
+    // Open Gallery and let the user select an image
+    public void selectImageFromGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        someActivityResultLauncher.launch(intent);
+    }
+
+    // Process the image selected by the user from gallery
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -106,61 +116,67 @@ public class editContactCardActivity extends AppCompatActivity {
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                        // Creating bitmap of the selected image from its inputstream
+                        // Creating bitmap of the selected image from its input stream
                         mBitmap = BitmapFactory.decodeStream(imageStream);
-
+                        // Change image view to picked image for display
                         contactProfilePicture.setImageBitmap(mBitmap);
-
-                        contact.setContactPicture(String.valueOf(selectedImage));
                     }
                 }
             });
 
-    public void selectImageFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        someActivityResultLauncher.launch(intent);
-    }
-
-    // Apply changes on contact
+    // Apply changes on contact when save button is clicked
     public void onSaveChangesCall(View view) {
         if (contactName.getText().toString().isEmpty() ||
-            contactPhoneNumber.getText().toString().isEmpty()) {
+                contactPhoneNumber.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
+        }
+        else if (contact.getPhoneNumber().equals(contactPhoneNumber.getText().toString().trim())
+                && contact.getName().equals(contactName.getText().toString().trim())
+                && mBitmap == null) {
+
+            // No changes so go back with no updates
+            Intent intent = new Intent(this, contactActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "No changes have been made for " + contact.getName(), Toast.LENGTH_SHORT).show();
         }
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 checkPermissionForEdit();
             else
                 editContact();
-
         }
     }
 
     //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
     public void editContact() {
 
+        // Change phone number
         if(!contact.getPhoneNumber().equals(contactPhoneNumber.getText().toString().trim())) {
             contact.setPhoneNumber(contactPhoneNumber.getText().toString().trim());
             changePhoneNumber(getContentResolver());
         }
 
+        // Change contact name
         if(!contact.getName().equals(contactName.getText().toString().trim())) {
             contact.setName(contactName.getText().toString().trim());
             changeName(getContentResolver());
         }
 
-            if(mBitmap != null) {
+        // Change contact picture
+        if(mBitmap != null) {
+            try {
                 changeProfilePicture(getContentResolver());
+            } catch (Exception e) {
+                Log.e(TAG, e + "");
             }
-
-        Log.i(TAG, "Contact " + contact.getName() + " has been changed: " + contact);
+        }
 
         // Go back to contact list
         Intent intent = new Intent(this, contactActivity.class);
         startActivity(intent);
 
         Toast.makeText(this, "Contact " + contact.getName() + " has been updated.", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Contact " + contact.getName() + " has been changed: " + contact);
     }
 
     private void changePhoneNumber(ContentResolver contactHelper) {
@@ -196,7 +212,6 @@ public class editContactCardActivity extends AppCompatActivity {
         // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
         Uri dataUri = ContactsContract.Data.CONTENT_URI;
 
-        // Get update data count.
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
@@ -221,10 +236,9 @@ public class editContactCardActivity extends AppCompatActivity {
         whereClauseBuf.append(mimetype);
         whereClauseBuf.append("'");
 
-        // Update phone info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
+        // Update name info through Data uri.Otherwise it may throw java.lang.UnsupportedOperationException.
         Uri dataUri = ContactsContract.Data.CONTENT_URI;
 
-        // Get update data count.
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
@@ -250,13 +264,13 @@ public class editContactCardActivity extends AppCompatActivity {
 
         ContentValues values = new ContentValues();
         int photoRow = -1;
-        String where111 = ContactsContract.Data.RAW_CONTACT_ID + " == " +
+        String whereFilter = ContactsContract.Data.RAW_CONTACT_ID + " == " +
                 ContentUris.parseId(rawContactUri) + " AND " + ContactsContract.Data.MIMETYPE + "=='" +
                 ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "'";
         Cursor cursor = managedQuery(
                 ContactsContract.Data.CONTENT_URI,
                 null,
-                where111,
+                whereFilter,
                 null,
                 null);
         int idIdx = cursor.getColumnIndexOrThrow(ContactsContract.Data._ID);
@@ -266,14 +280,12 @@ public class editContactCardActivity extends AppCompatActivity {
 
         cursor.close();
 
-
         final ArrayList<ContentProviderOperation> ops = new ArrayList<>();
-        values.put(ContactsContract.Data.RAW_CONTACT_ID,
-                ContentUris.parseId(rawContactUri));
+
+        values.put(ContactsContract.Data.RAW_CONTACT_ID, ContentUris.parseId(rawContactUri));
         values.put(ContactsContract.Data.IS_SUPER_PRIMARY, 1);
         values.put(ContactsContract.CommonDataKinds.Photo.PHOTO, stream.toByteArray());
-        values.put(ContactsContract.Data.MIMETYPE,
-                ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE);
+        values.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE);
 
         ops.add(ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI).withValues(values).build());
 
@@ -345,6 +357,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
     }
 
+    // Check permission to delete
     private void checkPermissionForDelete(){
         if (ContextCompat.checkSelfPermission(editContactCardActivity.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, DELETE_PERMISSION_CODE);
@@ -354,6 +367,7 @@ public class editContactCardActivity extends AppCompatActivity {
         }
     }
 
+    // Check permission to edit
     private void checkPermissionForEdit(){
         if (ContextCompat.checkSelfPermission(editContactCardActivity.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS}, EDIT_PERMISSION_CODE);
