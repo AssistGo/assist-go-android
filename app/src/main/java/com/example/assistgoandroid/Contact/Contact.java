@@ -1,13 +1,17 @@
 package com.example.assistgoandroid.Contact;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.Comparator;
 
 public class Contact implements Parcelable {
     String contactID;
     String name;
     String phoneNumber;
     String contactPicture;
+    String lookupKey;
 
     protected Contact(Parcel in) {
         contactID = in.readString();
@@ -63,6 +67,14 @@ public class Contact implements Parcelable {
         return contactPicture;
     }
 
+    public String getLookupKey() {
+        return lookupKey;
+    }
+
+    public void setLookupKey(String lookupKey) {
+        this.lookupKey = lookupKey;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -85,4 +97,14 @@ public class Contact implements Parcelable {
                 ", contactPicture='" + contactPicture + '\'' +
                 '}';
     }
+
+    public static Comparator<Contact> ContactComparator
+            = (contact1, contact2) -> {
+
+                String contactName1 = contact1.getName();
+                String contactName2 = contact2.getName();
+
+                //ascending order
+                return contactName1.compareTo(contactName2);
+            };
 }
