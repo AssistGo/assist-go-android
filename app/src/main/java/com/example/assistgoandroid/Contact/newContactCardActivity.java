@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-//http://wptrafficanalyzer.in/blog/programatically-adding-contacts-with-photo-using-contacts-provider-in-android-example/
+
 public class newContactCardActivity extends AppCompatActivity {
     Bitmap mBitmap;
     EditText contactName, contactPhoneNumber;
@@ -39,7 +39,6 @@ public class newContactCardActivity extends AppCompatActivity {
 
     private static final int GALLERY_PERMISSION_CODE = 101;
     private static final int ADD_PERMISSION_CODE = 103;
-    String TAG = "NewContact";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -205,5 +204,10 @@ public class newContactCardActivity extends AppCompatActivity {
             else
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void scanQRCodeListener(View view) {
+        Intent intent = new Intent(this, newContactQRCodeActivity.class);
+        startActivity(intent);
     }
 }

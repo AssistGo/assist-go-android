@@ -117,13 +117,13 @@
             android:layout_gravity="center"
             app:srcCompat="@drawable/mic_icon" />
 
-        <!--Set on clickable-->
         <ImageView
             android:id="@+id/qrCodeButton"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:src="@drawable/qr_code_icon" />
+            android:src="@drawable/qr_code_icon"
+            android:onClick="scanQRCodeListener"/>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>
