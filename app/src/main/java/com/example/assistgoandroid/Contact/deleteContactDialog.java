@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.assistgoandroid.R;
 
-//https://www.youtube.com/watch?v=ARezg1D9Zd0&t=633s
 public class deleteContactDialog extends AppCompatDialogFragment {
 
     private deleteContactDialogListener listener;

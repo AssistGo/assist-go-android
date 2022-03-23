@@ -147,7 +147,6 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         }
     }
 
-    //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
     public void editContact() {
 
         // Change phone number
@@ -242,7 +241,6 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         contactHelper.update(dataUri, contentValues, whereClauseBuf.toString(), null);
     }
 
-    //https://stackoverflow.com/questions/17789256/change-contact-picture-programmatically
     private void changeProfilePicture(ContentResolver contactHelper) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         mBitmap.compress(Bitmap.CompressFormat.PNG , 100, stream);
@@ -323,7 +321,6 @@ public class editContactCardActivity extends AppCompatActivity implements delete
             //deleteContact();
     }
 
-    //Source: https://www.dev2qa.com/how-to-update-delete-android-contacts-programmatically/
     @Override
     public void deleteContact() {
 
