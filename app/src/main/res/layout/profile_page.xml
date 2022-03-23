@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".profileActivity">
+    tools:context=".Setttings.profileActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="#99F5F0"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="55sp"
@@ -31,7 +31,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/Username"
+        android:id="@+id/username"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -46,7 +46,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/userProfilePicture"
         android:layout_width="296dp"
         android:layout_height="279dp"
         android:layout_alignParentTop="true"
@@ -54,7 +54,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="101dp"
         android:layout_marginEnd="59dp"
-        android:background="@drawable/img" />
+        android:background="@drawable/default_profile_pic" />
 
     <Button
         android:id="@+id/editName"
@@ -66,9 +66,10 @@
         android:layout_marginStart="151dp"
         android:layout_marginBottom="194dp"
         android:background="@android:color/transparent"
-        android:text="Edit Name"
+        android:text="@string/edit_name"
         android:textColor="#196D73"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        tools:ignore="RelativeOverlap" />
 
 
     <Button
@@ -81,7 +82,7 @@
         android:layout_marginStart="118dp"
         android:layout_marginBottom="301dp"
         android:background="@android:color/transparent"
-        android:text="Edit Profile Picture"
+        android:text="@string/edit_profile_picture"
         android:textColor="#196D73"
         android:textSize="12sp" />
 
@@ -92,7 +93,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="143dp"
-        android:text="Number: +1 (111) 111-1111"
+        android:text="@string/number"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -108,7 +109,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginBottom="89dp"
         android:background="@android:color/transparent"
-        android:text="Change Number"
+        android:text="@string/change_number"
         android:textColor="#196D73"
         android:textSize="12sp" />
 
