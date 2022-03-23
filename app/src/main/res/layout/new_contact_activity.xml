@@ -32,7 +32,8 @@
         android:textSize="20sp"
         android:layout_margin="10dp"
         android:text="Change Picture"
-        android:textColor="@color/teal_700"/>
+        android:textColor="@color/teal_700"
+        android:onClick="onChangePictureCall"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -49,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Firstname Lastname"
+        android:hint="Enter name here"
         android:textSize="30sp"/>
 
     <TextView
@@ -83,7 +84,8 @@
             android:layout_weight="1"
             android:text="Save Contact"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/green"/>
+            android:backgroundTint="@color/green"
+            android:onClick="onNewContactClick"/>
 
         <Button
             android:id="@+id/DeleteContactButton"
@@ -92,7 +94,8 @@
             android:layout_weight="1"
             android:text="Cancel"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/red"/>
+            android:backgroundTint="@color/red"
+            android:onClick="onCancelNewContactClick"/>
     </LinearLayout>
 
 
