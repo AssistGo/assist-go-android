@@ -39,8 +39,8 @@ public class contactCardActivity extends AppCompatActivity {
                 .centerCrop()
                 .fitCenter() // scale to fit entire image within ImageView
                 .transform(new RoundedCornersTransformation(500,10))
-                    .placeholder(R.drawable.loading_contact)
-                    .error(R.drawable.loading_contact)
+                .placeholder(R.drawable.loading_contact)
+                .error(R.drawable.loading_contact)
                 .into(contactProfilePicture);
 
     }
