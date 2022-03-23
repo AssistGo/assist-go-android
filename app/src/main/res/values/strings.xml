@@ -4,6 +4,9 @@
     <string name="new_contact">New Contact</string>
     <string name="edit_contact">Edit Contact</string>
     <string name="add_new_contact">Add new Contact</string>
+  
+    <string name="verify_delete_contact">Are you sure you want to delete contact?</string>
+  
     <string name="main_title" translatable="false">Main Title</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>

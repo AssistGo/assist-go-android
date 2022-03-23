@@ -33,9 +33,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="9dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/search_bar_background"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/rvContacts"
+        app:layout_constraintBottom_toTopOf="@+id/swipeContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -43,26 +44,37 @@
 
     </androidx.appcompat.widget.SearchView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContacts"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
         android:layout_width="411dp"
-        android:layout_height="504dp"
+        android:layout_height="482dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svContactSearch"
-        tools:listitem="@layout/item_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/svContactSearch">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContacts"
+            android:layout_width="411dp"
+            android:layout_height="504dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/svContactSearch"
+            tools:listitem="@layout/item_contact" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="409dp"
-        android:layout_height="71dp"
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="2dp"
         android:layout_marginEnd="1dp"
+        android:background="@color/app_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvContacts"
-        android:background="@color/app_color">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/ivAddNewContactButton"
