@@ -4,5 +4,36 @@
     <string name="new_contact">New Contact</string>
     <string name="edit_contact">Edit Contact</string>
     <string name="add_new_contact">Add new Contact</string>
+  
     <string name="verify_delete_contact">Are you sure you want to delete contact?</string>
+  
+    <string name="main_title" translatable="false">Main Title</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="edit_profile_picture">Edit Profile Picture</string>
+    <string name="change_number">Change Number</string>
+    <string name="new_number">New Number</string>
+    <string name="enter_new_phone_number">Enter New Phone Number</string>
+    <string name="enter_new_name">Enter New Name</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="contact">Contact</string>
+    <string name="call">Call</string>
+    <string name="message">Message</string>
+    <string name="translate">Translate</string>
+    <string name="emergency">Emergency</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="delete_contact">Delete Contact</string>
+    <string name="save_contact">Save Contact</string>
+    <string name="cancel">Cancel</string>
+    <string name="preferences">Preferences</string>
+    <string name="about">About</string>
+    <string name="number">Number</string>
+    <string-array name="settings_titles">
+        <item>@string/profile</item>
+        <item>@string/preferences</item>
+        <item>@string/about</item>
+    </string-array>
 </resources>

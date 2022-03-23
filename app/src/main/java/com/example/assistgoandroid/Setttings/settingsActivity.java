@@ -1,4 +1,4 @@
-package com.example.assistgoandroid;
+package com.example.assistgoandroid.Setttings;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,17 +18,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import com.example.assistgoandroid.R;
+
 public class settingsActivity extends AppCompatActivity {
     ListView listView;
-    //Set up the cells and search bar for settings page
-    String[] title = {"Profile", "Languages", "Preferences", "About"};
-    int[] images = {R.drawable.profile, R.drawable.globe, R.drawable.perferences, R.drawable.assistgologo,};
     SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_page_layout);
+
+        //Set up the cells and search bar for settings page
+        String[] title =  getResources().getStringArray(R.array.settings_titles);
+        int[] images = {R.drawable.profile, R.drawable.perferences, R.drawable.assistgologo,};
 
         searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();
