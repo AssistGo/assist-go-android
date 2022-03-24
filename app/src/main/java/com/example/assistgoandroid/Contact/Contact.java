@@ -2,12 +2,15 @@ package com.example.assistgoandroid.Contact;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.Comparator;
 
 public class Contact implements Parcelable {
     String contactID;
     String name;
     String phoneNumber;
     String contactPicture;
+    String lookupKey;
+    boolean isFavorite;
 
     protected Contact(Parcel in) {
         contactID = in.readString();
@@ -63,6 +66,22 @@ public class Contact implements Parcelable {
         return contactPicture;
     }
 
+    public String getLookupKey() {
+        return lookupKey;
+    }
+
+    public void setLookupKey(String lookupKey) {
+        this.lookupKey = lookupKey;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -75,4 +94,25 @@ public class Contact implements Parcelable {
         parcel.writeString(phoneNumber);
         parcel.writeString(contactPicture);
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactID='" + contactID + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", contactPicture='" + contactPicture + '\'' +
+                '}';
+    }
+
+    //todo sort based on fav: bring favs on top
+    public static Comparator<Contact> ContactComparator
+            = (contact1, contact2) -> {
+
+                String contactName1 = contact1.getName();
+                String contactName2 = contact2.getName();
+
+                //ascending order
+                return contactName1.compareTo(contactName2);
+            };
 }
