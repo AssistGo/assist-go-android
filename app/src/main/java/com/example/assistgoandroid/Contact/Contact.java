@@ -1,7 +1,10 @@
 package com.example.assistgoandroid.Contact;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.Comparator;
+
 import java.util.Comparator;
 
 public class Contact implements Parcelable {

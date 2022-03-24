@@ -64,7 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="49dp"
                         android:background="@color/white"
-                        android:text="Contact"
+                        android:text="@string/contact"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -93,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:text="Call"
+                        android:text="@string/call"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
 
@@ -141,7 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:text="Message"
+                        android:text="@string/message"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
 
@@ -171,7 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:text="Translate"
+                        android:text="@string/translate"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -189,7 +189,7 @@
         android:layout_width="300dp"
         android:layout_height="51dp"
         android:background="#FF0000"
-        android:text="Emergency"
+        android:text="@string/emergency"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"

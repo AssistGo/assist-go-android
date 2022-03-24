@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Setttings.profileActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:background="#99F5F0"
+        android:text="@string/profile"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="55sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:background="#99F5F0"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="55sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="236dp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/userProfilePicture"
+        android:layout_width="296dp"
+        android:layout_height="279dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="59dp"
+        android:background="@drawable/default_profile_pic" />
+
+    <Button
+        android:id="@+id/editName"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginBottom="194dp"
+        android:background="@android:color/transparent"
+        android:text="@string/edit_name"
+        android:textColor="#196D73"
+        android:textSize="12sp"
+        tools:ignore="RelativeOverlap" />
+
+
+    <Button
+        android:id="@+id/editProfilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginBottom="301dp"
+        android:background="@android:color/transparent"
+        android:text="@string/edit_profile_picture"
+        android:textColor="#196D73"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/phoneNumber"
+        android:layout_width="342dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="143dp"
+        android:text="@string/number"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/changeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="89dp"
+        android:background="@android:color/transparent"
+        android:text="@string/change_number"
+        android:textColor="#196D73"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/qrCode"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/qr">
+
+    </ImageButton>
+
+</RelativeLayout>
