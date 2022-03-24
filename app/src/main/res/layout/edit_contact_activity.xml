@@ -21,18 +21,20 @@
     <ImageView
         android:id="@+id/ivContactProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="207dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvChangeProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="48dp"
         android:layout_margin="10dp"
+        android:minHeight="48dp"
+        android:onClick="onChangePictureCall"
         android:text="Change Picture"
-        android:textColor="@color/teal_700"/>
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,7 +51,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Allison Botosh"
+        android:hint="Enter name here"
         android:textSize="30sp"/>
 
     <TextView
@@ -67,7 +69,7 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="(111) 111-1111"
+        android:hint="(XXX) XXX-XXXX"
         android:textSize="30sp"/>
 
     <LinearLayout
@@ -81,29 +83,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save Changes"
+            android:text="@string/save_changes"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/green"/>
+            android:backgroundTint="@color/green"
+            android:onClick="onSaveChangesCall"/>
 
         <Button
             android:id="@+id/DeleteContactButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete Contact"
+            android:text="@string/delete_contact"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/red"/>
+            android:backgroundTint="@color/red"
+            android:onClick="onDeleteContactCall"/>
     </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="409dp"
-        android:layout_height="71dp"
+        android:layout_height="86dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="1dp"
+        android:background="@color/app_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/app_color">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/ivMicButton"

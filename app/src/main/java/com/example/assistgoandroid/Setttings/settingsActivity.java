@@ -1,11 +1,13 @@
-package com.example.assistgoandroid;
+package com.example.assistgoandroid.Setttings;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,17 +18,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import com.example.assistgoandroid.R;
+
 public class settingsActivity extends AppCompatActivity {
     ListView listView;
-    //Set up the cells and search bar for settings page
-    String[] title = {"Profile", "Languages", "Preferences", "About"};
-    int[] images = {R.drawable.profile, R.drawable.globe, R.drawable.perferences, R.drawable.assistgologo,};
     SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_page_layout);
+
+        //Set up the cells and search bar for settings page
+        String[] title =  getResources().getStringArray(R.array.settings_titles);
+        int[] images = {R.drawable.profile, R.drawable.perferences, R.drawable.assistgologo,};
 
         searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();
@@ -35,6 +40,17 @@ public class settingsActivity extends AppCompatActivity {
         // now create an adapter class
         MyAdapter adapter = new MyAdapter(this, title, images);
         listView.setAdapter(adapter);
+        //onclick listener for each cell
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position ==  0) {
+                    Intent intent = new Intent(settingsActivity.this, profileActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
     }
     class MyAdapter extends ArrayAdapter<String> {
