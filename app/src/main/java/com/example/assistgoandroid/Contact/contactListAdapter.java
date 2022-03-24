@@ -99,7 +99,6 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
 
         @Override
         public void onClick(View view) {
-            //get notified of particular movie which was clicked on
             Contact contact = contactsList.get(getAdapterPosition());
             //Toast.makeText(context, contact.name, Toast.LENGTH_SHORT).show();
             //Use the intent system to navigate to the new activity
