@@ -31,6 +31,7 @@
     <string name="preferences">Preferences</string>
     <string name="about">About</string>
     <string name="number">Number</string>
+    <string name="call_history">Call History</string>
     <string-array name="settings_titles">
         <item>@string/profile</item>
         <item>@string/preferences</item>
