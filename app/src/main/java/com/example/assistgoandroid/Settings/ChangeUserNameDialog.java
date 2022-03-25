@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.Setttings;
+package com.example.assistgoandroid.Settings;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

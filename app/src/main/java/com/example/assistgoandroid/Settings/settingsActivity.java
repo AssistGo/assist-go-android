@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.Setttings;
+package com.example.assistgoandroid.Settings;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -46,6 +46,10 @@ public class settingsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position ==  0) {
                     Intent intent = new Intent(settingsActivity.this, profileActivity.class);
+                    startActivity(intent);
+                }
+                if (position == 2){
+                    Intent intent = new Intent(settingsActivity.this, aboutActivity.class);
                     startActivity(intent);
                 }
 
