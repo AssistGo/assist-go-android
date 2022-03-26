@@ -23,7 +23,7 @@
     <string name="call">Call</string>
     <string name="message">Message</string>
     <string name="translate">Translate</string>
-    <string name="emergency">Emergency</string>
+    <string name="emergency">&#032;&#032;&#032;&#032;&#032;&#032;Emergency</string>
     <string name="save_changes">Save Changes</string>
     <string name="delete_contact">Delete Contact</string>
     <string name="save_contact">Save Contact</string>
@@ -37,4 +37,568 @@
         <item>@string/preferences</item>
         <item>@string/about</item>
     </string-array>
+    <string name="enter_translate_hint">Enter Text</string>
+    <string name="translation_output_hint">Translation</string>
+    <string name ="Abkhazian">Abkhazian</string>
+    <string name ="Afar">Afar</string>
+    <string name ="Afrikaans">Afrikaans</string>
+    <string name ="Akan">Akan</string>
+    <string name ="Albanian">Albanian</string>
+    <string name ="Amharic">Amharic</string>
+    <string name ="Arabic">Arabic</string>
+    <string name ="Aragonese">Aragonese</string>
+    <string name ="Armenian">Armenian</string>
+    <string name ="Assamese">Assamese</string>
+    <string name ="Avaric">Avaric</string>
+    <string name ="Avestan">Avestan</string>
+    <string name ="Aymara">Aymara</string>
+    <string name ="Azerbaijani">Azerbaijani</string>
+    <string name ="Bambara">Bambara</string>
+    <string name ="Bashkir">Bashkir</string>
+    <string name ="Basque">Basque</string>
+    <string name ="Belarusian">Belarusian</string>
+    <string name ="Bengali">Bengali</string>
+    <string name ="Bislama">Bislama</string>
+    <string name ="Bosnian">Bosnian</string>
+    <string name ="Breton">Breton</string>
+    <string name ="Bulgarian">Bulgarian</string>
+    <string name ="Burmese">Burmese</string>
+    <string name ="Catalan_Valencian">Catalan, Valencian</string>
+    <string name ="Chamorro">Chamorro</string>
+    <string name ="Chechen">Chechen</string>
+    <string name ="Chichewa_Chewa_Nyanja">Chichewa, Chewa, Nyanja</string>
+    <string name ="Chinese">Chinese</string>
+    <string name ="Church_Slavic_">Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic</string>
+    <string name ="Chuvash">Chuvash</string>
+    <string name ="Cornish">Cornish</string>
+    <string name ="Corsican">Corsican</string>
+    <string name ="Cree">Cree</string>
+    <string name ="Croatian">Croatian</string>
+    <string name ="Czech">Czech</string>
+    <string name ="Danish">Danish</string>
+    <string name ="Divehi_Dhivehi_Maldivian">Divehi, Dhivehi, Maldivian</string>
+    <string name ="Dutch_Flemish">Dutch, Flemish</string>
+    <string name ="Dzongkha">Dzongkha</string>
+    <string name ="English">English</string>
+    <string name ="Esperanto">Esperanto</string>
+    <string name ="Estonian">Estonian</string>
+    <string name ="Ewe">Ewe</string>
+    <string name ="Faroese">Faroese</string>
+    <string name ="Fijian">Fijian</string>
+    <string name ="Finnish">Finnish</string>
+    <string name ="French">French</string>
+    <string name ="Western_Frisian">Western Frisian</string>
+    <string name ="Fulah">Fulah</string>
+    <string name ="Gaelic_Scottish_Gaelic">Gaelic, Scottish Gaelic</string>
+    <string name ="Galician">Galician</string>
+    <string name ="Ganda">Ganda</string>
+    <string name ="Georgian">Georgian</string>
+    <string name ="German">German</string>
+    <string name ="Greek_Modern">Greek, Modern (1453–)</string>
+    <string name ="Kalaallisut_Greenlandic">Kalaallisut, Greenlandic</string>
+    <string name ="Guarani">Guarani</string>
+    <string name ="Gujarati">Gujarati</string>
+    <string name ="Haitian_Haitian_Creole">Haitian, Haitian Creole</string>
+    <string name ="Hausa">Hausa</string>
+    <string name ="Hebrew">Hebrew</string>
+    <string name ="Herero">Herero</string>
+    <string name ="Hindi">Hindi</string>
+    <string name ="Hiri_Motu">Hiri Motu</string>
+    <string name ="Hungarian">Hungarian</string>
+    <string name ="Icelandic">Icelandic</string>
+    <string name ="Ido">Ido</string>
+    <string name ="Igbo">Igbo</string>
+    <string name ="Indonesian">Indonesian</string>
+    <string name ="Interlingua">Interlingua (International Auxiliary Language Association)</string>
+    <string name ="Interlingue">Interlingue, Occidental</string>
+    <string name ="Inuktitut">Inuktitut</string>
+    <string name ="Inupiaq">Inupiaq</string>
+    <string name ="Irish">Irish</string>
+    <string name ="Italian">Italian</string>
+    <string name ="Japanese">Japanese</string>
+    <string name ="Javanese">Javanese</string>
+    <string name ="Kannada">Kannada</string>
+    <string name ="Kanuri">Kanuri</string>
+    <string name ="Kashmiri">Kashmiri</string>
+    <string name ="Kazakh">Kazakh</string>
+    <string name ="Central_Khmer">Central Khmer</string>
+    <string name ="Kikuyu_Gikuyu">Kikuyu, Gikuyu</string>
+    <string name ="Kinyarwanda">Kinyarwanda</string>
+    <string name ="Kirghiz_Kyrgyz">Kirghiz, Kyrgyz</string>
+    <string name ="Komi">Komi</string>
+    <string name ="Kongo">Kongo</string>
+    <string name ="Korean">Korean</string>
+    <string name ="Kuanyama_Kwanyama">Kuanyama, Kwanyama</string>
+    <string name ="Kurdish">Kurdish</string>
+    <string name ="Lao">Lao</string>
+    <string name ="Latin">Latin</string>
+    <string name ="Latvian">Latvian</string>
+    <string name ="Limburgan_Limburger_Limburgish">Limburgan, Limburger, Limburgish</string>
+    <string name ="Lingala">Lingala</string>
+    <string name ="Lithuanian">Lithuanian</string>
+    <string name ="Luba_Katanga">Luba-Katanga</string>
+    <string name ="Luxembourgish_Letzeburgesch">Luxembourgish, Letzeburgesch</string>
+    <string name ="Macedonian">Macedonian</string>
+    <string name ="Malagasy">Malagasy</string>
+    <string name ="Malay">Malay</string>
+    <string name ="Malayalam">Malayalam</string>
+    <string name ="Maltese">Maltese</string>
+    <string name ="Manx">Manx</string>
+    <string name ="Maori">Maori</string>
+    <string name ="Marathi">Marathi</string>
+    <string name ="Marshallese">Marshallese</string>
+    <string name ="Mongolian">Mongolian</string>
+    <string name ="Nauru">Nauru</string>
+    <string name ="Navajo_Navaho">Navajo, Navaho</string>
+    <string name ="North_Ndebele">North Ndebele</string>
+    <string name ="South_Ndebele">South Ndebele</string>
+    <string name ="Ndonga">Ndonga</string>
+    <string name ="Nepali">Nepali</string>
+    <string name ="Norwegian">Norwegian</string>
+    <string name ="Norwegian_Bokmål">Norwegian Bokmål</string>
+    <string name ="Norwegian_Nynorsk">Norwegian Nynorsk</string>
+    <string name ="Sichuan_Yi_Nuosu">Sichuan Yi, Nuosu</string>
+    <string name ="Occitan">Occitan</string>
+    <string name ="Ojibwa">Ojibwa</string>
+    <string name ="Oriya">Oriya</string>
+    <string name ="Oromo">Oromo</string>
+    <string name ="Ossetian_Ossetic">Ossetian, Ossetic</string>
+    <string name ="Pali">Pali</string>
+    <string name ="Pashto_Pushto">Pashto, Pushto</string>
+    <string name ="Persian">Persian</string>
+    <string name ="Polish">Polish</string>
+    <string name ="Portuguese">Portuguese</string>
+    <string name ="Punjabi_Panjabi">Punjabi, Panjabi</string>
+    <string name ="Quechua">Quechua</string>
+    <string name ="Romanian_Moldavian_Moldovan">Romanian,Moldavian, Moldovan</string>
+    <string name ="Romansh">Romansh</string>
+    <string name ="Rundi">Rundi</string>
+    <string name ="Russian">Russian</string>
+    <string name ="Northern_Sami">Northern Sami</string>
+    <string name ="Samoan">Samoan</string>
+    <string name ="Sango">Sango</string>
+    <string name ="Sanskrit">Sanskrit</string>
+    <string name ="Sardinian">Sardinian</string>
+    <string name ="Serbian">Serbian</string>
+    <string name ="Shona">Shona</string>
+    <string name ="Sindhi">Sindhi</string>
+    <string name ="Sinhala_Sinhalese">Sinhala, Sinhalese</string>
+    <string name ="Slovak">Slovak</string>
+    <string name ="Slovenian">Slovenian</string>
+    <string name ="Somali">Somali</string>
+    <string name ="Southern_Sotho">Southern Sotho</string>
+    <string name ="Spanish_Castilian">Spanish, Castilian</string>
+    <string name ="Sundanese">Sundanese</string>
+    <string name ="Swahili">Swahili</string>
+    <string name ="Swati">Swati</string>
+    <string name ="Swedish">Swedish</string>
+    <string name ="Tagalog">Tagalog</string>
+    <string name ="Tahitian">Tahitian</string>
+    <string name ="Tajik">Tajik</string>
+    <string name ="Tamil">Tamil</string>
+    <string name ="Tatar">Tatar</string>
+    <string name ="Telugu">Telugu</string>
+    <string name ="Thai">Thai</string>
+    <string name ="Tibetan">Tibetan</string>
+    <string name ="Tigrinya">Tigrinya</string>
+    <string name ="Tonga">Tonga(Tonga Islands)</string>
+    <string name ="Tsonga">Tsonga</string>
+    <string name ="Tswana">Tswana</string>
+    <string name ="Turkish">Turkish</string>
+    <string name ="Turkmen">Turkmen</string>
+    <string name ="Twi">Twi</string>
+    <string name ="Uighur_Uyghur">Uighur, Uyghur</string>
+    <string name ="Ukrainian">Ukrainian</string>
+    <string name ="Urdu">Urdu</string>
+    <string name ="Uzbek">Uzbek</string>
+    <string name ="Venda">Venda</string>
+    <string name ="Vietnamese">Vietnamese</string>
+    <string name ="Volapük">Volapük</string>
+    <string name ="Walloon">Walloon</string>
+    <string name ="Welsh">Welsh</string>
+    <string name ="Wolof">Wolof</string>
+    <string name ="Xhosa">Xhosa</string>
+    <string name ="Yiddish">Yiddish</string>
+    <string name ="Yoruba">Yoruba</string>
+    <string name ="Zhuang_Chuang">Zhuang, Chuang</string>
+    <string name ="Zulu">Zulu</string>
+    <string name ="Detected_language">Detected Language</string>
+
+    <string-array name="detected_language">
+        <item>@string/Detected_language</item>
+        <item>@string/Abkhazian</item>
+        <item>@string/Afar</item>
+        <item>@string/Afrikaans</item>
+        <item>@string/Akan</item>
+        <item>@string/Albanian</item>
+        <item>@string/Amharic</item>
+        <item>@string/Arabic</item>
+        <item>@string/Aragonese</item>
+        <item>@string/Armenian</item>
+        <item>@string/Assamese</item>
+        <item>@string/Avaric</item>
+        <item>@string/Avestan</item>
+        <item>@string/Aymara</item>
+        <item>@string/Azerbaijani</item>
+        <item>@string/Bambara</item>
+        <item>@string/Bashkir</item>
+        <item>@string/Basque</item>
+        <item>@string/Belarusian</item>
+        <item>@string/Bengali</item>
+        <item>@string/Bislama</item>
+        <item>@string/Bosnian</item>
+        <item>@string/Breton</item>
+        <item>@string/Bulgarian</item>
+        <item>@string/Burmese</item>
+        <item>@string/Catalan_Valencian</item>
+        <item>@string/Chamorro</item>
+        <item>@string/Chechen</item>
+        <item>@string/Chichewa_Chewa_Nyanja</item>
+        <item>@string/Chinese</item>
+        <item>@string/Church_Slavic_</item>
+        <item>@string/Chuvash</item>
+        <item>@string/Cornish</item>
+        <item>@string/Corsican</item>
+        <item>@string/Cree</item>
+        <item>@string/Croatian</item>
+        <item>@string/Czech</item>
+        <item>@string/Danish</item>
+        <item>@string/Divehi_Dhivehi_Maldivian</item>
+        <item>@string/Dutch_Flemish</item>
+        <item>@string/Dzongkha</item>
+        <item>@string/English</item>
+        <item>@string/Esperanto</item>
+        <item>@string/Estonian</item>
+        <item>@string/Ewe</item>
+        <item>@string/Faroese</item>
+        <item>@string/Fijian</item>
+        <item>@string/Finnish</item>
+        <item>@string/French</item>
+        <item>@string/Western_Frisian</item>
+        <item>@string/Fulah</item>
+        <item>@string/Gaelic_Scottish_Gaelic</item>
+        <item>@string/Galician</item>
+        <item>@string/Ganda</item>
+        <item>@string/Georgian</item>
+        <item>@string/German</item>
+        <item>@string/Greek_Modern</item>
+        <item>@string/Kalaallisut_Greenlandic</item>
+        <item>@string/Guarani</item>
+        <item>@string/Gujarati</item>
+        <item>@string/Haitian_Haitian_Creole</item>
+        <item>@string/Hausa</item>
+        <item>@string/Hebrew</item>
+        <item>@string/Herero</item>
+        <item>@string/Hindi</item>
+        <item>@string/Hiri_Motu</item>
+        <item>@string/Hungarian</item>
+        <item>@string/Icelandic</item>
+        <item>@string/Ido</item>
+        <item>@string/Igbo</item>
+        <item>@string/Indonesian</item>
+        <item>@string/Interlingua</item>
+        <item>@string/Interlingue</item>
+        <item>@string/Inuktitut</item>
+        <item>@string/Inupiaq</item>
+        <item>@string/Irish</item>
+        <item>@string/Italian</item>
+        <item>@string/Japanese</item>
+        <item>@string/Javanese</item>
+        <item>@string/Kannada</item>
+        <item>@string/Kanuri</item>
+        <item>@string/Kashmiri</item>
+        <item>@string/Kazakh</item>
+        <item>@string/Central_Khmer</item>
+        <item>@string/Kikuyu_Gikuyu</item>
+        <item>@string/Kinyarwanda</item>
+        <item>@string/Kirghiz_Kyrgyz</item>
+        <item>@string/Komi</item>
+        <item>@string/Kongo</item>
+        <item>@string/Korean</item>
+        <item>@string/Kuanyama_Kwanyama</item>
+        <item>@string/Kurdish</item>
+        <item>@string/Lao</item>
+        <item>@string/Latin</item>
+        <item>@string/Latvian</item>
+        <item>@string/Limburgan_Limburger_Limburgish</item>
+        <item>@string/Lingala</item>
+        <item>@string/Lithuanian</item>
+        <item>@string/Luba_Katanga</item>
+        <item>@string/Luxembourgish_Letzeburgesch</item>
+        <item>@string/Macedonian</item>
+        <item>@string/Malagasy</item>
+        <item>@string/Malay</item>
+        <item>@string/Malayalam</item>
+        <item>@string/Maltese</item>
+        <item>@string/Manx</item>
+        <item>@string/Maori</item>
+        <item>@string/Marathi</item>
+        <item>@string/Marshallese</item>
+        <item>@string/Mongolian</item>
+        <item>@string/Nauru</item>
+        <item>@string/Navajo_Navaho</item>
+        <item>@string/North_Ndebele</item>
+        <item>@string/South_Ndebele</item>
+        <item>@string/Ndonga</item>
+        <item>@string/Nepali</item>
+        <item>@string/Norwegian</item>
+        <item>@string/Norwegian_Bokmål</item>
+        <item>@string/Northern_Sami</item>
+        <item>@string/Sichuan_Yi_Nuosu</item>
+        <item>@string/Occitan</item>
+        <item>@string/Ojibwa</item>
+        <item>@string/Oriya</item>
+        <item>@string/Oromo</item>
+        <item>@string/Occitan</item>
+        <item>@string/Pali</item>
+        <item>@string/Pashto_Pushto</item>
+        <item>@string/Persian</item>
+        <item>@string/Polish</item>
+        <item>@string/Portuguese</item>
+        <item>@string/Punjabi_Panjabi</item>
+        <item>@string/Quechua</item>
+        <item>@string/Romanian_Moldavian_Moldovan</item>
+        <item>@string/Romansh</item>
+        <item>@string/Rundi</item>
+        <item>@string/Russian</item>
+        <item>@string/Northern_Sami</item>
+        <item>@string/Samoan</item>
+        <item>@string/Sango</item>
+        <item>@string/Sanskrit</item>
+        <item>@string/Sardinian</item>
+        <item>@string/Serbian</item>
+        <item>@string/Shona</item>
+        <item>@string/Sindhi</item>
+        <item>@string/Sinhala_Sinhalese</item>
+        <item>@string/Slovak</item>
+        <item>@string/Slovenian</item>
+        <item>@string/Somali</item>
+        <item>@string/South_Ndebele</item>
+        <item>@string/Spanish_Castilian</item>
+        <item>@string/Sundanese</item>
+        <item>@string/Swahili</item>
+        <item>@string/Swati</item>
+        <item>@string/Swedish</item>
+        <item>@string/Tagalog</item>
+        <item>@string/Tahitian</item>
+        <item>@string/Tajik</item>
+        <item>@string/Tamil</item>
+        <item>@string/Tatar</item>
+        <item>@string/Telugu</item>
+        <item>@string/Thai</item>
+        <item>@string/Tibetan</item>
+        <item>@string/Tigrinya</item>
+        <item>@string/Tonga</item>
+        <item>@string/Tsonga</item>
+        <item>@string/Tswana</item>
+        <item>@string/Turkish</item>
+        <item>@string/Turkmen</item>
+        <item>@string/Twi</item>
+        <item>@string/Uighur_Uyghur</item>
+        <item>@string/Ukrainian</item>
+        <item>@string/Urdu</item>
+        <item>@string/Uzbek</item>
+        <item>@string/Venda</item>
+        <item>@string/Vietnamese</item>
+        <item>@string/Volapük</item>
+        <item>@string/Walloon</item>
+        <item>@string/Welsh</item>
+        <item>@string/Wolof</item>
+        <item>@string/Xhosa</item>
+        <item>@string/Yiddish</item>
+        <item>@string/Yoruba</item>
+        <item>@string/Zhuang_Chuang</item>
+        <item>@string/Zulu</item>
+    </string-array>
+    <string-array name="translated_language">
+        <item>@string/Abkhazian</item>
+        <item>@string/Afar</item>
+        <item>@string/Afrikaans</item>
+        <item>@string/Akan</item>
+        <item>@string/Albanian</item>
+        <item>@string/Amharic</item>
+        <item>@string/Arabic</item>
+        <item>@string/Aragonese</item>
+        <item>@string/Armenian</item>
+        <item>@string/Assamese</item>
+        <item>@string/Avaric</item>
+        <item>@string/Avestan</item>
+        <item>@string/Aymara</item>
+        <item>@string/Azerbaijani</item>
+        <item>@string/Bambara</item>
+        <item>@string/Bashkir</item>
+        <item>@string/Basque</item>
+        <item>@string/Belarusian</item>
+        <item>@string/Bengali</item>
+        <item>@string/Bislama</item>
+        <item>@string/Bosnian</item>
+        <item>@string/Breton</item>
+        <item>@string/Bulgarian</item>
+        <item>@string/Burmese</item>
+        <item>@string/Catalan_Valencian</item>
+        <item>@string/Chamorro</item>
+        <item>@string/Chechen</item>
+        <item>@string/Chichewa_Chewa_Nyanja</item>
+        <item>@string/Chinese</item>
+        <item>@string/Church_Slavic_</item>
+        <item>@string/Chuvash</item>
+        <item>@string/Cornish</item>
+        <item>@string/Corsican</item>
+        <item>@string/Cree</item>
+        <item>@string/Croatian</item>
+        <item>@string/Czech</item>
+        <item>@string/Danish</item>
+        <item>@string/Divehi_Dhivehi_Maldivian</item>
+        <item>@string/Dutch_Flemish</item>
+        <item>@string/Dzongkha</item>
+        <item>@string/English</item>
+        <item>@string/Esperanto</item>
+        <item>@string/Estonian</item>
+        <item>@string/Ewe</item>
+        <item>@string/Faroese</item>
+        <item>@string/Fijian</item>
+        <item>@string/Finnish</item>
+        <item>@string/French</item>
+        <item>@string/Western_Frisian</item>
+        <item>@string/Fulah</item>
+        <item>@string/Gaelic_Scottish_Gaelic</item>
+        <item>@string/Galician</item>
+        <item>@string/Ganda</item>
+        <item>@string/Georgian</item>
+        <item>@string/German</item>
+        <item>@string/Greek_Modern</item>
+        <item>@string/Kalaallisut_Greenlandic</item>
+        <item>@string/Guarani</item>
+        <item>@string/Gujarati</item>
+        <item>@string/Haitian_Haitian_Creole</item>
+        <item>@string/Hausa</item>
+        <item>@string/Hebrew</item>
+        <item>@string/Herero</item>
+        <item>@string/Hindi</item>
+        <item>@string/Hiri_Motu</item>
+        <item>@string/Hungarian</item>
+        <item>@string/Icelandic</item>
+        <item>@string/Ido</item>
+        <item>@string/Igbo</item>
+        <item>@string/Indonesian</item>
+        <item>@string/Interlingua</item>
+        <item>@string/Interlingue</item>
+        <item>@string/Inuktitut</item>
+        <item>@string/Inupiaq</item>
+        <item>@string/Irish</item>
+        <item>@string/Italian</item>
+        <item>@string/Japanese</item>
+        <item>@string/Javanese</item>
+        <item>@string/Kannada</item>
+        <item>@string/Kanuri</item>
+        <item>@string/Kashmiri</item>
+        <item>@string/Kazakh</item>
+        <item>@string/Central_Khmer</item>
+        <item>@string/Kikuyu_Gikuyu</item>
+        <item>@string/Kinyarwanda</item>
+        <item>@string/Kirghiz_Kyrgyz</item>
+        <item>@string/Komi</item>
+        <item>@string/Kongo</item>
+        <item>@string/Korean</item>
+        <item>@string/Kuanyama_Kwanyama</item>
+        <item>@string/Kurdish</item>
+        <item>@string/Lao</item>
+        <item>@string/Latin</item>
+        <item>@string/Latvian</item>
+        <item>@string/Limburgan_Limburger_Limburgish</item>
+        <item>@string/Lingala</item>
+        <item>@string/Lithuanian</item>
+        <item>@string/Luba_Katanga</item>
+        <item>@string/Luxembourgish_Letzeburgesch</item>
+        <item>@string/Macedonian</item>
+        <item>@string/Malagasy</item>
+        <item>@string/Malay</item>
+        <item>@string/Malayalam</item>
+        <item>@string/Maltese</item>
+        <item>@string/Manx</item>
+        <item>@string/Maori</item>
+        <item>@string/Marathi</item>
+        <item>@string/Marshallese</item>
+        <item>@string/Mongolian</item>
+        <item>@string/Nauru</item>
+        <item>@string/Navajo_Navaho</item>
+        <item>@string/North_Ndebele</item>
+        <item>@string/South_Ndebele</item>
+        <item>@string/Ndonga</item>
+        <item>@string/Nepali</item>
+        <item>@string/Norwegian</item>
+        <item>@string/Norwegian_Bokmål</item>
+        <item>@string/Northern_Sami</item>
+        <item>@string/Sichuan_Yi_Nuosu</item>
+        <item>@string/Occitan</item>
+        <item>@string/Ojibwa</item>
+        <item>@string/Oriya</item>
+        <item>@string/Oromo</item>
+        <item>@string/Occitan</item>
+        <item>@string/Pali</item>
+        <item>@string/Pashto_Pushto</item>
+        <item>@string/Persian</item>
+        <item>@string/Polish</item>
+        <item>@string/Portuguese</item>
+        <item>@string/Punjabi_Panjabi</item>
+        <item>@string/Quechua</item>
+        <item>@string/Romanian_Moldavian_Moldovan</item>
+        <item>@string/Romansh</item>
+        <item>@string/Rundi</item>
+        <item>@string/Russian</item>
+        <item>@string/Northern_Sami</item>
+        <item>@string/Samoan</item>
+        <item>@string/Sango</item>
+        <item>@string/Sanskrit</item>
+        <item>@string/Sardinian</item>
+        <item>@string/Serbian</item>
+        <item>@string/Shona</item>
+        <item>@string/Sindhi</item>
+        <item>@string/Sinhala_Sinhalese</item>
+        <item>@string/Slovak</item>
+        <item>@string/Slovenian</item>
+        <item>@string/Somali</item>
+        <item>@string/South_Ndebele</item>
+        <item>@string/Spanish_Castilian</item>
+        <item>@string/Sundanese</item>
+        <item>@string/Swahili</item>
+        <item>@string/Swati</item>
+        <item>@string/Swedish</item>
+        <item>@string/Tagalog</item>
+        <item>@string/Tahitian</item>
+        <item>@string/Tajik</item>
+        <item>@string/Tamil</item>
+        <item>@string/Tatar</item>
+        <item>@string/Telugu</item>
+        <item>@string/Thai</item>
+        <item>@string/Tibetan</item>
+        <item>@string/Tigrinya</item>
+        <item>@string/Tonga</item>
+        <item>@string/Tsonga</item>
+        <item>@string/Tswana</item>
+        <item>@string/Turkish</item>
+        <item>@string/Turkmen</item>
+        <item>@string/Twi</item>
+        <item>@string/Uighur_Uyghur</item>
+        <item>@string/Ukrainian</item>
+        <item>@string/Urdu</item>
+        <item>@string/Uzbek</item>
+        <item>@string/Venda</item>
+        <item>@string/Vietnamese</item>
+        <item>@string/Volapük</item>
+        <item>@string/Walloon</item>
+        <item>@string/Welsh</item>
+        <item>@string/Wolof</item>
+        <item>@string/Xhosa</item>
+        <item>@string/Yiddish</item>
+        <item>@string/Yoruba</item>
+        <item>@string/Zhuang_Chuang</item>
+        <item>@string/Zulu</item>
+    </string-array>
+    <string name="scan_your_code">Scan Your Code</string>
+    <string name="qr_image_lockedL">[</string>
+    <string name="qr_image_lockedR">]</string>
+
+
+
 </resources>
