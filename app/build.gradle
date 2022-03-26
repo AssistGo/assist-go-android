@@ -45,8 +45,11 @@ dependencies {
     implementation "androidx.camera:camera-camera2:$camerax_version"
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:1.0.0-alpha27"
-    implementation 'com.dynamsoft:dynamsoftcameraenhancer:2.1.0@aar'
+    implementation 'com.google.zxing:core:3.3.0'
+    //implementation 'com.dynamsoft:dynamsoftcameraenhancer:2.1.0@aar'
     //end of qr code dependencies
+
+
     implementation 'com.google.android.material:material:1.2.1'
     //Json
     implementation 'com.codepath.libraries:asynchttpclient:2.2.0'

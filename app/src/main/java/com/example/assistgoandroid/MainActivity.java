@@ -14,7 +14,7 @@ import com.example.assistgoandroid.Settings.settingsActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button contactLabelBtn, callLabelBtn, messageLabelBtn, translateLabelBtn;
-    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn;
+    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn, emergencyAmbulanceBtn;
     TextView emergencyLabel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         messageImageBtn = findViewById(R.id.messageImageBtn);
         translateImageBtn = findViewById(R.id.translateImageBtn);
         settingsImageBtn = findViewById(R.id.settingsImageBtn);
+        emergencyAmbulanceBtn = findViewById(R.id.emergencyAmbulanceBtn);
 
         settingsImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, emergencyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        emergencyAmbulanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,emergencyActivity.class);
                 startActivity(intent);
             }
         });

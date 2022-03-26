@@ -25,6 +25,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.contactActivity;
+import com.example.assistgoandroid.qrScanPageActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -207,7 +209,7 @@ public class newContactCardActivity extends AppCompatActivity {
     }
 
     public void scanQRCodeListener(View view) {
-        Intent intent = new Intent(this, newContactQRCodeActivity.class);
+        Intent intent = new Intent(this, qrScanPageActivity.class);
         startActivity(intent);
     }
 }
