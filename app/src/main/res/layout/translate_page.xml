@@ -5,37 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/topToolbarMainActivity"
+    <TextView
+        android:id="@+id/translatePageLabel"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/teal_700"
+        android:layout_height="91dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/app_color"
+        android:padding="10dp"
+        android:text="@string/translate"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="55sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/settingmenu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/bottomToolbarMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/teal_700"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTranslate"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@color/app_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/settingmenu" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivMicButton"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_icon" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <LinearLayout
+        android:id="@+id/translateButtonsLayout"
         android:layout_width="331dp"
         android:layout_height="64dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTranslate"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topToolbarMainActivity">
+        app:layout_constraintTop_toBottomOf="@+id/translatePageLabel">
 
         <Button
             android:id="@+id/inputLanguageBtn"
@@ -48,7 +63,7 @@
             android:textSize="17sp" />
 
         <Button
-            android:id="@+id/outputLanugageBtn"
+            android:id="@+id/outputLanguageBtn"
             style="?android:spinnerStyle"
             android:layout_width="161dp"
             android:layout_height="match_parent"
@@ -59,6 +74,7 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="350dp"
@@ -66,6 +82,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -77,20 +94,22 @@
             android:background="@drawable/roundedborder"
             android:cursorVisible="true"
             android:ems="10"
-            android:hint="Enter Text"
+            android:hint="@string/enter_translate_hint"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textSize="40dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/translatedOutput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/roundedborder"
-            android:text="Translation"
+            android:text="@string/translation_output_hint"
             android:textAlignment="center"
             android:textSize="30dp" />
+
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,8 +41,12 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
-
-        <activity android:name=".translateActivity"></activity>
+        <activity android:name=".translateActivity">
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing">
+        </activity>
+        <activity android:name=".chooseLanguageActivity">
+        android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing">
+        </activity>
         <activity android:name=".callActivity"></activity>
         <activity android:name=".contactActivity"></activity>
         <activity android:name=".messageActivity"></activity>
@@ -51,12 +55,12 @@
         <activity android:name=".Contact.contactCardActivity"></activity>
         <activity android:name=".Contact.newContactCardActivity"></activity>
         <activity android:name=".Contact.editContactCardActivity"></activity>
-        <activity android:name=".Contact.newContactQRCodeActivity"></activity>
 
         <activity android:name=".Settings.settingsActivity"></activity>
         <activity android:name=".Settings.profileActivity"></activity>
         <activity android:name=".Settings.changeNumberActivity"></activity>
         <activity android:name=".Settings.aboutActivity"></activity>
+        <activity android:name=".qrScanPageActivity"></activity>
 
 
     </application>
