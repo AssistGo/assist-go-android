@@ -19,7 +19,6 @@ import java.util.TimerTask;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-//https://www.youtube.com/watch?v=7QVr5SgpVog
 public class VoiceCall extends AppCompatActivity implements Call {
 
     String TAG = "VoiceCall";
