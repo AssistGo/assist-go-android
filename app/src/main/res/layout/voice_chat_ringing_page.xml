@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Call.VoiceCallRinging">
+
+    <ImageView
+        android:id="@+id/ivContactImage"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/tvContactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:text="@string/ringing" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/emergencyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/emergency_icon" />
+
+        <ImageView
+            android:id="@+id/videochatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/video_chat_icon" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/hangupBtn"
+        android:layout_width="206dp"
+        android:layout_height="91dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/hangup_icon" />
+
+</LinearLayout>
