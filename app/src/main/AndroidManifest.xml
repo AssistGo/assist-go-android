@@ -61,6 +61,7 @@
         <activity android:name=".Settings.changeNumberActivity"></activity>
         <activity android:name=".Settings.aboutActivity"></activity>
         <activity android:name=".qrScanPageActivity"></activity>
+        <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
 
 
     </application>
