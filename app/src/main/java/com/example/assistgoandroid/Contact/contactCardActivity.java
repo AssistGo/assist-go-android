@@ -1,6 +1,7 @@
 package com.example.assistgoandroid.Contact;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.Voice;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.assistgoandroid.Call.VideoCall;
+import com.example.assistgoandroid.Call.VideoCallRinging;
+import com.example.assistgoandroid.Call.VoiceCall;
+import com.example.assistgoandroid.Call.VoiceCallRinging;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.callActivity;
 import com.example.assistgoandroid.messageActivity;
@@ -46,12 +51,14 @@ public class contactCardActivity extends AppCompatActivity {
     }
 
     public void onCallClick(View view){
-        Intent intent = new Intent(this, callActivity.class);
+        Intent intent = new Intent(this, VoiceCallRinging.class);
+        intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
 
     public void onVideoCallClick(View view){
-        Intent intent = new Intent(this, callActivity.class);
+        Intent intent = new Intent(this, VideoCallRinging.class);
+        intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
 

@@ -63,6 +63,10 @@
         <activity android:name=".qrScanPageActivity"></activity>
         <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
 
+        <activity android:name=".Call.VideoCall"></activity>
+        <activity android:name=".Call.VoiceCall"></activity>
+        <activity android:name=".Call.VoiceCallRinging"></activity>
+        <activity android:name=".Call.VideoCallRinging"></activity>
 
     </application>
 
