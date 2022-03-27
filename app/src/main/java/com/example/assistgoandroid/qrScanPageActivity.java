@@ -1,7 +1,6 @@
 package com.example.assistgoandroid;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,6 +21,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Size;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
@@ -33,6 +33,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
+import com.example.assistgoandroid.Contact.newContactCardActivityFromQRCode;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.common.util.concurrent.ListenableFuture;
 
@@ -49,6 +50,7 @@ public class qrScanPageActivity extends AppCompatActivity {
     private PreviewView previewView;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private String qrCode;
+    private Button getContactInfo;
 
 
 
@@ -60,6 +62,22 @@ public class qrScanPageActivity extends AppCompatActivity {
         previewView = findViewById(R.id.previewView);
         qr_locked_layout = findViewById(R.id.qr_locked_yellow_outline);
         qr_locked_layout.setVisibility(View.INVISIBLE);
+        getContactInfo = findViewById(R.id.getContactInfo);
+        getContactInfo.setVisibility(View.INVISIBLE);
+
+
+        //Button pops up once QR is scanned
+        getContactInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(qrScanPageActivity.this, newContactCardActivityFromQRCode.class);
+                if(qrCode!=null){
+                    intent.putExtra("data",qrCode);
+                    startActivity(intent);
+
+                }
+            }
+        });
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestCamera();
@@ -131,11 +149,14 @@ public class qrScanPageActivity extends AppCompatActivity {
                 Log.d("found", "onQRCodeFound: ");
                 qrCode = _qrCode;
                 qr_locked_layout.setVisibility(View.VISIBLE);
+                getContactInfo.setVisibility(View.VISIBLE);
+
             }
 
             @Override
             public void qrCodeNotFound() {
                 qr_locked_layout.setVisibility(View.INVISIBLE);
+
 
             }
         }));
