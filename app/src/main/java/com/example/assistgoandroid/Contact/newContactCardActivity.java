@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -50,6 +51,8 @@ public class newContactCardActivity extends AppCompatActivity {
         contactName = findViewById(R.id.editContactName);
         contactPhoneNumber = findViewById(R.id.editContactPhoneNumber);
         contactProfilePicture = findViewById(R.id.ivContactProfilePicture);
+
+        contactPhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
 
     public void onNewContactClick(View view) {

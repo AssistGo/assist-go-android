@@ -24,4 +24,9 @@
     <style name="NumberPickerText">
         <item name="android:textSize">30sp</item>
     </style>
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/app_color</item>
+        <item name="colorControlActivated">#00BCD4</item>
+        <item name="colorControlHighlight">#00BCD4</item>
+    </style>
 </resources>
