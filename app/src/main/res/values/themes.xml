@@ -13,7 +13,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="SplashScreenWindow" parent="Theme.AssistGoAndroid">
-        <item name="android:windowBackground">@drawable/temporary_splash_logo</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
     <style name="Theme.AppCompat.Translucent" parent="Theme.AssistGoAndroid">
         <item name="android:windowNoTitle">true</item>
