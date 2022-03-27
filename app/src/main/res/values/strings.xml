@@ -223,6 +223,189 @@
     <string name ="Zhuang_Chuang">Zhuang, Chuang</string>
     <string name ="Zulu">Zulu</string>
     <string name ="Detected_language">Detected Language</string>
+    <string name ="ab">ab</string>
+    <string name ="aa">aa</string>
+    <string name ="af">af</string>
+    <string name ="ak">ak</string>
+    <string name ="sq">sq</string>
+    <string name ="am">am</string>
+    <string name ="ar">ar</string>
+    <string name ="an">an</string>
+    <string name ="hy">hy</string>
+    <string name ="as">as</string>
+    <string name ="av">av</string>
+    <string name ="ae">ae</string>
+    <string name ="ay">ay</string>
+    <string name ="az">az</string>
+    <string name ="bm">bm</string>
+    <string name ="ba">ba</string>
+    <string name ="eu">eu</string>
+    <string name ="be">be</string>
+    <string name ="bn">bn</string>
+    <string name ="bi">bi</string>
+    <string name ="bs">bs</string>
+    <string name ="br">br</string>
+    <string name ="bg">bg</string>
+    <string name ="my">my</string>
+    <string name ="ca">ca</string>
+    <string name ="ch">ch</string>
+    <string name ="ce">ce</string>
+    <string name ="ny">ny</string>
+    <string name ="zh">zh</string>
+    <string name ="cu">cu</string>
+    <string name ="cv">cv</string>
+    <string name ="kw">kw</string>
+    <string name ="co">co</string>
+    <string name ="cr">cr</string>
+    <string name ="hr">hr</string>
+    <string name ="cs">cs</string>
+    <string name ="da">da</string>
+    <string name ="dv">dv</string>
+    <string name ="nl">nl</string>
+    <string name ="dz">dz</string>
+    <string name ="en">en</string>
+    <string name ="eo">eo</string>
+    <string name ="et">et</string>
+    <string name ="ee">ee</string>
+    <string name ="fo">fo</string>
+    <string name ="fj">fj</string>
+    <string name ="fi">fi</string>
+    <string name ="fr">fr</string>
+    <string name ="fy">fy</string>
+    <string name ="ff">ff</string>
+    <string name ="gd">gd</string>
+    <string name ="gl">gl</string>
+    <string name ="lg">lg</string>
+    <string name ="ka">ka</string>
+    <string name ="de">de</string>
+    <string name ="el">el</string>
+    <string name ="kl">kl</string>
+    <string name ="gn">gn</string>
+    <string name ="gu">gu</string>
+    <string name ="ht">ht</string>
+    <string name ="ha">ha</string>
+    <string name ="he">he</string>
+    <string name ="hz">hz</string>
+    <string name ="hi">hi</string>
+    <string name ="ho">ho</string>
+    <string name ="hu">hu</string>
+    <string name ="is">is</string>
+    <string name ="io">io</string>
+    <string name ="ig">ig</string>
+    <string name ="id">id</string>
+    <string name ="ia">ia</string>
+    <string name ="ie">ie</string>
+    <string name ="iu">iu</string>
+    <string name ="ik">ik</string>
+    <string name ="ga">ga</string>
+    <string name ="it">it</string>
+    <string name ="ja">ja</string>
+    <string name ="jv">jv</string>
+    <string name ="kn">kn</string>
+    <string name ="kr">kr</string>
+    <string name ="ks">ks</string>
+    <string name ="kk">kk</string>
+    <string name ="km">km</string>
+    <string name ="ki">ki</string>
+    <string name ="rw">rw</string>
+    <string name ="ky">ky</string>
+    <string name ="kv">kv</string>
+    <string name ="kg">kg</string>
+    <string name ="ko">ko</string>
+    <string name ="kj">kj</string>
+    <string name ="ku">ku</string>
+    <string name ="lo">lo</string>
+    <string name ="la">la</string>
+    <string name ="lv">lv</string>
+    <string name ="li">li</string>
+    <string name ="ln">ln</string>
+    <string name ="lt">lt</string>
+    <string name ="lu">lu</string>
+    <string name ="lb">lb</string>
+    <string name ="mk">mk</string>
+    <string name ="mg">mg</string>
+    <string name ="ms">ms</string>
+    <string name ="ml">ml</string>
+    <string name ="mt">mt</string>
+    <string name ="gv">gv</string>
+    <string name ="mi">mi</string>
+    <string name ="mr">mr</string>
+    <string name ="mh">mh</string>
+    <string name ="mn">mn</string>
+    <string name ="na">na</string>
+    <string name ="nv">nv</string>
+    <string name ="nd">nd</string>
+    <string name ="nr">nr</string>
+    <string name ="ng">ng</string>
+    <string name ="ne">ne</string>
+    <string name ="no">no</string>
+    <string name ="nb">nb</string>
+    <string name ="nn">nn</string>
+    <string name ="ii">ii</string>
+    <string name ="oc">oc</string>
+    <string name ="oj">oj</string>
+    <string name ="or">or</string>
+    <string name ="om">om</string>
+    <string name ="os">os</string>
+    <string name ="pi">pi</string>
+    <string name ="ps">ps</string>
+    <string name ="fa">fa</string>
+    <string name ="pl">pl</string>
+    <string name ="pt">pt</string>
+    <string name ="pa">pa</string>
+    <string name ="qu">qu</string>
+    <string name ="ro">ro</string>
+    <string name ="rm">rm</string>
+    <string name ="rn">rn</string>
+    <string name ="ru">ru</string>
+    <string name ="se">se</string>
+    <string name ="sm">sm</string>
+    <string name ="sg">sg</string>
+    <string name ="sa">sa</string>
+    <string name ="sc">sc</string>
+    <string name ="sr">sr</string>
+    <string name ="sn">sn</string>
+    <string name ="sd">sd</string>
+    <string name ="si">si</string>
+    <string name ="sk">sk</string>
+    <string name ="sl">sl</string>
+    <string name ="so">so</string>
+    <string name ="st">st</string>
+    <string name ="es">es</string>
+    <string name ="su">su</string>
+    <string name ="sw">sw</string>
+    <string name ="ss">ss</string>
+    <string name ="sv">sv</string>
+    <string name ="tl">tl</string>
+    <string name ="ty">ty</string>
+    <string name ="tg">tg</string>
+    <string name ="ta">ta</string>
+    <string name ="tt">tt</string>
+    <string name ="te">te</string>
+    <string name ="th">th</string>
+    <string name ="bo">bo</string>
+    <string name ="ti">ti</string>
+    <string name ="to">to</string>
+    <string name ="ts">ts</string>
+    <string name ="tn">tn</string>
+    <string name ="tr">tr</string>
+    <string name ="tk">tk</string>
+    <string name ="tw">tw</string>
+    <string name ="ug">ug</string>
+    <string name ="uk">uk</string>
+    <string name ="ur">ur</string>
+    <string name ="uz">uz</string>
+    <string name ="ve">ve</string>
+    <string name ="vi">vi</string>
+    <string name ="vo">vo</string>
+    <string name ="wa">wa</string>
+    <string name ="cy">cy</string>
+    <string name ="wo">wo</string>
+    <string name ="xh">xh</string>
+    <string name ="yi">yi</string>
+    <string name ="yo">yo</string>
+    <string name ="za">za</string>
+    <string name ="zu">zu</string>
 
     <string-array name="detected_language">
         <item>@string/Detected_language</item>
@@ -595,9 +778,196 @@
         <item>@string/Zhuang_Chuang</item>
         <item>@string/Zulu</item>
     </string-array>
+    <string-array name="coded_translated_language">
+        <item>@string/ab</item>
+        <item>@string/aa</item>
+        <item>@string/af</item>
+        <item>@string/ak</item>
+        <item>@string/sq</item>
+        <item>@string/am</item>
+        <item>@string/ar</item>
+        <item>@string/an</item>
+        <item>@string/hy</item>
+        <item>@string/as</item>
+        <item>@string/av</item>
+        <item>@string/ae</item>
+        <item>@string/ay</item>
+        <item>@string/az</item>
+        <item>@string/bm</item>
+        <item>@string/ba</item>
+        <item>@string/eu</item>
+        <item>@string/be</item>
+        <item>@string/bn</item>
+        <item>@string/bi</item>
+        <item>@string/bs</item>
+        <item>@string/br</item>
+        <item>@string/bg</item>
+        <item>@string/my</item>
+        <item>@string/ca</item>
+        <item>@string/ch</item>
+        <item>@string/ce</item>
+        <item>@string/ny</item>
+        <item>@string/zh</item>
+        <item>@string/cu</item>
+        <item>@string/cv</item>
+        <item>@string/kw</item>
+        <item>@string/co</item>
+        <item>@string/cr</item>
+        <item>@string/hr</item>
+        <item>@string/cs</item>
+        <item>@string/da</item>
+        <item>@string/dv</item>
+        <item>@string/nl</item>
+        <item>@string/dz</item>
+        <item>@string/en</item>
+        <item>@string/eo</item>
+        <item>@string/et</item>
+        <item>@string/ee</item>
+        <item>@string/fo</item>
+        <item>@string/fj</item>
+        <item>@string/fi</item>
+        <item>@string/fr</item>
+        <item>@string/fy</item>
+        <item>@string/ff</item>
+        <item>@string/gd</item>
+        <item>@string/gl</item>
+        <item>@string/lg</item>
+        <item>@string/ka</item>
+        <item>@string/de</item>
+        <item>@string/el</item>
+        <item>@string/kl</item>
+        <item>@string/gn</item>
+        <item>@string/gu</item>
+        <item>@string/ht</item>
+        <item>@string/ha</item>
+        <item>@string/he</item>
+        <item>@string/hz</item>
+        <item>@string/hi</item>
+        <item>@string/ho</item>
+        <item>@string/hu</item>
+        <item>@string/is</item>
+        <item>@string/io</item>
+        <item>@string/ig</item>
+        <item>@string/id</item>
+        <item>@string/ia</item>
+        <item>@string/ie</item>
+        <item>@string/iu</item>
+        <item>@string/ik</item>
+        <item>@string/ga</item>
+        <item>@string/it</item>
+        <item>@string/ja</item>
+        <item>@string/jv</item>
+        <item>@string/kn</item>
+        <item>@string/kr</item>
+        <item>@string/ks</item>
+        <item>@string/kk</item>
+        <item>@string/km</item>
+        <item>@string/ki</item>
+        <item>@string/rw</item>
+        <item>@string/ky</item>
+        <item>@string/kv</item>
+        <item>@string/kg</item>
+        <item>@string/ko</item>
+        <item>@string/kj</item>
+        <item>@string/ku</item>
+        <item>@string/lo</item>
+        <item>@string/la</item>
+        <item>@string/lv</item>
+        <item>@string/li</item>
+        <item>@string/ln</item>
+        <item>@string/lt</item>
+        <item>@string/lu</item>
+        <item>@string/lb</item>
+        <item>@string/mk</item>
+        <item>@string/mg</item>
+        <item>@string/ms</item>
+        <item>@string/ml</item>
+        <item>@string/mt</item>
+        <item>@string/gv</item>
+        <item>@string/mi</item>
+        <item>@string/mr</item>
+        <item>@string/mh</item>
+        <item>@string/mn</item>
+        <item>@string/na</item>
+        <item>@string/nv</item>
+        <item>@string/nd</item>
+        <item>@string/nr</item>
+        <item>@string/ng</item>
+        <item>@string/ne</item>
+        <item>@string/no</item>
+        <item>@string/nb</item>
+        <item>@string/nn</item>
+        <item>@string/ii</item>
+        <item>@string/oc</item>
+        <item>@string/oj</item>
+        <item>@string/or</item>
+        <item>@string/om</item>
+        <item>@string/os</item>
+        <item>@string/pi</item>
+        <item>@string/ps</item>
+        <item>@string/fa</item>
+        <item>@string/pl</item>
+        <item>@string/pt</item>
+        <item>@string/pa</item>
+        <item>@string/qu</item>
+        <item>@string/ro</item>
+        <item>@string/rm</item>
+        <item>@string/rn</item>
+        <item>@string/ru</item>
+        <item>@string/se</item>
+        <item>@string/sm</item>
+        <item>@string/sg</item>
+        <item>@string/sa</item>
+        <item>@string/sc</item>
+        <item>@string/sr</item>
+        <item>@string/sn</item>
+        <item>@string/sd</item>
+        <item>@string/si</item>
+        <item>@string/sk</item>
+        <item>@string/sl</item>
+        <item>@string/so</item>
+        <item>@string/st</item>
+        <item>@string/es</item>
+        <item>@string/su</item>
+        <item>@string/sw</item>
+        <item>@string/ss</item>
+        <item>@string/sv</item>
+        <item>@string/tl</item>
+        <item>@string/ty</item>
+        <item>@string/tg</item>
+        <item>@string/ta</item>
+        <item>@string/tt</item>
+        <item>@string/te</item>
+        <item>@string/th</item>
+        <item>@string/bo</item>
+        <item>@string/ti</item>
+        <item>@string/to</item>
+        <item>@string/ts</item>
+        <item>@string/tn</item>
+        <item>@string/tr</item>
+        <item>@string/tk</item>
+        <item>@string/tw</item>
+        <item>@string/ug</item>
+        <item>@string/uk</item>
+        <item>@string/ur</item>
+        <item>@string/uz</item>
+        <item>@string/ve</item>
+        <item>@string/vi</item>
+        <item>@string/vo</item>
+        <item>@string/wa</item>
+        <item>@string/cy</item>
+        <item>@string/wo</item>
+        <item>@string/xh</item>
+        <item>@string/yi</item>
+        <item>@string/yo</item>
+        <item>@string/za</item>
+        <item>@string/zu</item>
+    </string-array>
+
     <string name="scan_your_code">Scan Your Code</string>
     <string name="qr_image_lockedL">[</string>
     <string name="qr_image_lockedR">]</string>
+    <string name="get_contact_info">Get Contact Info</string>
 
 
 

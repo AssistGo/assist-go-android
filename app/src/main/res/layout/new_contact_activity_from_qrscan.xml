@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Contact.newContactCardActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:background="@color/app_color"
+        android:text="@string/new_contact"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="55sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivContactProfilePictureQR"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:src="@drawable/loading_contact" />
+
+    <TextView
+        android:id="@+id/tvChangeProfilePictureQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:text="Change Picture"
+        android:textColor="@color/teal_700"
+        android:onClick="onChangePictureCall"/>
+
+    <TextView
+        android:id="@+id/textView2QR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/editContactNameQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Enter name here"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/textView3QR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Phone Number"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/editContactPhoneNumberQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:hint="(XXX) XXX-XXXX"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/SaveContactChangesButtonQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/save_contact"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/green"
+            android:onClick="onNewContactClick"/>
+
+        <Button
+            android:id="@+id/DeleteContactButtonQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/red"
+            android:onClick="onCancelNewContactClick"/>
+    </LinearLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:background="@color/app_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivMicButtonQR"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_icon" />
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</LinearLayout>

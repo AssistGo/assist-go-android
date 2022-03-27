@@ -32,13 +32,18 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Le Jie Bennett
  * Notes:
  * Need to add the translation feature that actually translates the inputted text
  * Also need to update the lists in Strings.xml depending on the translation API
+ * https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes for language codes
  */
 public class translateActivity extends AppCompatActivity {
     TextInputEditText translatePhraseInput;
@@ -46,8 +51,11 @@ public class translateActivity extends AppCompatActivity {
     Button inputLanguageBtn, outputLanguageBtn;
     LinearLayout translateButtonsLayout;
 
-    String[] detectedLanguageList;
+    String[] codedTranslatedLanguageList;
     String[] translatedLanguageList;
+    HashMap<String,String> languageToCoded = new HashMap<>();
+    String inputLanguageCode = "DetectedLanguage";
+    String outputLanguageCode = "English";
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -57,8 +65,16 @@ public class translateActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK) {
                         if (result.getData().getBooleanExtra("isInputLanguage", true) == true) {
                             inputLanguageBtn.setText(result.getData().getStringExtra("language"));
+
+                            if(result.getData().getStringExtra("language")=="Detected Language")
+                                ///Use API to figure out language code
+                                Log.d("translateActivity", "onActivityResult: detected language");
+                            else{
+                                inputLanguageCode = languageToCoded.get(result.getData().getStringExtra("language"));
+                            }
                         } else {
                             outputLanguageBtn.setText(result.getData().getStringExtra("language"));
+                            outputLanguageCode = languageToCoded.get(result.getData().getStringExtra("language"));
 
                         }
                     }
@@ -75,6 +91,9 @@ public class translateActivity extends AppCompatActivity {
         translatePhraseInput = findViewById(R.id.translatePhraseInput);
         translatedOutput = findViewById(R.id.translatedOutput);
         outputLanguageBtn = findViewById(R.id.outputLanguageBtn);
+
+        //Used to convert to language code
+        createLanguageHashmap();
 
         translatePhraseInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -115,6 +134,17 @@ public class translateActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void createLanguageHashmap(){
+        translatedLanguageList =  getResources().getStringArray(R.array.translated_language);
+        codedTranslatedLanguageList = getResources().getStringArray(R.array.coded_translated_language);
+        for (int i = 0; i < translatedLanguageList.length; i++) {
+            languageToCoded.put(translatedLanguageList[i], codedTranslatedLanguageList[i]);
+        }
+
+    }
+
+
 }
 
 
