@@ -57,6 +57,10 @@
         <activity android:name=".Setttings.profileActivity"></activity>
         <activity android:name=".Setttings.changeNumberActivity"></activity>
 
+        <activity android:name=".Call.VideoCall"></activity>
+        <activity android:name=".Call.VoiceCall"></activity>
+        <activity android:name=".Call.VoiceCallRinging"></activity>
+        <activity android:name=".Call.VideoCallRinging"></activity>
 
     </application>
 

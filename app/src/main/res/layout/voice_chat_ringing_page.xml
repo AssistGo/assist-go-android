@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Call.VoiceCall">
+    tools:context=".Call.VoiceCallRinging">
 
     <ImageView
         android:id="@+id/ivContactImage"
-        android:layout_width="382dp"
-        android:layout_height="323dp"
-        android:layout_margin="10dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_margin="20dp"/>
 
     <TextView
         android:id="@+id/tvContactName"
@@ -20,15 +20,15 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textAlignment="center"
-        android:textSize="35sp" />
+        android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/tvVCTimeStamp"
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="00:00"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:text="@string/ringing" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,27 +48,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/video_chat_icon" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:id="@+id/speakerBtn"
-            android:layout_width="214dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/speaker_icon" />
-
-        <ImageView
-            android:id="@+id/muteBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/mute_icon" />
     </LinearLayout>
 
     <ImageView

@@ -1,6 +1,7 @@
 package com.example.assistgoandroid;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.assistgoandroid.Call.callAdapter;
 import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.Contact.contactListAdapter;
+import com.example.assistgoandroid.Helpers.TimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,11 +63,17 @@ public class callActivity extends AppCompatActivity {
         calledList.clear();
 
         //todo: do the importing stuff
+        //Contact contact;
+        //calledList.add(contact);
 
         // set the recycler view
         rvCalledList.setLayoutManager(new LinearLayoutManager(this));
-        Collections.sort(calledList, Contact.ContactComparator);
+        Collections.sort(calledList, Contact.LastCalledComparator);
         adapter = new callAdapter(this, calledList);
         rvCalledList.setAdapter(adapter);
+    }
+
+    public static String getFormattedTimestamp(String time) {
+        return TimeFormatter.getTimeDifference(time);
     }
 }

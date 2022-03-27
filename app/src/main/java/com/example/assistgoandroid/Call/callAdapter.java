@@ -17,6 +17,7 @@ import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.Contact.contactCardActivity;
 import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.callActivity;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class callAdapter extends RecyclerView.Adapter<callAdapter.ViewHolder>{
                 .placeholder(R.drawable.loading_contact)
                 .error(R.drawable.loading_contact)
                 .into(holder.contactProfilePicture);
+        holder.timeSinceCalled.setText(callActivity.getFormattedTimestamp(contact.getLastCalled()));
     }
 
     @Override
@@ -91,10 +93,5 @@ public class callAdapter extends RecyclerView.Adapter<callAdapter.ViewHolder>{
             intent.putExtra(CONTACT_CARD, contact);
             context.startActivity(intent);
         }
-    }
-
-    public void setFilterList(List<Contact> filteredList){
-        this.calledContactList = filteredList;
-        notifyDataSetChanged();
     }
 }

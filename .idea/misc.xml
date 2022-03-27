@@ -12,7 +12,6 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/edit_contact_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/emergency_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/home_page.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_call.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_contact.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_qrcode_activity.xml" value="0.25416666666666665" />
@@ -20,7 +19,9 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/test.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/video_chat_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/video_chat_ringing_page.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/voice_chat_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/voice_chat_ringing_page.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/menu/settingmenu.xml" value="0.2296875" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/account.xml" value="0.2595" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
