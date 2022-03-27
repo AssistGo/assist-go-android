@@ -88,7 +88,7 @@ public class chooseLanguageActivity extends AppCompatActivity {
         ArrayList<String> filteredList = new ArrayList<>();
         if(isInputLanguage==true){
             for (String item : detectedLanguageList) {
-                if (item.contains(text.toLowerCase())) {
+                if (item.toLowerCase().contains(text.toLowerCase())) {
                     filteredList.add(item);
                 }
             }
