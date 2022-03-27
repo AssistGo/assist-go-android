@@ -32,6 +32,8 @@
     <string name="about">About</string>
     <string name="number">Number</string>
     <string name="our_story">our story goes here</string>
+    <string name="call_history">Call History</string>
+    <string name="ringing">Ringing...</string>
     <string-array name="settings_titles">
         <item>@string/profile</item>
         <item>@string/preferences</item>
