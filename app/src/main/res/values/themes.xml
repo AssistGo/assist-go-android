@@ -13,7 +13,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="SplashScreenWindow" parent="Theme.AssistGoAndroid">
-        <item name="android:windowBackground">@drawable/temporary_splash_logo</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
     <style name="Theme.AppCompat.Translucent" parent="Theme.AssistGoAndroid">
         <item name="android:windowNoTitle">true</item>
@@ -23,5 +23,10 @@
     </style>
     <style name="NumberPickerText">
         <item name="android:textSize">30sp</item>
+    </style>
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/app_color</item>
+        <item name="colorControlActivated">#00BCD4</item>
+        <item name="colorControlHighlight">#00BCD4</item>
     </style>
 </resources>

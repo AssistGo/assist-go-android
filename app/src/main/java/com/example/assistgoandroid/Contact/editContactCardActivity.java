@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -81,6 +82,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
                 .placeholder(R.drawable.loading_contact)
                 .error(R.drawable.loading_contact)
                 .into(contactProfilePicture);
+
+        contactPhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
 
     // Ask for permission for gallery
