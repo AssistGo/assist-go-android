@@ -14,6 +14,7 @@ public class Contact implements Parcelable {
     String contactPicture;
     String lookupKey;
     boolean isFavorite;
+    String lastCalled;
 
     protected Contact(Parcel in) {
         contactID = in.readString();
@@ -90,6 +91,14 @@ public class Contact implements Parcelable {
         return 0;
     }
 
+    public String getLastCalled() {
+        return lastCalled;
+    }
+
+    public void setLastCalled(String lastCalled) {
+        this.lastCalled = lastCalled;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(contactID);
@@ -118,4 +127,14 @@ public class Contact implements Parcelable {
                 //ascending order
                 return contactName1.compareTo(contactName2);
             };
+
+    public static Comparator<Contact> LastCalledComparator
+            = (contact1, contact2) -> {
+
+        String contactCalled1 = contact1.getLastCalled();
+        String contactCalled2 = contact2.getLastCalled();
+
+        //ascending order
+        return contactCalled1.compareTo(contactCalled2);
+    };
 }
