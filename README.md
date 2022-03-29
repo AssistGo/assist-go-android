@@ -14,3 +14,4 @@
 - [Changing contact pictures](https://stackoverflow.com/questions/17789256/change-contact-picture-programmatically)
 - [Pull to refresh](https://guides.codepath.org/android/Implementing-Pull-to-Refresh-Guide)
 - [Gallery Access](https://www.youtube.com/watch?v=HtS-qI54GKk)
+- [Floating Action Button](https://guides.codepath.org/android/Floating-Action-Buttons)
