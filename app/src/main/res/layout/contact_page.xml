@@ -46,8 +46,8 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeContainer"
-        android:layout_width="411dp"
-        android:layout_height="482dp"
+        android:layout_width="409dp"
+        android:layout_height="489dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,6 +65,20 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ivAddNewContactButton"
+        app:layout_behavior="com.example.assistgoandroid.Helpers.ScrollAwareFABBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="9dp"
+        android:onClick="onNewContactClick"
+        android:contentDescription="@string/add_new_contact"
+        android:src="@drawable/ic_baseline_add_24"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="412dp"
@@ -76,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
+        <!-- <ImageView
             android:id="@+id/ivAddNewContactButton"
             android:layout_width="69dp"
             android:layout_height="match_parent"
@@ -85,7 +99,7 @@
             android:layout_marginBottom="3dp"
             android:contentDescription="@string/add_new_contact"
             android:onClick="onNewContactClick"
-            android:src="@drawable/add_icon" />
+            android:src="@drawable/add_icon" /> -->
 
         <ImageView
             android:id="@+id/ivMicButton"
