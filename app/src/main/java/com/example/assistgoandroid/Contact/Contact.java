@@ -3,6 +3,7 @@ package com.example.assistgoandroid.Contact;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.Comparator;
 
 import java.util.Comparator;
 
@@ -12,6 +13,7 @@ public class Contact implements Parcelable {
     String phoneNumber;
     String contactPicture;
     String lookupKey;
+    boolean isFavorite;
     String lastCalled;
 
     protected Contact(Parcel in) {
@@ -76,6 +78,14 @@ public class Contact implements Parcelable {
         this.lookupKey = lookupKey;
     }
 
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -107,6 +117,7 @@ public class Contact implements Parcelable {
                 '}';
     }
 
+    //todo sort based on fav: bring favs on top
     public static Comparator<Contact> ContactComparator
             = (contact1, contact2) -> {
 
