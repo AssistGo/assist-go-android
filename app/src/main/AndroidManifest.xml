@@ -55,6 +55,7 @@
         <activity android:name=".emergency.fiirefighterActivity"></activity>
         <activity android:name=".emergency.policeActivity"></activity>
 
+
         <activity android:name=".Contact.contactCardActivity"></activity>
         <activity android:name=".Contact.newContactCardActivity"></activity>
         <activity android:name=".Contact.editContactCardActivity"></activity>

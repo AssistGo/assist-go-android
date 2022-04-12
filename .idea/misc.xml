@@ -26,10 +26,12 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/account.xml" value="0.2595" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/xml/searchable.xml" value="0.16927083333333334" />
-        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/ambulance_page.xml" value="0.21584699453551912" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/ambulance_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/em_page_layout.xml" value="0.15348439504061565" />
         <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/emergency_page.xml" value="0.15154073448712538" />
         <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/emergy_page_cell.xml" value="0.15348439504061565" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/firefighter_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/police_page.xml" value="0.1308251389482685" />
         <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/settings_page_cell.xml" value="0.15154073448712538" />
         <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/settings_page_layout.xml" value="0.15154073448712538" />
         <entry key="app/src/main/res/drawable/chat_round.xml" value="0.1703125" />
