@@ -970,7 +970,8 @@
     <string name="qr_image_lockedL">[</string>
     <string name="qr_image_lockedR">]</string>
     <string name="get_contact_info">Get Contact Info</string>
-
+    <string name="hang_up">hang up</string>
+    <string name="microphone">microphone</string>
 
 
 </resources>
