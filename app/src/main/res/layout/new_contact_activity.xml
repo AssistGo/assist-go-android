@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/ivContactProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="227dp"
         android:src="@drawable/loading_contact" />
 
     <TextView
@@ -32,7 +32,8 @@
         android:textSize="20sp"
         android:layout_margin="10dp"
         android:text="Change Picture"
-        android:textColor="@color/teal_700"/>
+        android:textColor="@color/teal_700"
+        android:onClick="onChangePictureCall"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -49,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Enter Full Name"
+        android:hint="Enter name here"
         android:textSize="30sp"/>
 
     <TextView
@@ -67,7 +68,7 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="(XXX) XXX-XXXX"
+        android:hint="(XXX) XXX-XXXX"
         android:textSize="30sp"/>
 
     <LinearLayout
@@ -83,7 +84,8 @@
             android:layout_weight="1"
             android:text="@string/save_contact"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/green"/>
+            android:backgroundTint="@color/green"
+            android:onClick="onNewContactClick"/>
 
         <Button
             android:id="@+id/DeleteContactButton"
@@ -92,7 +94,8 @@
             android:layout_weight="1"
             android:text="@string/cancel"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/red"/>
+            android:backgroundTint="@color/red"
+            android:onClick="onCancelNewContactClick"/>
     </LinearLayout>
 
 
@@ -114,13 +117,13 @@
             android:layout_gravity="center"
             app:srcCompat="@drawable/mic_icon" />
 
-        <!--Set on clickable-->
         <ImageView
             android:id="@+id/qrCodeButton"
-            android:layout_width="98dp"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:src="@drawable/qr_code_icon"
-            android:layout_gravity="right"/>
+            android:onClick="scanQRCodeListener"/>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>

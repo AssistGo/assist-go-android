@@ -1,24 +1,20 @@
 package com.example.assistgoandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.assistgoandroid.Setttings.settingsActivity;
+import com.example.assistgoandroid.Settings.settingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     Button contactLabelBtn, callLabelBtn, messageLabelBtn, translateLabelBtn;
-    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn;
+    ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn, emergencyAmbulanceBtn;
     TextView emergencyLabel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         messageImageBtn = findViewById(R.id.messageImageBtn);
         translateImageBtn = findViewById(R.id.translateImageBtn);
         settingsImageBtn = findViewById(R.id.settingsImageBtn);
+        emergencyAmbulanceBtn = findViewById(R.id.emergencyAmbulanceBtn);
 
         settingsImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, emergencyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        emergencyAmbulanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,emergencyActivity.class);
                 startActivity(intent);
             }
         });
