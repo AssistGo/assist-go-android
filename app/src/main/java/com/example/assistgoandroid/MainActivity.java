@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.emergency.emergencyActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -39,6 +39,13 @@
         <item>@string/preferences</item>
         <item>@string/about</item>
     </string-array>
+
+    <string-array name="emergency_titles">
+        <item>@string/ambulance</item>
+        <item>@string/police</item>
+        <item>@string/firefighter</item>
+    </string-array>
+
     <string name="enter_translate_hint">Enter Text</string>
     <string name="translation_output_hint">Translation</string>
     <string name ="Abkhazian">Abkhazian</string>
@@ -972,6 +979,9 @@
     <string name="get_contact_info">Get Contact Info</string>
     <string name="hang_up">hang up</string>
     <string name="microphone">microphone</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="police">Police</string>
+    <string name="firefighter">Firefighter</string>
 
 
 </resources>
