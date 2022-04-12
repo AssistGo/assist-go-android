@@ -1,5 +1,6 @@
 package com.example.assistgoandroid.emergency;
 
+<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,4 +34,9 @@ public class policeActivity extends AppCompatActivity {
                         userProfilePicture.setImageURI(data.getData());
                 }
             });
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+public class policeActivity extends AppCompatActivity {
+>>>>>>> origin/master
 }
