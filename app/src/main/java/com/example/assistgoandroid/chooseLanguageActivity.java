@@ -98,7 +98,7 @@ public class chooseLanguageActivity extends AppCompatActivity {
         }
         else{
             for (String item : translatedLanguageList) {
-                if (item.contains(text.toLowerCase())) {
+                if (item.toLowerCase().contains(text.toLowerCase())) {
                     filteredList.add(item);
                 }
             }
