@@ -32,18 +32,12 @@
 
     <TextView
         android:id="@+id/username"
-<<<<<<< HEAD
         android:layout_width="375dp"
         android:layout_height="67dp"
-=======
-        android:layout_width="363dp"
-        android:layout_height="wrap_content"
->>>>>>> origin/master
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="25dp"
-<<<<<<< HEAD
         android:layout_marginBottom="295dp"
         android:text="Medical Emergency"
         android:textAlignment="center"
@@ -71,49 +65,14 @@
         android:layout_marginBottom="263dp"
         android:gravity="center"
         android:text="00:00"
-=======
-        android:layout_marginBottom="348dp"
-        android:text="Medical Emergency"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="48sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/userProfilePicture"
-        android:layout_width="296dp"
-        android:layout_height="279dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="131dp"
-        android:layout_marginEnd="55dp"
-        android:background="@drawable/image_am" />
-
-
-    <TextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="342dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="292dp"
-        android:gravity="center"
-        android:text="00:00"
-        android:textAlignment="center"
->>>>>>> origin/master
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/iv_hangup"
-<<<<<<< HEAD
         android:layout_width="100dp"
         android:layout_height="105dp"
-=======
-        android:layout_width="130dp"
-        android:layout_height="125dp"
->>>>>>> origin/master
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="157dp"

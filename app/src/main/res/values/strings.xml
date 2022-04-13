@@ -982,6 +982,10 @@
     <string name="ambulance">Ambulance</string>
     <string name="police">Police</string>
     <string name="firefighter">Firefighter</string>
+    <string name="enter_message_hint">Type a message...</string>
+    <string name="Messages_list">Messages</string>
+    <string name="add_new_message">add message</string>
+    <string name="homeMessages_list">Messages</string>
 
 
 </resources>

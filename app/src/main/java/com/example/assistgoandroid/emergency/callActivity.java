@@ -12,14 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assistgoandroid.R;
 
-public class policeActivity extends AppCompatActivity {
+public class callActivity extends AppCompatActivity {
     private static final int PERMISSION_CODE = 101;
     Button editProfilePicture,changeNumber,editName;
     ImageView userProfilePicture;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.police_page);
+        setContentView(R.layout.call_page);
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(

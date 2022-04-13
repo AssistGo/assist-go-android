@@ -30,7 +30,7 @@ public class emergencyActivity extends AppCompatActivity {
 
         //Set up the cells and search bar for settings page
         String[] title =  getResources().getStringArray(R.array.emergency_titles);
-        int[] images = {R.drawable.e_ambulance, R.drawable.e_police, R.drawable.e_fighterfighter,};
+        int[] images = {R.drawable.image_am, R.drawable.image_police, R.drawable.image_fire};
 
         listView_em = findViewById(R.id.listView_em);
 
@@ -51,6 +51,10 @@ public class emergencyActivity extends AppCompatActivity {
                 }
                 if (position ==  2) {
                     Intent intent = new Intent(emergencyActivity.this, fiirefighterActivity.class);
+                    startActivity(intent);
+                }
+                if (position ==  3) {
+                    Intent intent = new Intent(emergencyActivity.this, callActivity.class);
                     startActivity(intent);
                 }
 
