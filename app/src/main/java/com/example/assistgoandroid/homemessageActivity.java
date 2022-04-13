@@ -11,7 +11,7 @@ public class homemessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.message_page);
+        setContentView(R.layout.homemessafe_page);
     }
     public void onNewHomeMessageClick(View view) {
         Intent intent = new Intent(homemessageActivity.this, contactActivity.class);
@@ -19,3 +19,4 @@ public class homemessageActivity extends AppCompatActivity {
     }
 
 }
+
