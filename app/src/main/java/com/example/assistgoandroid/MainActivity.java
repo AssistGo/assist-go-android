@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
         messageImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, messageActivity.class);
+                Intent intent = new Intent(MainActivity.this, homemessageActivity.class);
                 startActivity(intent);
             }
         });
         messageLabelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, messageActivity.class);
+                Intent intent = new Intent(MainActivity.this, homemessageActivity.class);
                 startActivity(intent);
             }
         });
