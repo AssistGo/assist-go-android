@@ -50,7 +50,13 @@
         <activity android:name=".callActivity"></activity>
         <activity android:name=".contactActivity"></activity>
         <activity android:name=".messageActivity"></activity>
-        <activity android:name=".emergencyActivity"></activity>
+        <activity android:name=".emergency.emergencyActivity"></activity>
+        <activity android:name=".emergency.ambulanceActivity"></activity>
+        <activity android:name=".emergency.fiirefighterActivity"></activity>
+        <activity android:name=".emergency.policeActivity"></activity>
+
+        <activity android:name=".homemessageActivity"></activity>
+
 
         <activity android:name=".Contact.contactCardActivity"></activity>
         <activity android:name=".Contact.newContactCardActivity"></activity>

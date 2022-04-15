@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="homemessageLabelBtn" type="id" />
+    <item name="homemessageImageBtn" type="id" />
+    <item name="messageImageBtn" type="id" />
+    <item name="messageBtnLabel" type="id" />
+</resources>

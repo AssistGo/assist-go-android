@@ -172,4 +172,6 @@ public class contactActivity extends AppCompatActivity {
         Intent intent = new Intent(contactActivity.this, newContactCardActivity.class);
         startActivity(intent);
     }
+
+
 }
