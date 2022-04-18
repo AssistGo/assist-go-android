@@ -11,7 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.emergencyActivity;
+import com.example.assistgoandroid.emergency.emergencyActivity;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
