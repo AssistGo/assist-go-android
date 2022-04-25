@@ -1,7 +1,9 @@
 package com.example.assistgoandroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -9,14 +11,29 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.Settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
+import com.example.assistgoandroid.models.User;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     Button contactLabelBtn, callLabelBtn, messageLabelBtn, translateLabelBtn;
     ImageButton contactImageBtn, callImageBtn, messageImageBtn, translateImageBtn, settingsImageBtn, emergencyAmbulanceBtn;
     TextView emergencyLabel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -123,8 +140,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }

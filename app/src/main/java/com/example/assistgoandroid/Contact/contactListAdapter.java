@@ -8,11 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.models.Contact;
+
 import java.util.List;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -45,9 +47,9 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
     public void onBindViewHolder(@NonNull contactListAdapter.ViewHolder holder, int position) {
         Contact contact = contactsList.get(position);
 
-        holder.contactName.setText(contact.getName());
+        holder.contactName.setText(contact.getFullName());
         Glide.with(context)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                     .override(400, 400)
                     .centerCrop()
                     .fitCenter() // scale to fit entire image within ImageView

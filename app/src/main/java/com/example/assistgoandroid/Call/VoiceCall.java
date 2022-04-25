@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
-import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.emergency.emergencyActivity;
+import com.example.assistgoandroid.models.Contact;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -51,9 +51,9 @@ public class VoiceCall extends AppCompatActivity implements Call {
         contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");
         Log.i(TAG, "Contact is " + contact);
 
-        contactName.setText(contact.getName());
+        contactName.setText(contact.getFullName());
         Glide.with(this)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                 .centerCrop()
                 .fitCenter() // scale to fit entire image within ImageView
                 .transform(new RoundedCornersTransformation(500,10))

@@ -13,9 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.assistgoandroid.Contact.Contact;
+import com.example.assistgoandroid.models.Contact;
 import com.example.assistgoandroid.Contact.contactCardActivity;
-import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.callActivity;
 
@@ -49,9 +48,9 @@ public class callAdapter extends RecyclerView.Adapter<callAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull callAdapter.ViewHolder holder, int position) {
         Contact contact = calledContactList.get(position);
 
-        holder.contactName.setText(contact.getName());
+        holder.contactName.setText(contact.getFullName());
         Glide.with(context)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                 .override(400, 400)
                 .centerCrop()
                 .fitCenter() // scale to fit entire image within ImageView

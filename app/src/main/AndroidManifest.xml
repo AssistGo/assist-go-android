@@ -19,6 +19,9 @@
     <!--Access photos in local storage permissions-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.wifi" android:required="true" />
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
 
     <application
         android:allowBackup="true"
