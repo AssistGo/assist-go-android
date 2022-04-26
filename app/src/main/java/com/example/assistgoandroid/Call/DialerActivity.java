@@ -15,12 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.assistgoandroid.Contact.Contact;
+
 import java.net.URI;
 
 //https://data-flair.training/blogs/calling-app-in-android/
 //https://github.com/arekolek/simple-phone/blob/master/app/src/main/java/com/github/arekolek/phone/DialerActivity.kt
 public class DialerActivity extends AppCompatActivity {
     String phoneNumberToCall;
+    Contact contact;
     int REQUEST_PERMISSION = 0;
 
 
@@ -29,7 +32,9 @@ public class DialerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
-            phoneNumberToCall = bundle.getString("phoneNumber");
+            contact= (Contact) bundle.getSerializable("CONTACT_CARD");
+            phoneNumberToCall = contact.getPhoneNumber();
+
         }
 
 
