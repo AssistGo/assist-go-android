@@ -86,14 +86,9 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
             //todo bug: cannot select again after unselecting. Sort favorites on top
             //https://android-developers.googleblog.com/2009/05/drawable-mutations.html?m=1
             favoriteHeart.setOnClickListener(view -> {
-                if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState()) {
-                    Log.i("favorite", "selected favorite");
-                    Glide.with(context).load(R.drawable.filled_heart_icon).into(favoriteHeart);
-                }
-                else {
-                    Log.i("favorite", "unselected favorite");
-                    Glide.with(context).load(R.drawable.empty_heart_icon).into(favoriteHeart);
-                }
+                Contact contact = contactsList.get(getAdapterPosition());
+                contact.setFavorite(!contact.isFavorite());
+                Log.i("contactList", contact.getName() + " favorite: " + contact.isFavorite());
             });
         }
 
