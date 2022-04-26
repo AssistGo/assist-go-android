@@ -1,96 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Contact.contactCardActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/topToolbarMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/teal_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/settingmenu" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/bottomToolbarMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/teal_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/settingmenu" />
 
     <LinearLayout
-        android:layout_width="331dp"
-        android:layout_height="64dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topToolbarMainActivity">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/inputLanguageBtn"
-            style="?android:spinnerStyle"
-            android:layout_width="162dp"
-            android:layout_height="match_parent"
-            android:onClick="openDatePickerDeadline"
-            android:text="Detected Language"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <Button
-            android:id="@+id/outputLanugageBtn"
-            style="?android:spinnerStyle"
-            android:layout_width="161dp"
-            android:layout_height="match_parent"
-            android:onClick="openDatePickerDeadline"
-            android:text="English"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="350dp"
-        android:layout_height="366dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/translatePhraseInput"
+        <ImageView
+            android:id="@+id/ivContactProfilePicture"
             android:layout_width="match_parent"
-            android:layout_height="182dp"
-            android:background="@drawable/roundedborder"
-            android:cursorVisible="true"
-            android:ems="10"
-            android:hint="Enter Text"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textSize="40dp" />
+            android:layout_height="94dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/loading_contact" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvContactName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/roundedborder"
-            android:text="Translation"
+            android:background="@color/app_color"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Firstname Lastname"
             android:textAlignment="center"
-            android:textSize="30dp" />
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    #For input message to show
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/messageshow"
+            android:background="#e5e5e5"
+            android:layout_width="411dp"
+            android:layout_height="486dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="409dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="1dp"
+            android:background="@color/app_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/ivMicButton"
+                android:layout_width="69dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/mic_icon"
+                android:scaleType="fitCenter"/>
+
+
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="411dp"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.923">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="57dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/mic_transparent" />
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="53dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="1dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/send_icon" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/MessagePhraseInput"
+                android:layout_width="364dp"
+                android:layout_height="129dp"
+                android:layout_marginTop="-122dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/roundedborder"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="@string/enter_message_hint"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="40dp" />
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

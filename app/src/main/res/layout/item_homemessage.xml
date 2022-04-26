@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivhomemessageProfilePicture"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <!--Add onclick function-->
+
+    <!--Add onclick function-->
+
+    <!--Add onclick function-->
+
+    <!--Add onclick function-->
+
+    <TextView
+        android:id="@+id/tvhomemessagetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="198dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="23dp"
+        android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="8:15 AM"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="8pt"
+        app:layout_constraintEnd_toStartOf="@+id/ivFavoriteHeart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivhomemessageProfilePicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvhomemessageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Firstname Lastname"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12pt"
+        app:layout_constraintEnd_toStartOf="@+id/ivFavoriteHeart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivhomemessageProfilePicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvmessagetext"
+        android:layout_width="256dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Hello, are you free today? Hoping to stop by and say hello."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="7pt"
+        app:layout_constraintEnd_toStartOf="@+id/ivFavoriteHeart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivhomemessageProfilePicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivFavoriteHeart"
+        android:layout_width="33dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/empty_heart_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

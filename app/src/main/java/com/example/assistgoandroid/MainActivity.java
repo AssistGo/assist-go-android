@@ -1,7 +1,5 @@
 package com.example.assistgoandroid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.emergency.emergencyActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
         messageImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, messageActivity.class);
+                Intent intent = new Intent(MainActivity.this, homemessageActivity.class);
                 startActivity(intent);
             }
         });
         messageLabelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, messageActivity.class);
+                Intent intent = new Intent(MainActivity.this, homemessageActivity.class);
                 startActivity(intent);
             }
         });

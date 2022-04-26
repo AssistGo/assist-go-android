@@ -18,7 +18,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -56,6 +56,7 @@
         android:layout_marginEnd="59dp"
         android:background="@drawable/default_profile_pic" />
 
+
     <Button
         android:id="@+id/editName"
         android:layout_width="wrap_content"
@@ -64,13 +65,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="151dp"
-        android:layout_marginBottom="194dp"
+        android:layout_marginBottom="203dp"
         android:background="@android:color/transparent"
         android:text="@string/edit_name"
         android:textColor="#196D73"
         android:textSize="12sp"
         tools:ignore="RelativeOverlap" />
-
 
     <Button
         android:id="@+id/editProfilePicture"
@@ -92,7 +92,7 @@
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="143dp"
+        android:layout_marginBottom="158dp"
         android:text="@string/number"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -107,7 +107,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="128dp"
-        android:layout_marginBottom="89dp"
+        android:layout_marginBottom="116dp"
         android:background="@android:color/transparent"
         android:text="@string/change_number"
         android:textColor="#196D73"
@@ -115,13 +115,27 @@
 
     <ImageButton
         android:id="@+id/qrCode"
+        android:layout_width="113dp"
+        android:layout_height="121dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/qr">
+
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/micbutton"
         android:layout_width="130dp"
         android:layout_height="125dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/qr">
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/mic_icon"
+        android:contentDescription="@string/microphone">
 
     </ImageButton>
 

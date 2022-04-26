@@ -3,6 +3,55 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/search_bar_background.xml" value="0.2535" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/call_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/contact_card_activity.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/contact_page.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/delete_contact_dialog.xml" value="0.4" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/edit_contact_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/emergency_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/home_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_contact.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_qrcode_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/settings_page_layout.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/test.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/video_chat_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/video_chat_ringing_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/voice_chat_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/voice_chat_ringing_page.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/menu/settingmenu.xml" value="0.2296875" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/account.xml" value="0.2595" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/xml/searchable.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/ambulance_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/call_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/contact_card_activity.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/contact_page.xml" value="0.1483050847457627" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/delete_contact_dialog.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/em_page_layout.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/emergency_page.xml" value="0.15154073448712538" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/emergy_page_cell.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/firefighter_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/home_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/homemessafe_page.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/homemessage_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_call.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_contact.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_homemessage.xml" value="0.22" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_homemessages.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_language_translate.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_message.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/item_messages.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/message_page.xml" value="0.223" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/new_contact_activity.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/police_page.xml" value="0.1308251389482685" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/profile_page.xml" value="0.12882298424467098" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/settings_page_cell.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/settings_page_layout.xml" value="0.1" />
+        <entry key="..\:/Users/sbusa/StudioProjects/assist-go-android/app/src/main/res/layout/translate_page.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/chat_round.xml" value="0.1703125" />
         <entry key="app/src/main/res/drawable/home_button_background.xml" value="0.123" />
         <entry key="app/src/main/res/drawable/home_emergency_background.xml" value="0.1265" />
@@ -21,17 +70,9 @@
         <entry key="app/src/main/res/layout/message_page.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/new_contact_activity_from_qrscan.xml" value="0.1721014492753623" />
         <entry key="app/src/main/res/layout/new_contact_qrcode_activity.xml" value="0.1381340579710145" />
-        <entry key="app/src/main/res/layout/phone.xml" value="0.18" />
         <entry key="app/src/main/res/layout/qr_scan_page.xml" value="0.3925925925925926" />
-        <entry key="app/src/main/res/layout/settings_page_cell.xml" value="0.20471014492753623" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/translate_page.xml" value="0.27722772277227725" />
-        <entry key="app/src/main/res/layout/verification_code_popup.xml" value="0.21979166666666666" />
-        <entry key="app/src/main/res/layout/video_chat_page.xml" value="0.19" />
-        <entry key="app/src/main/res/layout/video_chat_ringing_page.xml" value="0.2453125" />
-        <entry key="app/src/main/res/layout/voice_chat.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/voice_chat_page.xml" value="0.109375" />
-        <entry key="app/src/main/res/layout/voice_chat_ringing_page.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/menu/blankmenu.xml" value="0.12395833333333334" />
         <entry key="app/src/main/res/menu/home_page.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/settingmenu.xml" value="0.3098958333333333" />
