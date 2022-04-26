@@ -126,4 +126,15 @@ public class Contact implements Parcelable {
         return contactCalled1.compareTo(contactCalled2);
     };
 
+    public static Comparator<Contact> FavoritesComparator
+            = (contact1, contact2) -> {
+
+        boolean favContact1 = contact1.isFavorite();
+        boolean favContact2 = contact2.isFavorite();
+
+        //ascending order
+        return Boolean.compare(favContact2, favContact1);
+    };
+
+
 }

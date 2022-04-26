@@ -122,7 +122,7 @@ public class contactActivity extends AppCompatActivity {
     }
 
     private void populateContactList() {
-        contactsList.clear();
+        //contactsList.clear(); //instead of this, just add new ones and update the rest
         //Initialize uri
         Uri uri = ContactsContract.Contacts.CONTENT_URI;
         //sort by asc
@@ -160,6 +160,7 @@ public class contactActivity extends AppCompatActivity {
 
         rvContactList.setLayoutManager(new LinearLayoutManager(this));
         Collections.sort(contactsList, Contact.ContactComparator);
+        Collections.sort(contactsList, Contact.FavoritesComparator);
         adapter = new contactListAdapter(this, contactsList);
         rvContactList.setAdapter(adapter);
 
