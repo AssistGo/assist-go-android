@@ -160,6 +160,7 @@ public class contactActivity extends AppCompatActivity {
 
         rvContactList.setLayoutManager(new LinearLayoutManager(this));
         Collections.sort(contactsList, Contact.ContactComparator);
+        Collections.sort(contactsList, Contact.FavoritesComparator);
         adapter = new contactListAdapter(this, contactsList);
         rvContactList.setAdapter(adapter);
 
