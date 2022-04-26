@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.assistgoandroid.Call.DialerActivity;
 import com.example.assistgoandroid.Call.VideoCall;
 import com.example.assistgoandroid.Call.VideoCallRinging;
 import com.example.assistgoandroid.Call.VoiceCall;
@@ -51,13 +52,17 @@ public class contactCardActivity extends AppCompatActivity {
     }
 
     public void onCallClick(View view){
-        Intent intent = new Intent(this, VoiceCallRinging.class);
+        //Intent intent = new Intent(this, VoiceCallRinging.class);
+        Intent intent = new Intent(this, DialerActivity.class);
+
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
 
     public void onVideoCallClick(View view){
         Intent intent = new Intent(this, VideoCallRinging.class);
+        //Intent intent = new Intent(this, VideoCall.class);
+
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
