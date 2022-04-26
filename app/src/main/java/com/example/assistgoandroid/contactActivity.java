@@ -122,7 +122,7 @@ public class contactActivity extends AppCompatActivity {
     }
 
     private void populateContactList() {
-        contactsList.clear();
+        //contactsList.clear(); //instead of this, just add new ones and update the rest
         //Initialize uri
         Uri uri = ContactsContract.Contacts.CONTENT_URI;
         //sort by asc

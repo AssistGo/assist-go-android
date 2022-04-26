@@ -133,7 +133,7 @@ public class Contact implements Parcelable {
         boolean favContact2 = contact2.isFavorite();
 
         //ascending order
-        return Boolean.compare(favContact1, favContact2);
+        return Boolean.compare(favContact2, favContact1);
     };
 
 
