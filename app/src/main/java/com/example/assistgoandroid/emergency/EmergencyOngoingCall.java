@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.Call;
+package com.example.assistgoandroid.emergency;
 
 
 import android.os.Build;
@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi;
 import io.reactivex.subjects.BehaviorSubject;
 //https://github.com/Abror96/CustomPhoneDialer/blob/master/app/src/main/java/customphonedialer/abror96/customphonedialer/OngoingCall.java
 //https://github.com/arekolek/simple-phone/blob/master/app/src/main/java/com/github/arekolek/phone/OngoingCall.kt
-public class OngoingCall {
+public class EmergencyOngoingCall {
     public static BehaviorSubject<Integer> state = BehaviorSubject.create();
     private static Call call;
 
@@ -23,8 +23,8 @@ public class OngoingCall {
     };
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void setCall(Call value) {
-        if(call == null){
+    public final void setCall(Call value) {
+        if(call != null){
             call.unregisterCallback((Call.Callback)callback);
         }
         if(value!=null){
@@ -33,8 +33,6 @@ public class OngoingCall {
         }
 
         call = value;
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

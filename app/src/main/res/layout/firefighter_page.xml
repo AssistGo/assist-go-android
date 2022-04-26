@@ -31,7 +31,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/emergencyServiceLabel"
         android:layout_width="375dp"
         android:layout_height="67dp"
         android:layout_alignParentEnd="true"
@@ -47,7 +47,7 @@
 
 
     <ImageView
-        android:id="@+id/userProfilePicture"
+        android:id="@+id/emergencyServiceImage"
         android:layout_width="215dp"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
@@ -58,19 +58,19 @@
         android:background="@drawable/image_fire" />
 
     <TextView
-        android:id="@+id/phoneNumber"
+        android:id="@+id/callStatusLabel"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="263dp"
         android:gravity="center"
-        android:text="00:00"
+        android:text="Ringing..."
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <ImageButton
-        android:id="@+id/iv_hangup"
+        android:id="@+id/emergencyService_hangupBtn"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:layout_alignParentEnd="true"

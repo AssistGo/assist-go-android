@@ -18,6 +18,7 @@
     <!--Phone permissions-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
 
@@ -51,27 +52,68 @@
         <activity android:name=".chooseLanguageActivity">
             android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing">
         </activity>
-        <activity android:name=".callActivity" />
-        <activity android:name=".contactActivity" />
-        <activity android:name=".messageActivity" />
-        <activity android:name=".emergency.emergencyActivity" />
-        <activity android:name=".emergency.ambulanceActivity" />
-        <activity android:name=".emergency.fiirefighterActivity" />
-        <activity android:name=".emergency.policeActivity" />
-        <activity android:name=".homemessageActivity" />
-        <activity android:name=".Contact.contactCardActivity" />
-        <activity android:name=".Contact.newContactCardActivity" />
-        <activity android:name=".Contact.editContactCardActivity" />
-        <activity android:name=".Settings.settingsActivity" />
-        <activity android:name=".Settings.profileActivity" />
-        <activity android:name=".Settings.changeNumberActivity" />
-        <activity android:name=".Settings.aboutActivity" />
-        <activity android:name=".qrScanPageActivity" />
-        <activity android:name=".Contact.newContactCardActivityFromQRCode" />
-        <activity android:name=".Call.VideoCall" />
-        <activity android:name=".Call.VoiceCall" />
-        <activity android:name=".Call.VoiceCallRinging" />
-        <activity android:name=".Call.VideoCallRinging" />
+      
+        <activity android:name=".callActivity"></activity>
+        <activity android:name=".contactActivity"></activity>
+        <activity android:name=".messageActivity"></activity>
+        <activity android:name=".emergency.emergencyActivity"></activity>
+        <activity android:name=".emergency.ambulanceActivity"></activity>
+        <activity android:name=".emergency.fiirefighterActivity"></activity>
+        <activity android:name=".emergency.policeActivity"></activity>
+
+        <activity android:name=".homemessageActivity"></activity>
+
+
+        <activity android:name=".Contact.contactCardActivity"></activity>
+        <activity android:name=".Contact.newContactCardActivity"></activity>
+        <activity android:name=".Contact.editContactCardActivity"></activity>
+
+        <activity android:name=".Settings.settingsActivity"></activity>
+        <activity android:name=".Settings.profileActivity"></activity>
+        <activity android:name=".Settings.changeNumberActivity"></activity>
+        <activity android:name=".Settings.aboutActivity"></activity>
+        <activity android:name=".qrScanPageActivity"></activity>
+        <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
+
+        <activity android:name=".Call.VideoCall"></activity>
+        <activity android:name=".Call.VoiceCall"></activity>
+        <activity android:name=".Call.VoiceCallRinging"></activity>
+        <activity android:name=".Call.VideoCallRinging"></activity>
+
+        <activity android:name=".emergency.EmergencyDialerActivity"
+            android:exported="true">
+            <intent-filter>
+                <!-- Handle links from other applications -->
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.DIAL" />
+                <!-- Populate the system chooser -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- Handle links in browsers -->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Call.DialerActivity"
+            android:exported="true">
+            <intent-filter>
+                <!-- Handle links from other applications -->
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.DIAL" />
+                <!-- Populate the system chooser -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- Handle links in browsers -->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

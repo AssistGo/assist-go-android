@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.Call;
+package com.example.assistgoandroid.emergency;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.telecom.Call;
 import android.util.Log;
-import android.util.TimeUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -17,9 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.assistgoandroid.Call.OngoingCall;
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.emergency.EmergencyCallActivity;
-import com.example.assistgoandroid.emergency.EmergencyOngoingCall;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -27,31 +25,21 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.disposables.CompositeDisposable;
 //https://github.com/Abror96/CustomPhoneDialer/blob/master/app/src/main/java/customphonedialer/abror96/customphonedialer/CallActivity.java
 //https://github.com/arekolek/simple-phone/blob/master/app/src/main/java/com/github/arekolek/phone/CallActivity.kt
-public class CallActivity extends AppCompatActivity {
+public class EmergencyCallActivity extends AppCompatActivity {
+
     private CompositeDisposable disposables;
     private String number;
-    private OngoingCall ongoingCall;
+    private EmergencyOngoingCall ongoingCall;
 
-    TextView contactName, callStatus;
-    ImageView contactImage;
-    ImageView onGoingHangupBtn;
-
-    LinearLayout emergencyVideoLayout;
-    ImageView emergencyCallBtn, videoCallBtn;
-
-    LinearLayout audioLayout;
-    ImageView muteBtn, speakerBtn;
-
-    LinearLayout recievingCallLayout;
-    ImageView answerBtn, declineBtn;
-
+    TextView callStatus;
+    ImageView hangupBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("EmergencyCallActivity", "onCreate:");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.phone);
 
-        ongoingCall = new OngoingCall();
+        ongoingCall = new EmergencyOngoingCall();
         disposables = new CompositeDisposable();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
@@ -61,28 +49,18 @@ public class CallActivity extends AppCompatActivity {
 
         number = Objects.requireNonNull(getIntent().getData()).getEncodedSchemeSpecificPart();
 
-        Log.d("CallActivity", "onCreate: " + number);
+        Log.d("EmergencyCallActivity", "onCreate: " + number);
+
+        callStatus = findViewById(R.id.callStatusLabel);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        onGoingHangupBtn = findViewById(R.id.onGoingHangupBtnPhone);
-        declineBtn = findViewById(R.id.declineBtnPhone);
-        answerBtn = findViewById(R.id.answerBtnPhone);
+        hangupBtn = findViewById(R.id.onGoingHangupBtnPhone);
 
-        audioLayout = findViewById(R.id.onGoingCallLinearLayoutPhone);
-
-        answerBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                ongoingCall.answer();
-            }
-        });
-
-        onGoingHangupBtn.setOnClickListener(new View.OnClickListener() {
+        hangupBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
@@ -92,9 +70,11 @@ public class CallActivity extends AppCompatActivity {
         });
 
 
-        disposables.add(OngoingCall.state.subscribe(state->updateUi(state)));
 
-        disposables.add(OngoingCall.state
+
+        disposables.add(EmergencyOngoingCall.state.subscribe(state->updateUi(state)));
+
+        disposables.add(ongoingCall.state
                 .filter(state-> state == Call.STATE_DISCONNECTED)
                 .delay(1, TimeUnit.SECONDS).firstElement().subscribe(state->finish()));
     }
@@ -107,27 +87,8 @@ public class CallActivity extends AppCompatActivity {
 
     private void updateUi(int state){
         callStatus.setText(getCallStateString(state));
-        if(state==Call.STATE_RINGING){
-            recievingCallLayout.setVisibility(View.VISIBLE);
 
-        }
-        else{
-            recievingCallLayout.setVisibility(View.INVISIBLE);
-
-        }
-
-        if(state == Call.STATE_ACTIVE||state == Call.STATE_DIALING){
-            audioLayout.setVisibility(View.VISIBLE);
-            emergencyVideoLayout.setVisibility(View.VISIBLE);
-            onGoingHangupBtn.setVisibility(View.VISIBLE);
-        }
-        else{
-            audioLayout.setVisibility(View.INVISIBLE);
-            emergencyVideoLayout.setVisibility(View.INVISIBLE);
-            onGoingHangupBtn.setVisibility(View.INVISIBLE);
-
-        }
-
+        hangupBtn.setVisibility(View.VISIBLE);
     }
 
     //https://github.com/arekolek/simple-phone/blob/master/app/src/main/java/com/github/arekolek/phone/CallStateString.kt
@@ -158,7 +119,7 @@ public class CallActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static void start(Context context, Call call){
-        Intent intent = new Intent(context, CallActivity.class)
+        Intent intent = new Intent(context, EmergencyCallActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .setData(call.getDetails().getHandle());
         context.startActivity(intent);
