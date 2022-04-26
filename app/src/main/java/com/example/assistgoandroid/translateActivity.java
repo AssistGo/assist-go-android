@@ -3,6 +3,7 @@ package com.example.assistgoandroid;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextWatcher;
@@ -44,6 +45,7 @@ import java.util.stream.IntStream;
  * Need to add the translation feature that actually translates the inputted text
  * Also need to update the lists in Strings.xml depending on the translation API
  * https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes for language codes
+ * https://www.tutorialspoint.com/how-to-set-delay-in-android
  */
 public class translateActivity extends AppCompatActivity {
     TextInputEditText translatePhraseInput;
@@ -111,6 +113,14 @@ public class translateActivity extends AppCompatActivity {
                 //Updates the translation ouput text field
                 //Will need to add the actual translation function here
                 translatedOutput.setText(editable.toString());
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        translatedOutput.setText("Translated Word");
+                    }
+                }, 5000);
 
             }
         });

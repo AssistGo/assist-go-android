@@ -42,19 +42,27 @@ public class emergencyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position ==  0) {
-                    Intent intent = new Intent(emergencyActivity.this, ambulanceActivity.class);
+                    //Intent intent = new Intent(emergencyActivity.this, ambulanceActivity.class);
+                    Intent intent = new Intent(emergencyActivity.this, EmergencyDialerActivity.class);
+                    intent.putExtra("EMERGENCY_SERVICE", "AMBULANCE");
                     startActivity(intent);
                 }
                 if (position ==  1) {
-                    Intent intent = new Intent(emergencyActivity.this, policeActivity.class);
+                    //Intent intent = new Intent(emergencyActivity.this, policeActivity.class);
+                    Intent intent = new Intent(emergencyActivity.this, EmergencyDialerActivity.class);
+                    intent.putExtra("EMERGENCY_SERVICE", "POLICE");
+
                     startActivity(intent);
                 }
                 if (position ==  2) {
-                    Intent intent = new Intent(emergencyActivity.this, fiirefighterActivity.class);
+                    //Intent intent = new Intent(emergencyActivity.this, fiirefighterActivity.class);
+                    Intent intent = new Intent(emergencyActivity.this, EmergencyDialerActivity.class);
+                    intent.putExtra("EMERGENCY_SERVICE", "FIREFIGHTER");
                     startActivity(intent);
                 }
                 if (position ==  3) {
-                    Intent intent = new Intent(emergencyActivity.this, callActivity.class);
+                    //Intent intent = new Intent(emergencyActivity.this, callActivity.class);
+                    Intent intent = new Intent(emergencyActivity.this, EmergencyDialerActivity.class);
                     startActivity(intent);
                 }
 
