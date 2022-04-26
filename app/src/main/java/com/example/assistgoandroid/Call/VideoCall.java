@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.models.Contact;
 import com.twilio.video.Camera2Capturer;
 import com.twilio.video.CameraCapturer;
 import com.twilio.video.ConnectOptions;

@@ -1,7 +1,6 @@
 package com.example.assistgoandroid.Contact;
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.Voice;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,11 +13,10 @@ import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.Call.DialerActivity;
 import com.example.assistgoandroid.Call.VideoCall;
 import com.example.assistgoandroid.Call.VideoCallRinging;
-import com.example.assistgoandroid.Call.VoiceCall;
 import com.example.assistgoandroid.Call.VoiceCallRinging;
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.callActivity;
 import com.example.assistgoandroid.messageActivity;
+import com.example.assistgoandroid.models.Contact;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -38,10 +36,10 @@ public class contactCardActivity extends AppCompatActivity {
         contact = (Contact) getIntent().getParcelableExtra(CONTACT_CARD);
         Log.i(TAG, "Contact is " + contact);
 
-        contactName.setText(contact.getName());
+        contactName.setText(contact.getFullName());
         contactPhoneNumber.setText(contact.getPhoneNumber());
         Glide.with(this)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                 .centerCrop()
                 .fitCenter() // scale to fit entire image within ImageView
                 .transform(new RoundedCornersTransformation(500,10))

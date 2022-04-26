@@ -7,7 +7,6 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,7 +14,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
@@ -31,8 +29,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.contactActivity;
+import com.example.assistgoandroid.models.Contact;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -45,6 +46,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
     String TAG = "EditContact";
     Contact contact;
     Bitmap mBitmap;
+
+    LocalDatabaseHelper localDatabaseHelper;
 
     private static final int GALLERY_PERMISSION_CODE = 101;
 
@@ -62,6 +65,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_contact_activity);
 
+        localDatabaseHelper = LocalDatabaseHelper.getInstance(this);
+
         contactProfilePicture = findViewById(R.id.ivContactProfilePicture);
         contactName = findViewById(R.id.editContactName);
         contactPhoneNumber = findViewById(R.id.editContactPhoneNumber);
@@ -70,11 +75,11 @@ public class editContactCardActivity extends AppCompatActivity implements delete
 
         Log.i(TAG, contact.toString());
 
-        contactName.setText(contact.getName());
+        contactName.setText(contact.getFullName());
         contactPhoneNumber.setText(contact.getPhoneNumber());
 
         Glide.with(this)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                 .centerCrop()
                 .override(400, 400)
                 .fitCenter() // scale to fit entire image within ImageView
@@ -134,19 +139,22 @@ public class editContactCardActivity extends AppCompatActivity implements delete
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
         }
         else if (contact.getPhoneNumber().equals(contactPhoneNumber.getText().toString().trim())
-                && contact.getName().equals(contactName.getText().toString().trim())
+                && contact.getFullName().equals(contactName.getText().toString().trim())
                 && mBitmap == null) {
 
             // No changes so go back with no updates
             Intent intent = new Intent(this, contactActivity.class);
             startActivity(intent);
-            Toast.makeText(this, "No changes have been made for " + contact.getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No changes have been made for " + contact.getFullName(), Toast.LENGTH_SHORT).show();
         }
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 checkPermissionForEdit();
-            else
+            else {
                 editContact();
+                localDatabaseHelper.addOrUpdateContact(contact);
+            }
+
         }
     }
 
@@ -159,8 +167,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         }
 
         // Change contact name
-        if(!contact.getName().equals(contactName.getText().toString().trim())) {
-            contact.setName(contactName.getText().toString().trim());
+        if(!contact.getFullName().equals(contactName.getText().toString().trim())) {
+            contact.setFullName(contactName.getText().toString().trim());
             changeName(getContentResolver());
         }
 
@@ -177,8 +185,10 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         Intent intent = new Intent(this, contactActivity.class);
         startActivity(intent);
 
-        Toast.makeText(this, "Contact " + contact.getName() + " has been updated.", Toast.LENGTH_SHORT).show();
-        Log.i(TAG, "Contact " + contact.getName() + " has been changed: " + contact);
+        Toast.makeText(this, "Contact " + contact.getFullName() + " has been updated.", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Contact " + contact.getFullName() + " has been changed: " + contact);
+
+        //todo sync changes with the backend
     }
 
     private void changePhoneNumber(ContentResolver contactHelper) {
@@ -220,7 +230,7 @@ public class editContactCardActivity extends AppCompatActivity implements delete
     private void changeName(ContentResolver contactHelper) {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, contact.getName());
+        contentValues.put(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, contact.getFullName());
 
         // Create query condition, query with the raw contact id.
         StringBuffer whereClauseBuf = new StringBuffer();
@@ -339,13 +349,13 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         // Delete all this contact related data in data table.
         getContentResolver().delete(dataContentUri, dataWhereClauseBuf.toString(), null);
 
-        Log.i("EditContact", "Contact " + contact.getName() + " deleted.");
+        Log.i("EditContact", "Contact " + contact.getFullName() + " deleted.");
 
         // Go back to contact list
         Intent intent = new Intent(this, contactActivity.class);
         startActivity(intent);
 
-        Toast.makeText(this, "Contact " + contact.getName() + " deleted.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Contact " + contact.getFullName() + " deleted.", Toast.LENGTH_SHORT).show();
     }
 
     public void openDialog() {
