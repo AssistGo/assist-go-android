@@ -1,26 +1,22 @@
-package com.example.assistgoandroid.Contact;
+package com.example.assistgoandroid.models;
 
-import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.Comparator;
 
-import java.util.Comparator;
-
 public class Contact implements Parcelable {
     String contactID;
-    String name;
+    String fullName;
     String phoneNumber;
-    String contactPicture;
-    String lookupKey;
+    String profileImageUrl;
     boolean isFavorite;
     String lastCalled;
 
     protected Contact(Parcel in) {
         contactID = in.readString();
-        name = in.readString();
+        fullName = in.readString();
         phoneNumber = in.readString();
-        contactPicture = in.readString();
+        profileImageUrl = in.readString();
     }
 
     public Contact(){
@@ -38,12 +34,12 @@ public class Contact implements Parcelable {
         }
     };
 
-    public String getName(){
-        return name;
+    public String getFullName(){
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {
@@ -62,20 +58,12 @@ public class Contact implements Parcelable {
         this.contactID = contactID;
     }
 
-    public void setContactPicture(String contactPicture) {
-        this.contactPicture = contactPicture;
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
-    public String getContactPicture() {
-        return contactPicture;
-    }
-
-    public String getLookupKey() {
-        return lookupKey;
-    }
-
-    public void setLookupKey(String lookupKey) {
-        this.lookupKey = lookupKey;
+    public String getProfileImageUrl() {
+        return profileImageUrl;
     }
 
     public boolean isFavorite() {
@@ -102,18 +90,18 @@ public class Contact implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(contactID);
-        parcel.writeString(name);
+        parcel.writeString(fullName);
         parcel.writeString(phoneNumber);
-        parcel.writeString(contactPicture);
+        parcel.writeString(profileImageUrl);
     }
 
     @Override
     public String toString() {
         return "Contact{" +
                 "contactID='" + contactID + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", contactPicture='" + contactPicture + '\'' +
+                ", contactPicture='" + profileImageUrl + '\'' +
                 '}';
     }
 
@@ -121,8 +109,8 @@ public class Contact implements Parcelable {
     public static Comparator<Contact> ContactComparator
             = (contact1, contact2) -> {
 
-                String contactName1 = contact1.getName();
-                String contactName2 = contact2.getName();
+                String contactName1 = contact1.getFullName();
+                String contactName2 = contact2.getFullName();
 
                 //ascending order
                 return contactName1.compareTo(contactName2);
@@ -137,4 +125,5 @@ public class Contact implements Parcelable {
         //ascending order
         return contactCalled1.compareTo(contactCalled2);
     };
+
 }

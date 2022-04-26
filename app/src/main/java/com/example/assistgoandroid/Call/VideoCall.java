@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.models.Contact;
 
 import java.util.Calendar;
 import java.util.Date;
