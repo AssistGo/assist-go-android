@@ -8,11 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.models.Contact;
+
 import java.util.List;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -45,9 +49,15 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
     public void onBindViewHolder(@NonNull contactListAdapter.ViewHolder holder, int position) {
         Contact contact = contactsList.get(position);
 
-        holder.contactName.setText(contact.getName());
+        holder.contactName.setText(contact.getFullName());
+
+        if (contact.isFavorite())
+            DrawableCompat.setTint(holder.favoriteHeart.getDrawable(), ContextCompat.getColor(context, R.color.red));
+        else
+            DrawableCompat.setTint(holder.favoriteHeart.getDrawable(), ContextCompat.getColor(context, R.color.favorite_button_background_color));
+
         Glide.with(context)
-                .load(contact.getContactPicture())
+                .load(contact.getProfileImageUrl())
                     .override(400, 400)
                     .centerCrop()
                     .fitCenter() // scale to fit entire image within ImageView
@@ -66,6 +76,7 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
+
         TextView contactName;
         ImageView contactProfilePicture;
         ImageView favoriteHeart;
@@ -83,17 +94,14 @@ public class contactListAdapter extends RecyclerView.Adapter<contactListAdapter.
 
             itemView.setOnClickListener(this);
 
-            //todo bug: cannot select again after unselecting. Sort favorites on top
-            //https://android-developers.googleblog.com/2009/05/drawable-mutations.html?m=1
             favoriteHeart.setOnClickListener(view -> {
-                if (favoriteHeart.getDrawable().getConstantState() == favoriteHeart.getResources().getDrawable( R.drawable.empty_heart_icon).getConstantState()) {
-                    Log.i("favorite", "selected favorite");
-                    Glide.with(context).load(R.drawable.filled_heart_icon).into(favoriteHeart);
-                }
-                else {
-                    Log.i("favorite", "unselected favorite");
-                    Glide.with(context).load(R.drawable.empty_heart_icon).into(favoriteHeart);
-                }
+                Contact contact = contactsList.get(getAdapterPosition());
+                contact.setFavorite(!contact.isFavorite());
+                if (contact.isFavorite())
+                    DrawableCompat.setTint(favoriteHeart.getDrawable(), ContextCompat.getColor(context, R.color.red));
+                else
+                    DrawableCompat.setTint(favoriteHeart.getDrawable(), ContextCompat.getColor(context, R.color.favorite_button_background_color));
+                Log.i("contactList", contact.getFullName() + " favorite: " + contact.isFavorite());
             });
         }
 

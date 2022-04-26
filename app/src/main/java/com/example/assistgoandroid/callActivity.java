@@ -11,15 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.assistgoandroid.Call.callAdapter;
-import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.Contact.contactListAdapter;
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.Helpers.TimeFormatter;
+import com.example.assistgoandroid.models.Contact;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class callActivity extends AppCompatActivity {
+
+    LocalDatabaseHelper localDatabaseHelper;
 
     callAdapter adapter;
     RecyclerView rvCalledList;
@@ -32,10 +35,12 @@ public class callActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.call_page);
 
+        localDatabaseHelper = LocalDatabaseHelper.getInstance(this);
+
         rvCalledList = findViewById(R.id.rvContacts);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        rvCalledList.addItemDecoration(dividerItemDecoration);
+//       rvCalledList.addItemDecoration(dividerItemDecoration);
 
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
 
@@ -62,9 +67,7 @@ public class callActivity extends AppCompatActivity {
         // rearrange the rv
         calledList.clear();
 
-        //todo: do the importing stuff
-        //Contact contact;
-        //calledList.add(contact);
+        calledList.addAll(localDatabaseHelper.getAllContacts());
 
         // set the recycler view
         rvCalledList.setLayoutManager(new LinearLayoutManager(this));

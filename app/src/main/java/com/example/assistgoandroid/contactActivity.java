@@ -18,25 +18,42 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import com.example.assistgoandroid.Contact.Contact;
+
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
+import com.example.assistgoandroid.models.Contact;
 import com.example.assistgoandroid.Contact.contactListAdapter;
 import com.example.assistgoandroid.Contact.newContactCardActivity;
+import com.example.assistgoandroid.models.User;
+import com.fasterxml.jackson.databind.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class contactActivity extends AppCompatActivity {
+
+    LocalDatabaseHelper localDatabaseHelper;
+
     contactListAdapter adapter;
     RecyclerView rvContactList;
     SearchView searchView;
     SwipeRefreshLayout swipeRefreshLayout;
-    private List<Contact> contactsList = new ArrayList<Contact>();
+    private List<Contact> contactsList = new ArrayList<>();
     static final String TAG = "ContactListActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_page);
+
+        localDatabaseHelper = LocalDatabaseHelper.getInstance(this);
 
         searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();
@@ -82,7 +99,7 @@ public class contactActivity extends AppCompatActivity {
     private void filterList(String text) {
         List<Contact> filteredContactList = new ArrayList<Contact>();
         for(Contact contact : contactsList){
-            if (contact.getName().toLowerCase().contains(text.toLowerCase())) {
+            if (contact.getFullName().toLowerCase().contains(text.toLowerCase())) {
                 filteredContactList.add(contact);
             }
         }
@@ -105,7 +122,7 @@ public class contactActivity extends AppCompatActivity {
     }
 
     private void populateContactList() {
-        contactsList.clear();
+        //contactsList.clear(); //instead of this, just add new ones and update the rest
         //Initialize uri
         Uri uri = ContactsContract.Contacts.CONTENT_URI;
         //sort by asc
@@ -119,7 +136,6 @@ public class contactActivity extends AppCompatActivity {
                 String id = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
                 String photo = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_URI));
-                String lookupKey = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.LOOKUP_KEY));
                 Uri uriPhone = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
                 String selection = ContactsContract.CommonDataKinds.Phone.CONTACT_ID+" =?";
                 Cursor phoneCursor = getContentResolver().query(uriPhone, null, selection, new String[]{id}, null);
@@ -130,22 +146,27 @@ public class contactActivity extends AppCompatActivity {
                     if (avoidDuplicates(id)){
                         Contact contact = new Contact();
                         contact.setContactID(id);
-                        contact.setName(name);
+                        contact.setFullName(name);
                         contact.setPhoneNumber(number);
-                        contact.setContactPicture(photo);
-                        contact.setLookupKey(lookupKey);
+                        contact.setProfileImageUrl(photo);
+                        localDatabaseHelper.addOrUpdateContact(contact);
                         contactsList.add(contact);
                     }
-
                     phoneCursor.close();
                 }
             }
             cursor.close();
         }
+
         rvContactList.setLayoutManager(new LinearLayoutManager(this));
         Collections.sort(contactsList, Contact.ContactComparator);
+        Collections.sort(contactsList, Contact.FavoritesComparator);
         adapter = new contactListAdapter(this, contactsList);
         rvContactList.setAdapter(adapter);
+
+//        MainActivity.user.getUserAsJsonMap();
+//        MainActivity.user.setContactList(contactsList);
+//        MainActivity.user.syncUser();
     }
 
     private boolean avoidDuplicates(String id){

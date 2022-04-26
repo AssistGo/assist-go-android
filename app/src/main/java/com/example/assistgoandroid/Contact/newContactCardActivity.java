@@ -65,6 +65,7 @@ public class newContactCardActivity extends AppCompatActivity {
                 checkPermissionForNewContact();
             else
                 addNewContact();
+            //todo sync contact list with backend
         }
     }
 

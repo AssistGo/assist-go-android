@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat;
 import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.emergency.EmergencyDialerActivity;
 
+
 import java.net.URI;
 
 import kotlin.collections.ArraysKt;
