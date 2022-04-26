@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'//twilio voice
 }
 
 android {
@@ -21,6 +22,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,6 +61,18 @@ dependencies {
     //implementation 'com.dynamsoft:dynamsoftcameraenhancer:2.1.0@aar'
     //end of qr code dependencies
 
+    //twilio video
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation "com.twilio:video-android-ktx:7.1.0"
+    implementation "com.twilio.sdk:twilio:7.17.7"
+    //Need to have because something related to guava causing build error
+    implementation 'com.google.guava:guava:27.0.1-android'
+
+    //
+
+    //android phone
+    implementation "io.reactivex.rxjava2:rxjava:2.2.3"
+    //
 
     implementation 'com.google.android.material:material:1.2.1'
     //Json

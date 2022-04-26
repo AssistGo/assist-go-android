@@ -7,18 +7,24 @@
     android:orientation="vertical"
     tools:context=".Call.VideoCall">
 
+
+    <com.twilio.video.VideoView
+        android:id="@+id/primary_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="627dp"
+        android:keepScreenOn="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_height="106dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="106dp"
             android:layout_gravity="bottom"
-            android:orientation="horizontal"
             android:background="@color/gray"
+            android:orientation="horizontal"
             android:padding="15dp">
 
             <ImageView
@@ -50,4 +56,6 @@
                 app:srcCompat="@drawable/hangup_icon" />
         </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>
