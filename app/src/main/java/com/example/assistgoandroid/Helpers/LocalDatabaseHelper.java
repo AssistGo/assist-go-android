@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.assistgoandroid.EnteringActivity;
 import com.example.assistgoandroid.models.Contact;
 import com.example.assistgoandroid.models.User;
 
@@ -168,6 +169,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             ContentValues values = new ContentValues();
+            values.put(KEY_CONTACT_USER_ID_FK, EnteringActivity.user.getId());
             values.put(KEY_CONTACT_NAME, contact.getFullName());
             values.put(KEY_CONTACT_PROFILE_PICTURE_URL, contact.getProfileImageUrl());
             values.put(KEY_CONTACT_PHONE_NUMBER, contact.getPhoneNumber());
@@ -214,7 +216,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         // SELECT * FROM POSTS
         // LEFT OUTER JOIN USERS
         // ON POSTS.KEY_POST_USER_ID_FK = USERS.KEY_USER_ID
-        String POSTS_SELECT_QUERY =
+        String CONTACTS_SELECT_QUERY =
                 String.format("SELECT * FROM %s LEFT OUTER JOIN %s ON %s.%s = %s.%s",
                         TABLE_CONTACTS,
                         TABLE_USERS,
@@ -224,7 +226,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         // "getReadableDatabase()" and "getWriteableDatabase()" return the same object (except under low
         // disk space scenarios)
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(POSTS_SELECT_QUERY, null);
+        Cursor cursor = db.rawQuery(CONTACTS_SELECT_QUERY, null);
         try {
             if (cursor.moveToFirst()) {
                 do {
@@ -245,6 +247,36 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return contacts;
+    }
+
+    public User getCurrentUser() {
+        User user = new User();
+
+        String CONTACTS_SELECT_QUERY =
+                String.format("SELECT * FROM %s",
+                        TABLE_USERS);
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(CONTACTS_SELECT_QUERY, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    user.setFullName(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_NAME)));
+                    user.setPhoneNumber(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_PHONE_NUMBER)));
+                    user.setFullPhoneNumber(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_FULL_PHONE_NUMBER)));
+                    user.setProfileImageUrl(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_PROFILE_PICTURE_URL)));
+                    user.setCountryCode(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_COUNTRY_CODE)));
+                    user.setCountry(cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER_COUNTRY)));
+                } while(cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return user;
     }
 
     public void deleteAllContactsAndUsers(){

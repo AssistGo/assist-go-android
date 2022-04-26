@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.contactActivity;
 import com.example.assistgoandroid.models.Contact;
@@ -46,6 +47,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
     Contact contact;
     Bitmap mBitmap;
 
+    LocalDatabaseHelper localDatabaseHelper;
+
     private static final int GALLERY_PERMISSION_CODE = 101;
 
     // These two permissions are basically the same permissions
@@ -61,6 +64,8 @@ public class editContactCardActivity extends AppCompatActivity implements delete
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_contact_activity);
+
+        localDatabaseHelper = LocalDatabaseHelper.getInstance(this);
 
         contactProfilePicture = findViewById(R.id.ivContactProfilePicture);
         contactName = findViewById(R.id.editContactName);
@@ -145,8 +150,11 @@ public class editContactCardActivity extends AppCompatActivity implements delete
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 checkPermissionForEdit();
-            else
+            else {
                 editContact();
+                localDatabaseHelper.addOrUpdateContact(contact);
+            }
+
         }
     }
 
