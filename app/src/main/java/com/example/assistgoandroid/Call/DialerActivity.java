@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.example.assistgoandroid.Contact.Contact;
+import com.example.assistgoandroid.models.Contact;
 
 import java.net.URI;
 
