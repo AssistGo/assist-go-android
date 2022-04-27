@@ -44,6 +44,7 @@ public class Contact implements Parcelable {
         this.fullName = fullName;
     }
 
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
