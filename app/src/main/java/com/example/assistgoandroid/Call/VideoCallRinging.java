@@ -8,12 +8,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.models.Contact;
+import com.twilio.video.ConnectOptions;
+import com.twilio.video.RemoteParticipant;
+import com.twilio.video.Room;
+import com.twilio.video.TwilioException;
+import com.twilio.video.Video;
+import com.twilio.video.VideoView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -25,29 +32,24 @@ public class VideoCallRinging extends AppCompatActivity {
     String TAG = "VideoCallRinging";
     String CURRENT_TIME;
     Contact contact;
+    VideoView videoView;
+    String accessToken;
+    String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_chat_ringing_page);
 
-        ImageView contactPicture = findViewById(R.id.ivContactPicture);
         TextView contactName = findViewById(R.id.tvContactName);
 
         ImageView hangupBtn = findViewById(R.id.hangupBtn);
+        videoView = findViewById(R.id.thumbnail_video_view);
 
         contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");
         Log.i(TAG, "Contact is " + contact);
 
         contactName.setText(contact.getFullName());
-        Glide.with(this)
-                .load(contact.getProfileImageUrl())
-                .centerCrop()
-                .fitCenter() // scale to fit entire image within ImageView
-                .transform(new RoundedCornersTransformation(500,10))
-                .placeholder(R.drawable.loading_contact)
-                .error(R.drawable.loading_contact)
-                .into(contactPicture);
 
         View.OnClickListener hangupClick = v -> {
             hangup();
@@ -66,10 +68,11 @@ public class VideoCallRinging extends AppCompatActivity {
         finish();
     }
 
-    private void callConnected() {
+    private void callConnected(Room room) {
         //todo do the connection
         Intent intent = new Intent(this, VideoCall.class);
         intent.putExtra("CONTACT_CARD", contact);
+        intent.putExtra("ROOM", room.getName());
         this.startActivity(intent);
     }
 }

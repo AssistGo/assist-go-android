@@ -18,6 +18,8 @@ import androidx.core.app.ActivityCompat;
 import com.example.assistgoandroid.models.Contact;
 
 import java.net.URI;
+import java.util.Calendar;
+import java.util.Date;
 
 //https://data-flair.training/blogs/calling-app-in-android/
 //https://github.com/arekolek/simple-phone/blob/master/app/src/main/java/com/github/arekolek/phone/DialerActivity.kt
@@ -63,6 +65,9 @@ public class DialerActivity extends AppCompatActivity {
             Uri uri = Uri.parse("tel:" + phoneNumberToCall);
             Intent i = new Intent(Intent.ACTION_CALL,uri);
             startActivity(i);
+            Date currentTime = Calendar.getInstance().getTime();
+            String CURRENT_TIME = currentTime.toString();
+            contact.setLastCalled(CURRENT_TIME);
         }
     }
 
