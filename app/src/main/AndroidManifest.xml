@@ -67,13 +67,15 @@
         <activity android:name=".Contact.contactCardActivity"></activity>
         <activity android:name=".Contact.newContactCardActivity"></activity>
         <activity android:name=".Contact.editContactCardActivity"></activity>
+        <activity android:name=".qrScanPageActivity"></activity>
+        <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
 
         <activity android:name=".Settings.settingsActivity"></activity>
         <activity android:name=".Settings.profileActivity"></activity>
         <activity android:name=".Settings.changeNumberActivity"></activity>
         <activity android:name=".Settings.aboutActivity"></activity>
-        <activity android:name=".qrScanPageActivity"></activity>
-        <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
+        <activity android:name=".Settings.PreferencesActivity"></activity>
+
 
         <activity android:name=".Call.VideoCall"></activity>
         <activity android:name=".Call.VoiceCall"></activity>

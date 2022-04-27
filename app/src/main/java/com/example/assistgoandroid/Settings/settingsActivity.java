@@ -48,6 +48,10 @@ public class settingsActivity extends AppCompatActivity {
                     Intent intent = new Intent(settingsActivity.this, profileActivity.class);
                     startActivity(intent);
                 }
+                if (position == 1){
+                    Intent intent = new Intent(settingsActivity.this,PreferencesActivity.class);
+                    startActivity(intent);
+                }
                 if (position == 2){
                     Intent intent = new Intent(settingsActivity.this, aboutActivity.class);
                     startActivity(intent);
