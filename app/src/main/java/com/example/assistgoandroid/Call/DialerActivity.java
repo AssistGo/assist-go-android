@@ -50,7 +50,7 @@ public class DialerActivity extends AppCompatActivity {
             Log.d("RecievedPhoneNumber", "onCreate: " + phoneNumberToCall);
         }
 
-      //  checkPermission();
+        checkPermission();
 
     }
 
@@ -74,7 +74,7 @@ public class DialerActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-       /*
+
         if (requestCode == 100 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             makeCall();
         }
@@ -82,11 +82,11 @@ public class DialerActivity extends AppCompatActivity {
             Toast.makeText(DialerActivity.this, "Permission Denied.", Toast.LENGTH_SHORT).show();
             checkPermission();
         }
-        */
 
-        if (requestCode == REQUEST_PERMISSION && ArraysKt.contains(grantResults, PERMISSION_GRANTED)) {
-            makeCall();
-        }
+
+//        if (requestCode == REQUEST_PERMISSION && ArraysKt.contains(grantResults, PERMISSION_GRANTED)) {
+//            makeCall();
+//        }
 
     }
 
@@ -107,7 +107,7 @@ public class DialerActivity extends AppCompatActivity {
     private void makeCall(){
         if (ActivityCompat.checkSelfPermission(this, CALL_PHONE) == PERMISSION_GRANTED) {
             //Temporary phone to call
-            phoneNumberToCall = "5183391997";
+//            phoneNumberToCall = "5183391997";
             Uri uri = Uri.parse("tel:" + phoneNumberToCall);
             Log.d("EmergencyDialerActivity", "makeCall: " + phoneNumberToCall);
             Intent i = new Intent(Intent.ACTION_CALL,uri);
