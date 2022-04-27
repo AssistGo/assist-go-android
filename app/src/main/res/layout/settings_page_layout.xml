@@ -30,9 +30,31 @@
 
   <ListView
       android:id="@+id/listView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:cacheColorHint="#00000000"
+      android:drawSelectorOnTop="false"
+      android:layout_weight="5">
 
   </ListView>
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomNavigationViewTranslate"
+      android:layout_width="412dp"
+      android:layout_height="70dp"
+      android:layout_marginStart="1dp"
+      android:layout_marginEnd="1dp"
+      android:background="@color/app_color"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <ImageView
+        android:id="@+id/ivMicButton"
+        android:layout_width="69dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/mic_icon" />
+
+  </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>
