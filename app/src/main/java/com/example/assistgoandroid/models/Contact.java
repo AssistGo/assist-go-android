@@ -2,6 +2,8 @@ package com.example.assistgoandroid.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Comparator;
 
 public class Contact implements Parcelable {

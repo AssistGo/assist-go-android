@@ -23,8 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.assistgoandroid.Contact.Contact;
+//import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.emergency.EmergencyDialerActivity;
+import com.example.assistgoandroid.models.Contact;
 
 
 import java.net.URI;
@@ -44,8 +45,8 @@ public class DialerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
-            contact= (Contact) bundle.getSerializable("CONTACT_CARD");
-            phoneNumberToCall = contact.getPhoneNumber();
+            contact= (Contact) bundle.getParcelable("CONTACT_CARD");
+            phoneNumberToCall = contact.getPhoneNumber().replaceAll("[^\\d.]", "");
             Log.d("RecievedPhoneNumber", "onCreate: " + phoneNumberToCall);
         }
 

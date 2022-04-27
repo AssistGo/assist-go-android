@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.assistgoandroid.Contact.Contact;
+//import com.example.assistgoandroid.Contact.Contact;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.contactActivity;
 
