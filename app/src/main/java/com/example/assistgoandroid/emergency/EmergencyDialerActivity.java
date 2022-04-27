@@ -63,7 +63,7 @@ public class EmergencyDialerActivity extends AppCompatActivity {
                 setContentView(R.layout.police_page);
                 break;
         }
-       // checkPermission();
+        checkPermission();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -88,7 +88,7 @@ public class EmergencyDialerActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d("RequestPermissions", "onRequestPermissionsResult: called");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        /*
+
         if (requestCode == 100 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             makeCall();
         }
@@ -97,10 +97,10 @@ public class EmergencyDialerActivity extends AppCompatActivity {
             checkPermission();
         }
 
-         */
-        if (requestCode == REQUEST_PERMISSION && ArraysKt.contains(grantResults, PERMISSION_GRANTED)) {
-            makeCall();
-        }
+
+//        if (requestCode == REQUEST_PERMISSION && ArraysKt.contains(grantResults, PERMISSION_GRANTED)) {
+//            makeCall();
+//        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -122,8 +122,8 @@ public class EmergencyDialerActivity extends AppCompatActivity {
         //if (ActivityCompat.checkSelfPermission(this,
         //        Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
         if (ActivityCompat.checkSelfPermission(this, CALL_PHONE) == PERMISSION_GRANTED) {
-            //Temporary phone to call
-            phoneNumberToCall = "5183391997";
+            phoneNumberToCall = "911";
+
             Uri uri = Uri.parse("tel:" + phoneNumberToCall);
             Log.d("EmergencyDialerActivity", "makeCall: " + phoneNumberToCall);
             Intent i = new Intent(Intent.ACTION_CALL,uri);

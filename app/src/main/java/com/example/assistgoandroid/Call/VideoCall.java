@@ -1,19 +1,25 @@
 package com.example.assistgoandroid.Call;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.codepath.asynchttpclient.callback.TextHttpResponseHandler;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.models.Contact;
-import com.twilio.video.Camera2Capturer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twilio.video.CameraCapturer;
 import com.twilio.video.ConnectOptions;
 import com.twilio.video.LocalAudioTrack;
@@ -31,14 +37,21 @@ import com.twilio.video.TwilioException;
 import com.twilio.video.Video;
 import com.twilio.video.VideoView;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
-import tvi.webrtc.Camera2Enumerator;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import tvi.webrtc.Camera1Enumerator;
 import tvi.webrtc.VideoSink;
+import com.codepath.asynchttpclient.AsyncHttpClient;
 
-
+import org.json.JSONException;
 
 public class VideoCall extends AppCompatActivity implements Call {
     //Resources
@@ -52,9 +65,18 @@ public class VideoCall extends AppCompatActivity implements Call {
     LocalAudioTrack localAudioTrack;
     LocalVideoTrack localVideoTrack;
     String accessToken;
+    String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
     Room room;
+    String roomName;
     boolean muted = false;
     boolean videoOn = false;
+    private String frontCameraId = null;
+    private String backCameraId = null;
+    private final Camera1Enumerator camera1Enumerator = new Camera1Enumerator();
+    private CameraCapturer cameraCapturer;
+    private VideoSink localVideoView;
+    private boolean disconnectedFromOnDestroy;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -69,7 +91,8 @@ public class VideoCall extends AppCompatActivity implements Call {
         videoView = findViewById(R.id.primary_video_view);
 
 
-        contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");
+        contact = getIntent().getParcelableExtra("CONTACT_CARD");
+        roomName = getIntent().getStringExtra("ROOM");
         Log.i(TAG, "Contact is " + contact);
 
         View.OnClickListener switchCameraClick = v -> {
@@ -78,16 +101,15 @@ public class VideoCall extends AppCompatActivity implements Call {
 
         View.OnClickListener videoChatClick = v -> {
             //todo turn off camera or turn on camera
-            if(videoOn==false)
+            if(!videoOn)
                 turnVideOff();
             else
                 turnVideoOn();
         };
 
-
         View.OnClickListener muteClick = v -> {
             //if clicked for the first time
-            if(muted == false)
+            if(!muted)
                 mute();
             else
                 unmute();
@@ -106,40 +128,96 @@ public class VideoCall extends AppCompatActivity implements Call {
 
         // Create an audio track https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
         boolean enable = true;
-        LocalAudioTrack localAudioTrack = LocalAudioTrack.create(getApplicationContext(), enable);
 
-        // A video track requires an implementation of a VideoCapturer. Here's how to use the front camera with a Camera2Capturer.
-        Camera2Enumerator camera2Enumerator = new Camera2Enumerator(getApplicationContext());
-        String frontCameraId = null;
-        for (String cameraId : camera2Enumerator.getDeviceNames()) {
-            if (camera2Enumerator.isFrontFacing(cameraId)) {
-                frontCameraId = cameraId;
-                break;
+        if(!checkPermissionForCameraAndMicrophone())
+            requestPermissionForCameraAndMicrophone();
+
+        createLocalTracks(); //same as commented below
+
+//        LocalAudioTrack localAudioTrack = LocalAudioTrack.create(getApplicationContext(), enable);
+//
+//        // A video track requires an implementation of a VideoCapturer. Here's how to use the front camera with a Camera2Capturer.
+//        Camera2Enumerator camera2Enumerator = new Camera2Enumerator(getApplicationContext());
+//        String frontCameraId = null;
+//        for (String cameraId : camera2Enumerator.getDeviceNames()) {
+//            if (camera2Enumerator.isFrontFacing(cameraId)) {
+//                frontCameraId = cameraId;
+//                break;
+//            }
+//        }
+//        if(frontCameraId != null) {
+//            // Create the CameraCapturer with the front camera
+//
+//            Camera2Capturer cameraCapturer = new Camera2Capturer(getApplicationContext(), frontCameraId);
+//
+//            // Create a video track
+//            LocalVideoTrack localVideoTrack = LocalVideoTrack.create(getApplicationContext(), enable, cameraCapturer);
+//
+//            // Rendering a local video track requires an implementation of VideoSink
+//            // Let's assume we have added a VideoView in our view hierarchy
+//            VideoView videoView = findViewById(R.id.primary_video_view);
+//
+//            // Render a local video track to preview your camera
+//            localVideoTrack.addSink(videoView);
+//
+//            // Release the audio track to free native memory resources
+//            localAudioTrack.release();
+//
+//            // Release the video track to free native memory resources
+//            localVideoTrack.release();
+//        }
+
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        try {
+//            OkHttpClient client = new OkHttpClient();
+//            //MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+//
+//            Request request = new Request.Builder()
+//                    .url(tokenURL + "?identity=" + contact.getPhoneNumber())
+//                    .get()
+//                    .build();
+//            Response response = client.newCall(request).execute();
+//            String jsonDataString = null;
+//            try {
+//                jsonDataString = response.body().string();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
+//
+//            accessToken = String.valueOf(responseJson.get("token"));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //easier way to get json object
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(tokenURL + "?identity=" + contact.getPhoneNumber(), new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Headers headers, JsonHttpResponseHandler.JSON json) {
+                // Access a JSON object response with `json.jsonObject`
+                Log.d("DEBUG OBJECT", json.jsonObject.toString());
+                try {
+                    accessToken = json.jsonObject.getString("token");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "JSON error");
+                }
             }
-        }
-        if(frontCameraId != null) {
-            // Create the CameraCapturer with the front camera
-            CameraCapturer cameraCapturer = new CameraCapturer(getApplicationContext(), frontCameraId);
 
-            // Create a video track
-            LocalVideoTrack localVideoTrack = LocalVideoTrack.create(getApplicationContext(), enable, cameraCapturer);
+            @Override
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                Log.e(TAG, "JSON error");
+            }
+        });
 
-            // Rendering a local video track requires an implementation of VideoSink
-            // Let's assume we have added a VideoView in our view hierarchy
-            VideoView videoView = (VideoView) findViewById(R.id.primary_video_view);
-
-            // Render a local video track to preview your camera
-            localVideoTrack.addSink(videoView);
-
-            // Release the audio track to free native memory resources
-            localAudioTrack.release();
-
-            // Release the video track to free native memory resources
-            localVideoTrack.release();
-        }
-
-        connectToRoom(accessToken);
-
+        //todo accesstoken is null
+        Log.i(TAG, accessToken + " " + contact.getFullName());
+        connectToRoom(room.getName());
     }
 
     private void switchCamera() {
@@ -193,7 +271,7 @@ public class VideoCall extends AppCompatActivity implements Call {
         CURRENT_TIME = currentTime.toString();
         contact.setLastCalled(CURRENT_TIME);
 
-        ///Disconnect from a Room
+        //Disconnect from a Room
         room.disconnect();
 
         finish();
@@ -204,7 +282,7 @@ public class VideoCall extends AppCompatActivity implements Call {
         return new Room.Listener() {
             @Override
             public void onConnected(Room room) {
-                Log.d(TAG,"Connected to " + room.getName());
+
             }
 
             @Override
@@ -263,7 +341,7 @@ public class VideoCall extends AppCompatActivity implements Call {
         room = Video.connect(getApplicationContext(), connectOptions, new Room.Listener() {
             @Override
             public void onConnected(@NonNull Room room) {
-
+                Log.d(TAG,"Connected to " + room.getName());
             }
 
             @Override
@@ -283,7 +361,7 @@ public class VideoCall extends AppCompatActivity implements Call {
 
             @Override
             public void onDisconnected(@NonNull Room room, @Nullable TwilioException twilioException) {
-
+                localVideoTrack.release();
             }
 
             @Override
@@ -425,6 +503,98 @@ public class VideoCall extends AppCompatActivity implements Call {
             }
         };
 
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        /*
+         * Always disconnect from the room before leaving the Activity to
+         * ensure any memory allocated to the Room resource is freed.
+         */
+        if (room != null && room.getState() != Room.State.DISCONNECTED) {
+            room.disconnect();
+            disconnectedFromOnDestroy = true;
+        }
+
+        /*
+         * Release the local audio and video tracks ensuring any memory allocated to audio
+         * or video is freed.
+         */
+        if (localAudioTrack != null) {
+            localAudioTrack.release();
+            localAudioTrack = null;
+        }
+        if (localVideoTrack != null) {
+            localVideoTrack.release();
+            localVideoTrack = null;
+        }
+
+        super.onDestroy();
+    }
+
+    private boolean checkPermissionForCameraAndMicrophone() {
+        int resultCamera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int resultMic = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        return resultCamera == PackageManager.PERMISSION_GRANTED &&
+                resultMic == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermissionForCameraAndMicrophone() {
+
+        // request permission in fragment
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO},
+                    100);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) {
+            Toast.makeText(this, "Permission granted", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String getFrontCameraId() {
+        if (frontCameraId == null) {
+            for (String deviceName : camera1Enumerator.getDeviceNames()) {
+                if (camera1Enumerator.isFrontFacing(deviceName)) {
+                    frontCameraId = deviceName;
+                }
+            }
+        }
+
+        return frontCameraId;
+    }
+
+    private String getBackCameraId() {
+        if (backCameraId == null) {
+            for (String deviceName : camera1Enumerator.getDeviceNames()) {
+                if (camera1Enumerator.isBackFacing(deviceName)) {
+                    backCameraId = deviceName;
+                }
+            }
+        }
+
+        return backCameraId;
+    }
+
+    private void createLocalTracks() {
+        // Share your microphone
+        localAudioTrack = LocalAudioTrack.create(this, true);
+
+        // Share your camera
+        cameraCapturer = new CameraCapturer(this, getFrontCameraId());
+        localVideoTrack = LocalVideoTrack.create(this, true, cameraCapturer);
+        videoView.setMirror(true);
+        localVideoTrack.addSink(videoView);
+        localVideoView = videoView;
     }
 
 

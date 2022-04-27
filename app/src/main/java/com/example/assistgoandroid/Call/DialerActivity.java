@@ -28,6 +28,8 @@ import com.example.assistgoandroid.models.Contact;
 
 
 import java.net.URI;
+import java.util.Calendar;
+import java.util.Date;
 
 import kotlin.collections.ArraysKt;
 //https://github.com/Abror96/CustomPhoneDialer/blob/master/app/src/main/java/customphonedialer/abror96/customphonedialer/DialerActivity.java
@@ -111,6 +113,9 @@ public class DialerActivity extends AppCompatActivity {
             Log.d("EmergencyDialerActivity", "makeCall: " + phoneNumberToCall);
             Intent i = new Intent(Intent.ACTION_CALL,uri);
             startActivity(i);
+            Date currentTime = Calendar.getInstance().getTime();
+            String CURRENT_TIME = currentTime.toString();
+            contact.setLastCalled(CURRENT_TIME);
         }
     }
 
