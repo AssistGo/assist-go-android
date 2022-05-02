@@ -45,6 +45,7 @@ public class changeNumberActivity extends AppCompatActivity {
 
     }
 
+
     //once we have verified the number we send verified number to profile activity
     public void displayVerifiedNumber(){
         Intent intent  = new Intent(changeNumberActivity.this,profileActivity.class);

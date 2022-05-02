@@ -33,31 +33,8 @@
             android:layout_width="251dp"
             android:layout_height="246dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/default_profile_pic" />
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:text="Username"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="48sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/editName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/edit_name"
-            android:textAlignment="center"
-            android:textColor="#196D73"
-            android:textSize="12sp" />
-
 
         <Button
             android:id="@+id/editProfilePicture"
@@ -66,30 +43,147 @@
             android:background="@android:color/transparent"
             android:text="@string/edit_profile_picture"
             android:textColor="#196D73"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            />
 
-        <TextView
-            android:id="@+id/phoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/number"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        /*Editor: Sena
+        Date: 4/28/2022
+        */
 
-        <Button
-            android:id="@+id/changeNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/change_number"
-            android:textColor="#196D73"
-            android:textSize="12sp" />
+
+//This is Name Field
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            tools:context=".MainActivity">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="344dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginRight="11dp"
+                    android:background="#B3D6D6"
+                    android:text="Firstname lastname"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="32sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvIAlwaysHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+
+                android:text="Your Name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/editName"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/edit_name"
+                android:textColor="#196D73"
+                android:textSize="12sp"
+                android:layout_marginLeft="129pt" />
+        </RelativeLayout>
+//This is end of Name Field
+
+
+
+//This is Number Field
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="122dp"
+            tools:context=".MainActivity">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center">
+
+
+                <TextView
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="344dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="11dp"
+                    android:background="#B3D6D6"
+                    android:text="@string/number"                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="32sp"
+                    android:textStyle="normal"
+                    android:layout_marginTop="11dp"
+/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+
+                android:text="Your Number"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/changeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginLeft="129pt"
+                android:background="@android:color/transparent"
+                android:text="@string/change_number"
+                android:textColor="#196D73"
+                android:textSize="12sp" />
+        </RelativeLayout>
+        //This is end of Number Field
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </LinearLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewTranslate"
         android:layout_width="412dp"
@@ -108,13 +202,26 @@
             android:layout_gravity="center"
             app:srcCompat="@drawable/mic_icon" />
 
-        <ImageButton
-            android:id="@+id/qrCode"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/qr">
 
-        </ImageButton>
+        //This is QR Code Field
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:forceHasOverlappingRendering="true">
+
+            <ImageButton
+                android:id="@+id/qrCode"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="320dp"
+                android:background="@drawable/qr"
+                android:onClick="qr" />
+
+
+        </RelativeLayout>
+//End of QR Code Field
+
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

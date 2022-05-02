@@ -1,48 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".emergency.ambulanceActivity">
-
+    tools:context=".emergency.emergencyActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="91dp"
-        android:background="#DC1010"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="55sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:background="#99F5F0"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="55sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/emergencyServiceLabel"
-        android:layout_width="375dp"
-        android:layout_height="67dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="295dp"
+        android:background="@color/red"
         android:text="Fire Fighter"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textColor="#000"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
 
@@ -53,21 +25,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="97dp"
-        android:background="@drawable/image_fire" />
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="97dp"
+        android:background="@drawable/image_am" />
 
     <TextView
         android:id="@+id/callStatusLabel"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="263dp"
+        android:layout_marginBottom="75dp"
         android:gravity="center"
         android:text="Ringing..."
         android:textColor="@color/black"
         android:textSize="24sp"
+        android:layout_marginStart="6pt"
         android:textStyle="bold" />
+
 
     <ImageButton
         android:id="@+id/emergencyService_hangupBtn"
@@ -75,23 +49,30 @@
         android:layout_height="105dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="157dp"
-        android:layout_marginBottom="135dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginStart="69pt"
+        android:layout_marginBottom="61dp"
         android:background="@drawable/hangup_icon"
         android:contentDescription="@string/hang_up">
 
     </ImageButton>
 
-    <ImageButton
-        android:id="@+id/micbutton"
-        android:layout_width="130dp"
-        android:layout_height="125dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/mic_icon"
-        android:contentDescription="@string/microphone">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTranslate"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
+        android:background="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    </ImageButton>
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/ivMicButton"
+            android:layout_width="31dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_transparent" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+</LinearLayout>
