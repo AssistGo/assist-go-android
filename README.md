@@ -63,5 +63,8 @@ Help:
 1) User is able to click on the qr code to get popup imaage [layout-> qr_popup.xml => for the profile]
 
 
+**Final Result
+**
+
 ![RemodleUI](https://user-images.githubusercontent.com/45721682/166291196-338f1873-0e48-492a-975d-35f2b1302e91.gif)
 
