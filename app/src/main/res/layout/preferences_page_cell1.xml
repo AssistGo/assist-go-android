@@ -20,7 +20,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="17dp"
+            android:layout_marginEnd="10dp"
             android:scaleX="2"
             android:scaleY="2" />
 
@@ -28,7 +28,7 @@
             android:id="@+id/switcher_title"
             android:layout_width="282dp"
             android:layout_height="101dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="-1dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"

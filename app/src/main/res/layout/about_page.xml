@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Settings.aboutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -18,61 +23,96 @@
         android:textStyle="bold" />
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="164dp"
+        /*Editor: Sena B.
+        Dat:4/28/2022
+        */
+
+
+        /*End of Sena Coding
+        */
+
+        <ImageView
+            android:layout_width="141dp"
+            android:layout_height="138dp"
+            android:layout_marginLeft="150dp"
+            android:background="@drawable/assistgologo"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="110dp">
+
+        </ImageView>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="125dp"
-        android:background="@drawable/assistgologo">
-
-    </ImageView>
+        android:text="- Our Mission -"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="284dp" />
 
     <TextView
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_width="412dp"
+        android:layout_height="114dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:background="#99F5F0"
+        android:layout_alignParentTop="true"
+        android:text="Allow easy communication with others by focusing and centering the purpose of a cellphone back to facilitating communication by providing a simplified User Interface with only essential communication features such as call and chat."
         android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="55sp"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="323dp"
+        android:layout_margin="2dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="340dp"
-        android:text="@string/our_story"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="@color/black"
+        android:text="- About Us -"
         android:textAlignment="center"
-        >
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="455dp" />
 
-    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="AssistGo! has humble beginnings as a simple project for our team's Capstone Project Course at University at Albany. What we didn't know, is that it would also have a humble ending. The project was finished, our team got full points for exceptional work done, and we all went our separate ways."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="490dp" />
 
-    <ImageButton
-        android:id="@+id/micbutton"
-        android:layout_width="130dp"
-        android:layout_height="125dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/mic_icon"
-        android:contentDescription="@string/microphone">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTranslate"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@color/app_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    </ImageButton>
+        <ImageView
+            android:id="@+id/ivMicButton"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_icon" />
 
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
