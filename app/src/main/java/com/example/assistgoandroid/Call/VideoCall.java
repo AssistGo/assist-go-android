@@ -39,6 +39,7 @@ import com.twilio.video.VideoView;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ import com.codepath.asynchttpclient.AsyncHttpClient;
 
 import org.json.JSONException;
 
-public class VideoCall extends AppCompatActivity implements Call {
+public class VideoCall extends AppCompatActivity {
     //Resources
     //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
     //https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
@@ -84,6 +85,7 @@ public class VideoCall extends AppCompatActivity implements Call {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_chat_page);
 
+        requestPermissionForCameraAndMicrophone();
         ImageView switchCameraBtn = findViewById(R.id.switchCamBtn);
         ImageView videochatBtn = findViewById(R.id.videochatBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
@@ -195,7 +197,8 @@ public class VideoCall extends AppCompatActivity implements Call {
 
         //easier way to get json object
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(tokenURL + "?identity=" + contact.getPhoneNumber(), new JsonHttpResponseHandler() {
+        String url = tokenURL + "?identity=" + contact.getPhoneNumber().replace(" ", "%20");
+        client.get(url, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Headers headers, JsonHttpResponseHandler.JSON json) {
@@ -215,23 +218,14 @@ public class VideoCall extends AppCompatActivity implements Call {
             }
         });
 
+        accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzVhNGRkZWVmZDBhZjM2NzIwMTJlNGY4MGJiZmY4Y2U4LTE2NTE5MjgzNDUiLCJncmFudHMiOnsiaWRlbnRpdHkiOiIoMjIyKSAyODktMjIyMiIsInZpZGVvIjp7InJvb20iOiJEYWlseVN0YW5kdXAifX0sImlhdCI6MTY1MTkyODM0NSwiZXhwIjoxNjUxOTMxOTQ1LCJpc3MiOiJTSzVhNGRkZWVmZDBhZjM2NzIwMTJlNGY4MGJiZmY4Y2U4Iiwic3ViIjoiQUNhNTI4OTc0MmRkNjA4MGRhMmU4ZDJlODQyMTMwZGIxMCJ9.gonpxAWmVh0pn00PYmxbDEiXLidEmEnLrqIbwIBcXP0";
         //todo accesstoken is null
         Log.i(TAG, accessToken + " " + contact.getFullName());
-        connectToRoom(room.getName());
+        connectToRoom("roomName");
     }
 
     private void switchCamera() {
         //TODO implement method
-    }
-
-    @Override
-    public void turnOnSpeaker() {
-
-    }
-
-    @Override
-    public void turnOffSpeaker() {
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -250,7 +244,6 @@ public class VideoCall extends AppCompatActivity implements Call {
 
     //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
     @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
     public void mute() {
 
         room.getLocalParticipant().getLocalAudioTracks().forEach(localAudioTrackPublication -> localAudioTrackPublication.getLocalAudioTrack().enable(false));
@@ -259,13 +252,11 @@ public class VideoCall extends AppCompatActivity implements Call {
 
     //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
     @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
     public void unmute() {
         room.getLocalParticipant().getLocalAudioTracks().forEach(localAudioTrackPublication -> localAudioTrackPublication.getLocalAudioTrack().enable(true));
         muted = false;
     }
 
-    @Override
     public void hangup() {
         Date currentTime = Calendar.getInstance().getTime();
         CURRENT_TIME = currentTime.toString();
@@ -333,72 +324,90 @@ public class VideoCall extends AppCompatActivity implements Call {
     // If a Room by that name is already active, you'll be connected to the Room and receive notifications from any other Participants
     // also connected to the same Room. Room names must be unique within an account.
     public void connectToRoom(String roomName) {
-        ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
-                .roomName(roomName)
-                .audioTracks((List<LocalAudioTrack>) localAudioTrack)
-                .videoTracks((List<LocalVideoTrack>) localVideoTrack)
-                .build();
-        room = Video.connect(getApplicationContext(), connectOptions, new Room.Listener() {
-            @Override
-            public void onConnected(@NonNull Room room) {
-                Log.d(TAG,"Connected to " + room.getName());
-            }
+//        ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
+//                .roomName(roomName)
+//                .audioTracks((List<LocalAudioTrack>) localAudioTrack)
+//                .videoTracks((List<LocalVideoTrack>) localVideoTrack)
+//                .build();
 
-            @Override
-            public void onConnectFailure(@NonNull Room room, @NonNull TwilioException twilioException) {
+        ConnectOptions.Builder connectOptionsBuilder =
+                new ConnectOptions.Builder(accessToken).roomName(roomName);
 
-            }
-
-            @Override
-            public void onReconnecting(@NonNull Room room, @NonNull TwilioException twilioException) {
-
-            }
-
-            @Override
-            public void onReconnected(@NonNull Room room) {
-
-            }
-
-            @Override
-            public void onDisconnected(@NonNull Room room, @Nullable TwilioException twilioException) {
-                localVideoTrack.release();
-            }
-
-            @Override
-            public void onParticipantConnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
-                Log.i("Room.Listener", remoteParticipant.getIdentity() + " has joined the room.");
-                remoteParticipant.setListener(remoteParticipantListener());
-
-
-            }
-
-            @Override
-            public void onParticipantDisconnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
-                Log.i("Room.Listener", remoteParticipant.getIdentity() + " has left the room.");
-
-            }
-
-            @Override
-            public void onRecordingStarted(@NonNull Room room) {
-
-            }
-
-            @Override
-            public void onRecordingStopped(@NonNull Room room) {
-
-            }
+        /*
+         * Add local audio track to connect options to share with participants.
+         */
+        if (localAudioTrack != null) {
+            connectOptionsBuilder.audioTracks(Collections.singletonList(localAudioTrack));
         }
-);
+
+        /*
+         * Add local video track to connect options to share with participants.
+         */
+        if (localVideoTrack != null) {
+            connectOptionsBuilder.videoTracks(Collections.singletonList(localVideoTrack));
+        }
+
+        room = Video.connect(getApplicationContext(), connectOptionsBuilder.build(), new Room.Listener() {
+                    @Override
+                    public void onConnected(@NonNull Room room) {
+                        Log.d(TAG,"Connected to " + room.getName());
+                    }
+
+                    @Override
+                    public void onConnectFailure(@NonNull Room room, @NonNull TwilioException twilioException) {
+
+                    }
+
+                    @Override
+                    public void onReconnecting(@NonNull Room room, @NonNull TwilioException twilioException) {
+
+                    }
+
+                    @Override
+                    public void onReconnected(@NonNull Room room) {
+
+                    }
+
+                    @Override
+                    public void onDisconnected(@NonNull Room room, @Nullable TwilioException twilioException) {
+                        localVideoTrack.release();
+                    }
+
+                    @Override
+                    public void onParticipantConnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
+                        Log.i("Room.Listener", remoteParticipant.getIdentity() + " has joined the room.");
+                        remoteParticipant.setListener(remoteParticipantListener());
+
+
+                    }
+
+                    @Override
+                    public void onParticipantDisconnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
+                        Log.i("Room.Listener", remoteParticipant.getIdentity() + " has left the room.");
+
+                    }
+
+                    @Override
+                    public void onRecordingStarted(@NonNull Room room) {
+
+                    }
+
+                    @Override
+                    public void onRecordingStopped(@NonNull Room room) {
+
+                    }
+                }
+        );
 
         // ... Assume we have received the connected callback
         // After receiving the connected callback the LocalParticipant becomes available
-        LocalParticipant localParticipant = room.getLocalParticipant();
-        Log.i("LocalParticipant ", localParticipant.getIdentity());
+        //Log.i("LocalParticipant ", room.getLocalParticipant().getIdentity());
+        //LocalParticipant localParticipant = room.getLocalParticipant();
 
         // Get the first participant from the room
-        RemoteParticipant participant = room.getRemoteParticipants().get(0);
-        Log.i("HandleParticipants", participant.getIdentity() + " is in the room.");
-        }
+        //RemoteParticipant participant = room.getRemoteParticipants().get(0);
+        //Log.i("HandleParticipants", participant.getIdentity() + " is in the room.");
+    }
 
     /* In the Participant listener, we can respond when the Participant adds a Video
     Track by rendering it on screen: */
@@ -599,5 +608,4 @@ public class VideoCall extends AppCompatActivity implements Call {
 
 
 }
-
 

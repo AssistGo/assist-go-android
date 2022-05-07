@@ -20,7 +20,7 @@ import java.util.TimerTask;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-public class VoiceCall extends AppCompatActivity implements Call {
+public class VoiceCall extends AppCompatActivity {
 
     String TAG = "VoiceCall";
     String CURRENT_TIME;
@@ -101,27 +101,22 @@ public class VoiceCall extends AppCompatActivity implements Call {
         hangupBtn.setOnClickListener(hangupClick);
     }
 
-    @Override
     public void turnOnSpeaker() {
         //TODO implement method
     }
 
-    @Override
     public void turnOffSpeaker() {
         //TODO implement method
     }
 
-    @Override
     public void mute() {
         //TODO implement method
     }
 
-    @Override
     public void unmute() {
         //TODO implement method
     }
 
-    @Override
     public void hangup() {
         //TODO implement method
 
