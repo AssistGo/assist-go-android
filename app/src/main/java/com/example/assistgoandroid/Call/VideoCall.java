@@ -4,11 +4,8 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 import android.Manifest;
 import android.app.NotificationManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
@@ -17,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -108,7 +104,7 @@ public class VideoCall extends AppCompatActivity {
 
         requestPermissionForCameraAndMicrophone();
         ImageView switchCameraBtn = findViewById(R.id.switchCamBtn);
-        ImageView videochatBtn = findViewById(R.id.videochatBtn);
+        ImageView turnVideoOffBtn = findViewById(R.id.turnVideoOffBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
         ImageView hangupBtn = findViewById(R.id.hangupBtn);
         primaryVideoView = findViewById(R.id.primary_video_view);
@@ -142,20 +138,22 @@ public class VideoCall extends AppCompatActivity {
         };
 
         View.OnClickListener videoChatClick = v -> {
-            //todo turn off camera or turn on camera
-            if(!videoOn)
-                turnVideOff();
-            else
-                turnVideoOn();
+            if (localVideoTrack != null) {
+                boolean enable = !localVideoTrack.isEnabled();
+                localVideoTrack.enable(enable);
+                int camIcon = enable ? R.drawable.videocam_off : R.drawable.videocam_on;
+                turnVideoOffBtn.setImageDrawable(
+                        ContextCompat.getDrawable(VideoCall.this, camIcon));
+            }
         };
 
         View.OnClickListener muteClick = v -> {
             if (localAudioTrack != null) {
                 boolean enable = !localAudioTrack.isEnabled();
                 localAudioTrack.enable(enable);
-                int icon = enable ? R.drawable.mic_on : R.drawable.mic_off;
+                int muteIcon = enable ? R.drawable.mic_on : R.drawable.mic_off;
                 muteBtn.setImageDrawable(
-                        ContextCompat.getDrawable(VideoCall.this, icon));
+                        ContextCompat.getDrawable(VideoCall.this, muteIcon));
             }
         };
 
@@ -166,7 +164,7 @@ public class VideoCall extends AppCompatActivity {
         };
 
         switchCameraBtn.setOnClickListener(switchCameraClick);
-        videochatBtn.setOnClickListener(videoChatClick);
+        turnVideoOffBtn.setOnClickListener(videoChatClick);
         muteBtn.setOnClickListener(muteClick);
         hangupBtn.setOnClickListener(hangupClick);
 
@@ -244,20 +242,6 @@ public class VideoCall extends AppCompatActivity {
                 primaryVideoView.setMirror(cameraId.equals(getBackCameraId()));
             }
         }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void turnVideOff() {
-
-        room.getLocalParticipant().getLocalVideoTracks().forEach(localVideoTrackPublication -> localVideoTrackPublication.getLocalVideoTrack().enable(false));
-        videoOn= false;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void turnVideoOn() {
-
-        room.getLocalParticipant().getLocalVideoTracks().forEach(localVideoTrackPublication -> localVideoTrackPublication.getLocalVideoTrack().enable(true));
-        videoOn= true;
     }
 
     public void hangup() {

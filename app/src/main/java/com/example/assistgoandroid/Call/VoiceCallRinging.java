@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.PersistableBundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +35,7 @@ public class VoiceCallRinging extends AppCompatActivity {
         TextView contactName = findViewById(R.id.tvContactName);
 
         ImageView emergencyBtn = findViewById(R.id.emergencyBtn);
-        ImageView videochatBtn = findViewById(R.id.videochatBtn);
+        ImageView videochatBtn = findViewById(R.id.turnVideoOffBtn);
         ImageView hangupBtn = findViewById(R.id.hangupBtn);
 
         contact = (Contact) getIntent().getParcelableExtra("CONTACT_CARD");

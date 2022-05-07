@@ -37,7 +37,7 @@ public class VoiceCall extends AppCompatActivity {
 
         ImageView contactPicture = findViewById(R.id.ivContactImage);
         ImageView emergencyBtn = findViewById(R.id.emergencyBtn);
-        ImageView videochatBtn = findViewById(R.id.videochatBtn);
+        ImageView videochatBtn = findViewById(R.id.turnVideoOffBtn);
         ImageView speakerBtn = findViewById(R.id.speakerBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
         ImageView hangupBtn = findViewById(R.id.hangupBtn);
