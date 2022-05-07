@@ -43,24 +43,24 @@
 
         <ImageView
             android:id="@+id/switchCamBtn"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
+            android:layout_width="136dp"
+            android:layout_height="76dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/switch_camera_icon" />
+            app:srcCompat="@drawable/switch_video" />
 
         <ImageView
             android:id="@+id/muteBtn"
             android:layout_width="138dp"
-            android:layout_height="wrap_content"
+            android:layout_height="76dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/mute_white" />
+            app:srcCompat="@drawable/mic_off" />
 
         <ImageView
             android:id="@+id/videochatBtn"
             android:layout_width="136dp"
-            android:layout_height="wrap_content"
+            android:layout_height="76dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/videochat_icon_for_darkbg" />
+            app:srcCompat="@drawable/videocam_off" />
 
         <ImageView
             android:id="@+id/hangupBtn"

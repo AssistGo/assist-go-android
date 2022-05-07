@@ -150,11 +150,13 @@ public class VideoCall extends AppCompatActivity {
         };
 
         View.OnClickListener muteClick = v -> {
-            //if clicked for the first time
-            if(!muted)
-                mute();
-            else
-                unmute();
+            if (localAudioTrack != null) {
+                boolean enable = !localAudioTrack.isEnabled();
+                localAudioTrack.enable(enable);
+                int icon = enable ? R.drawable.mic_on : R.drawable.mic_off;
+                muteBtn.setImageDrawable(
+                        ContextCompat.getDrawable(VideoCall.this, icon));
+            }
         };
 
         View.OnClickListener hangupClick = v -> {
@@ -167,9 +169,6 @@ public class VideoCall extends AppCompatActivity {
         videochatBtn.setOnClickListener(videoChatClick);
         muteBtn.setOnClickListener(muteClick);
         hangupBtn.setOnClickListener(hangupClick);
-
-        // Create an audio track https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
-        boolean enable = true;
 
         if(!checkPermissionForCameraAndMicrophone())
             requestPermissionForCameraAndMicrophone();
@@ -259,21 +258,6 @@ public class VideoCall extends AppCompatActivity {
 
         room.getLocalParticipant().getLocalVideoTracks().forEach(localVideoTrackPublication -> localVideoTrackPublication.getLocalVideoTrack().enable(true));
         videoOn= true;
-    }
-
-    //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void mute() {
-
-        room.getLocalParticipant().getLocalAudioTracks().forEach(localAudioTrackPublication -> localAudioTrackPublication.getLocalAudioTrack().enable(false));
-        muted = true;
-    }
-
-    //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void unmute() {
-        room.getLocalParticipant().getLocalAudioTracks().forEach(localAudioTrackPublication -> localAudioTrackPublication.getLocalAudioTrack().enable(true));
-        muted = false;
     }
 
     public void hangup() {
