@@ -136,39 +136,6 @@ public class VideoCall extends AppCompatActivity {
 
         createLocalTracks(); //same as commented below
 
-//        LocalAudioTrack localAudioTrack = LocalAudioTrack.create(getApplicationContext(), enable);
-//
-//        // A video track requires an implementation of a VideoCapturer. Here's how to use the front camera with a Camera2Capturer.
-//        Camera2Enumerator camera2Enumerator = new Camera2Enumerator(getApplicationContext());
-//        String frontCameraId = null;
-//        for (String cameraId : camera2Enumerator.getDeviceNames()) {
-//            if (camera2Enumerator.isFrontFacing(cameraId)) {
-//                frontCameraId = cameraId;
-//                break;
-//            }
-//        }
-//        if(frontCameraId != null) {
-//            // Create the CameraCapturer with the front camera
-//
-//            Camera2Capturer cameraCapturer = new Camera2Capturer(getApplicationContext(), frontCameraId);
-//
-//            // Create a video track
-//            LocalVideoTrack localVideoTrack = LocalVideoTrack.create(getApplicationContext(), enable, cameraCapturer);
-//
-//            // Rendering a local video track requires an implementation of VideoSink
-//            // Let's assume we have added a VideoView in our view hierarchy
-//            VideoView videoView = findViewById(R.id.primary_video_view);
-//
-//            // Render a local video track to preview your camera
-//            localVideoTrack.addSink(videoView);
-//
-//            // Release the audio track to free native memory resources
-//            localAudioTrack.release();
-//
-//            // Release the video track to free native memory resources
-//            localVideoTrack.release();
-//        }
-
 //        ObjectMapper mapper = new ObjectMapper();
 //
 //        try {
@@ -269,66 +236,11 @@ public class VideoCall extends AppCompatActivity {
     }
 
     //https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
-    private Room.Listener roomListener() {
-        return new Room.Listener() {
-            @Override
-            public void onConnected(Room room) {
-
-            }
-
-            @Override
-            public void onConnectFailure(@NonNull Room room, @NonNull TwilioException twilioException) {
-
-            }
-
-            @Override
-            public void onReconnecting(@NonNull Room room, @NonNull TwilioException twilioException) {
-
-            }
-
-            @Override
-            public void onReconnected(@NonNull Room room) {
-
-            }
-
-            @Override
-            public void onDisconnected(@NonNull Room room, @Nullable TwilioException twilioException) {
-
-            }
-
-            @Override
-            public void onParticipantConnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
-
-            }
-
-            @Override
-            public void onParticipantDisconnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
-
-            }
-
-            @Override
-            public void onRecordingStarted(@NonNull Room room) {
-
-            }
-
-            @Override
-            public void onRecordingStopped(@NonNull Room room) {
-
-            }
-        };
-    }
-
-    //https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
     //The name of the Room specifies which Room you wish to join.
     // If a Room by that name does not already exist, it will be created upon connection.
     // If a Room by that name is already active, you'll be connected to the Room and receive notifications from any other Participants
     // also connected to the same Room. Room names must be unique within an account.
     public void connectToRoom(String roomName) {
-//        ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
-//                .roomName(roomName)
-//                .audioTracks((List<LocalAudioTrack>) localAudioTrack)
-//                .videoTracks((List<LocalVideoTrack>) localVideoTrack)
-//                .build();
 
         ConnectOptions.Builder connectOptionsBuilder =
                 new ConnectOptions.Builder(accessToken).roomName(roomName);
@@ -377,8 +289,6 @@ public class VideoCall extends AppCompatActivity {
                     public void onParticipantConnected(@NonNull Room room, @NonNull RemoteParticipant remoteParticipant) {
                         Log.i("Room.Listener", remoteParticipant.getIdentity() + " has joined the room.");
                         remoteParticipant.setListener(remoteParticipantListener());
-
-
                     }
 
                     @Override
@@ -514,7 +424,6 @@ public class VideoCall extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void onDestroy() {
         /*
@@ -557,7 +466,6 @@ public class VideoCall extends AppCompatActivity {
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO},
                     100);
         }
-
     }
 
     @Override
