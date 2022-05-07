@@ -23,18 +23,19 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="145dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
         android:orientation="horizontal"
         app:layout_anchor="@+id/linearLayout4"
         app:layout_anchorGravity="top|center">
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/svmessageSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:id="@+id/svContactSearch"
+            android:layout_width="352dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="106dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/search_bar_background"
             app:iconifiedByDefault="false"
             app:queryHint="Search Message...">

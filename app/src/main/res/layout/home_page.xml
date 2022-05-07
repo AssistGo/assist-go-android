@@ -37,7 +37,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,14 +47,15 @@
 
                 <LinearLayout
                     android:id="@+id/contactLayout"
-                    android:layout_width="134dp"
-                    android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/coner">
 
                     <ImageButton
                         android:id="@+id/contactImageBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="129dp"
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
                         android:background="@color/white"
                         app:srcCompat="@drawable/account_foreground" />
 
@@ -75,14 +77,15 @@
 
                 <LinearLayout
                     android:id="@+id/callLayout"
-                    android:layout_width="134dp"
-                    android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/coner">
 
                     <ImageButton
                         android:id="@+id/callImageBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="129dp"
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
                         android:background="@color/white"
                         app:srcCompat="@drawable/phone_foreground" />
 
@@ -108,7 +111,7 @@
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+                android:layout_height="21dp" />
         </TableRow>
 
         <TableRow
@@ -123,20 +126,21 @@
 
                 <LinearLayout
                     android:id="@+id/messageLayout"
-                    android:layout_width="134dp"
-                    android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/coner">
 
                     <ImageButton
                         android:id="@+id/messageImageBtn"
                         android:layout_width="130dp"
-                        android:layout_height="129dp"
+                        android:layout_height="110dp"
                         android:background="@color/white"
                         app:srcCompat="@drawable/chat_foreground" />
 
                     <Button
                         android:id="@+id/messageBtnLabel"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/app_color"
                         android:text="@string/message"
@@ -153,20 +157,21 @@
 
                 <LinearLayout
                     android:id="@+id/translateLayout"
-                    android:layout_width="134dp"
-                    android:layout_height="175dp"
-                    android:orientation="vertical">>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/coner">
 
                     <ImageButton
                         android:id="@+id/translateImageBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
                         android:background="@color/white"
                         app:srcCompat="@drawable/translate_foreground" />
 
                     <Button
                         android:id="@+id/translateBtnLabel"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/app_color"
                         android:text="@string/translate"
@@ -186,6 +191,7 @@
         android:id="@+id/emergencyBtn"
         android:layout_width="309dp"
         android:layout_height="68dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/home_emergency_background"
         android:text="@string/emergency"
         android:textAlignment="center"
@@ -203,7 +209,8 @@
     <ImageButton
         android:id="@+id/settingsImageBtn"
         android:layout_width="72dp"
-        android:layout_height="70dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/gear"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -211,7 +218,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007">
+        app:layout_constraintVertical_bias="0.01">
 
     </ImageButton>
 
