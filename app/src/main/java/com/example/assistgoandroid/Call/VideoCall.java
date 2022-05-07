@@ -16,14 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.codepath.asynchttpclient.callback.TextHttpResponseHandler;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.models.Contact;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twilio.video.CameraCapturer;
 import com.twilio.video.ConnectOptions;
 import com.twilio.video.LocalAudioTrack;
-import com.twilio.video.LocalParticipant;
 import com.twilio.video.LocalVideoTrack;
 import com.twilio.video.RemoteAudioTrack;
 import com.twilio.video.RemoteAudioTrackPublication;
@@ -37,17 +34,11 @@ import com.twilio.video.TwilioException;
 import com.twilio.video.Video;
 import com.twilio.video.VideoView;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import okhttp3.Headers;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import tvi.webrtc.Camera1Enumerator;
 import tvi.webrtc.VideoSink;
 import com.codepath.asynchttpclient.AsyncHttpClient;
@@ -62,7 +53,8 @@ public class VideoCall extends AppCompatActivity {
     String CURRENT_TIME;
     Contact contact;
 
-    VideoView videoView;
+    VideoView primaryVideoView;
+    VideoView thumbnailVideoView;
     LocalAudioTrack localAudioTrack;
     LocalVideoTrack localVideoTrack;
     String accessToken;
@@ -90,7 +82,8 @@ public class VideoCall extends AppCompatActivity {
         ImageView videochatBtn = findViewById(R.id.videochatBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
         ImageView hangupBtn = findViewById(R.id.hangupBtn);
-        videoView = findViewById(R.id.primary_video_view);
+        primaryVideoView = findViewById(R.id.primary_video_view);
+        thumbnailVideoView = findViewById(R.id.thumbnail_video_view);
 
 
         contact = getIntent().getParcelableExtra("CONTACT_CARD");
@@ -192,7 +185,18 @@ public class VideoCall extends AppCompatActivity {
     }
 
     private void switchCamera() {
-        //TODO implement method
+        if (cameraCapturer != null) {
+            String cameraId =
+                    cameraCapturer.getCameraId().equals(getFrontCameraId())
+                            ? getBackCameraId()
+                            : getFrontCameraId();
+            cameraCapturer.switchCamera(cameraId);
+            if (thumbnailVideoView.getVisibility() == View.VISIBLE) {
+                thumbnailVideoView.setMirror(cameraId.equals(getBackCameraId()));
+            } else {
+                primaryVideoView.setMirror(cameraId.equals(getBackCameraId()));
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -362,8 +366,8 @@ public class VideoCall extends AppCompatActivity {
 
             @Override
             public void onVideoTrackSubscribed(@NonNull RemoteParticipant remoteParticipant, @NonNull RemoteVideoTrackPublication remoteVideoTrackPublication, @NonNull RemoteVideoTrack remoteVideoTrack) {
-                videoView.setMirror(false);
-                remoteVideoTrack.addSink(videoView);
+                primaryVideoView.setMirror(false);
+                remoteVideoTrack.addSink(primaryVideoView);
             }
 
             @Override
@@ -509,9 +513,9 @@ public class VideoCall extends AppCompatActivity {
         // Share your camera
         cameraCapturer = new CameraCapturer(this, getFrontCameraId());
         localVideoTrack = LocalVideoTrack.create(this, true, cameraCapturer);
-        videoView.setMirror(true);
-        localVideoTrack.addSink(videoView);
-        localVideoView = videoView;
+        primaryVideoView.setMirror(true);
+        localVideoTrack.addSink(primaryVideoView);
+        localVideoView = primaryVideoView;
     }
 
 
