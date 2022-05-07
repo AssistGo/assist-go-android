@@ -10,20 +10,18 @@ import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.models.Contact;
 import com.twilio.video.CameraCapturer;
@@ -44,32 +42,33 @@ import com.twilio.video.Video;
 import com.twilio.video.VideoTrack;
 import com.twilio.video.VideoView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
-import okhttp3.Headers;
 import tvi.webrtc.Camera1Enumerator;
 import tvi.webrtc.VideoSink;
-import com.codepath.asynchttpclient.AsyncHttpClient;
-
-import org.json.JSONException;
 
 public class VideoCall extends AppCompatActivity {
     //Resources
-    //https://www.twilio.com/blog/add-muting-unmuting-video-chat-app-30-seconds
-    //https://www.twilio.com/docs/video/android-getting-started#connect-to-a-room
-    String TAG = "VideoCall";
-    String CURRENT_TIME;
-    Contact contact;
+    //https://github.com/twilio/video-quickstart-android/blob/master/exampleVideoInvite/src/main/java/com/twilio/video/examples/videoinvite/VideoInviteActivity.java
+    private String TAG = "VideoCall";
+    private String CURRENT_TIME;
+    private Contact contact;
 
-    VideoView primaryVideoView;
-    VideoView thumbnailVideoView;
-    LocalAudioTrack localAudioTrack;
-    LocalVideoTrack localVideoTrack;
-    String accessToken;
-    String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
-    Room room;
+    private VideoView primaryVideoView;
+    private VideoView thumbnailVideoView;
+    private LocalAudioTrack localAudioTrack;
+    private LocalVideoTrack localVideoTrack;
+    private String accessToken;
+    private String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
+    private Room room;
 
     /*
      * A LocalParticipant represents the identity and tracks provided by this instance
@@ -78,8 +77,6 @@ public class VideoCall extends AppCompatActivity {
     private String remoteParticipantIdentity;
 
     String roomName;
-    boolean muted = false;
-    boolean videoOn = false;
     private String frontCameraId = null;
     private String backCameraId = null;
     private final Camera1Enumerator camera1Enumerator = new Camera1Enumerator();
@@ -112,7 +109,8 @@ public class VideoCall extends AppCompatActivity {
 
         //passed when call is accepted
         contact = getIntent().getParcelableExtra("CONTACT_CARD");
-        roomName = getIntent().getStringExtra("ROOM");
+//        roomName = getIntent().getStringExtra("ROOM");
+        roomName = contact.getPhoneNumber();
 
         Log.i(TAG, "Contact is " + contact);
 
@@ -171,61 +169,69 @@ public class VideoCall extends AppCompatActivity {
         if(!checkPermissionForCameraAndMicrophone())
             requestPermissionForCameraAndMicrophone();
 
-        createLocalTracks(); //same as commented below
+        createLocalTracks();
 
-//        ObjectMapper mapper = new ObjectMapper();
-//
-//        try {
-//            OkHttpClient client = new OkHttpClient();
-//            //MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
-//
-//            Request request = new Request.Builder()
-//                    .url(tokenURL + "?identity=" + contact.getPhoneNumber())
-//                    .get()
-//                    .build();
-//            Response response = client.newCall(request).execute();
-//            String jsonDataString = null;
-//            try {
-//                jsonDataString = response.body().string();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
-//
-//            accessToken = String.valueOf(responseJson.get("token"));
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        //easier way to get json object
-        AsyncHttpClient client = new AsyncHttpClient();
         String url = tokenURL + "?identity=" + contact.getPhoneNumber().replace(" ", "%20");
-        client.get(url, new JsonHttpResponseHandler() {
 
-            @Override
-            public void onSuccess(int statusCode, Headers headers, JsonHttpResponseHandler.JSON json) {
-                // Access a JSON object response with `json.jsonObject`
-                Log.d("DEBUG OBJECT", json.jsonObject.toString());
-                try {
-                    accessToken = json.jsonObject.getString("token");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "JSON error");
-                }
-            }
+        HttpGetRequest httpGetRequest = new HttpGetRequest();
+        httpGetRequest.execute(url);
+        try {
+            accessToken = httpGetRequest.get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-                Log.e(TAG, "JSON error");
-            }
-        });
-
-        accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzVhNGRkZWVmZDBhZjM2NzIwMTJlNGY4MGJiZmY4Y2U4LTE2NTE5MjgzNDUiLCJncmFudHMiOnsiaWRlbnRpdHkiOiIoMjIyKSAyODktMjIyMiIsInZpZGVvIjp7InJvb20iOiJEYWlseVN0YW5kdXAifX0sImlhdCI6MTY1MTkyODM0NSwiZXhwIjoxNjUxOTMxOTQ1LCJpc3MiOiJTSzVhNGRkZWVmZDBhZjM2NzIwMTJlNGY4MGJiZmY4Y2U4Iiwic3ViIjoiQUNhNTI4OTc0MmRkNjA4MGRhMmU4ZDJlODQyMTMwZGIxMCJ9.gonpxAWmVh0pn00PYmxbDEiXLidEmEnLrqIbwIBcXP0";
-        //todo accesstoken is null
         Log.i(TAG, accessToken + " " + contact.getFullName());
-        connectToRoom("roomName");
+        connectToRoom(roomName);
+    }
+
+    public class HttpGetRequest extends AsyncTask<String, Void, String> {
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+        @Override
+        protected String doInBackground(String... params){
+            String stringUrl = params[0];
+            String result;
+            String inputLine;
+            try {
+                //Create a URL object holding our url
+                URL myUrl = new URL(stringUrl);
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();
+                //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+                //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+                result = null;
+            }
+            return result;
+        }
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -863,6 +869,5 @@ public class VideoCall extends AppCompatActivity {
 //                        this);
 //        alertDialog.show();
 //    }
-
 }
 
