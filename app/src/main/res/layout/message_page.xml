@@ -117,12 +117,14 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageView
-            android:id="@+id/ivMicButton"
-            android:layout_width="69dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/mic_icon" />
+                android:id="@+id/ivMicButton"
+                android:layout_width="69dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/mic_icon"
+                android:scaleType="fitCenter"
+                android:onClick="getSpeechInput"
+                />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
