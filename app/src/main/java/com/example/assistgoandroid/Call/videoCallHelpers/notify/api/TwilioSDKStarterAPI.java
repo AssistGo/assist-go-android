@@ -17,12 +17,14 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public class TwilioSDKStarterAPI {
+
     /**
      * Resources defined in the sdk-starter projects available in C#, Java, Node, PHP, Python, or
      * Ruby.
      *
      * <p>https://github.com/TwilioDevEd?q=sdk-starter
      */
+
     interface SDKStarterService {
         // Fetch an access token
         @GET("/token")

@@ -137,7 +137,6 @@ public class VideoCall extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_chat_page);
 
-        requestPermissionForCameraAndMicrophone();
         ImageView switchCameraBtn = findViewById(R.id.switchCamBtn);
         ImageView turnVideoOffBtn = findViewById(R.id.turnVideoOffBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
@@ -145,9 +144,41 @@ public class VideoCall extends AppCompatActivity {
         primaryVideoView = findViewById(R.id.primary_video_view);
         thumbnailVideoView = findViewById(R.id.thumbnail_video_view);
 
+        View.OnClickListener switchCameraClick = v -> switchCamera();
+
+        View.OnClickListener videoChatClick = v -> {
+            if (localVideoTrack != null) {
+                boolean enable = !localVideoTrack.isEnabled();
+                localVideoTrack.enable(enable);
+                int camIcon = enable ? R.drawable.videocam_off : R.drawable.videocam_on;
+                turnVideoOffBtn.setImageDrawable(
+                        ContextCompat.getDrawable(VideoCall.this, camIcon));
+            }
+        };
+
+        View.OnClickListener muteClick = v -> {
+            if (localAudioTrack != null) {
+                boolean enable = !localAudioTrack.isEnabled();
+                localAudioTrack.enable(enable);
+                int muteIcon = enable ? R.drawable.mic_on : R.drawable.mic_off;
+                muteBtn.setImageDrawable(
+                        ContextCompat.getDrawable(VideoCall.this, muteIcon));
+            }
+        };
+
+        View.OnClickListener hangupClick = v -> {
+            hangup();
+            //go back to previous page
+            finish();
+        };
+
+        switchCameraBtn.setOnClickListener(switchCameraClick);
+        turnVideoOffBtn.setOnClickListener(videoChatClick);
+        muteBtn.setOnClickListener(muteClick);
+        hangupBtn.setOnClickListener(hangupClick);
+
         //passed when call is accepted
         contact = getIntent().getParcelableExtra("CONTACT_CARD");
-//        roomName = getIntent().getStringExtra("ROOM");
         roomName = contact.getPhoneNumber();
 
         Log.i(TAG, "Contact is " + contact);
@@ -191,42 +222,6 @@ public class VideoCall extends AppCompatActivity {
             register();
         }
 
-        View.OnClickListener switchCameraClick = v -> switchCamera();
-
-        View.OnClickListener videoChatClick = v -> {
-            if (localVideoTrack != null) {
-                boolean enable = !localVideoTrack.isEnabled();
-                localVideoTrack.enable(enable);
-                int camIcon = enable ? R.drawable.videocam_off : R.drawable.videocam_on;
-                turnVideoOffBtn.setImageDrawable(
-                        ContextCompat.getDrawable(VideoCall.this, camIcon));
-            }
-        };
-
-        View.OnClickListener muteClick = v -> {
-            if (localAudioTrack != null) {
-                boolean enable = !localAudioTrack.isEnabled();
-                localAudioTrack.enable(enable);
-                int muteIcon = enable ? R.drawable.mic_on : R.drawable.mic_off;
-                muteBtn.setImageDrawable(
-                        ContextCompat.getDrawable(VideoCall.this, muteIcon));
-            }
-        };
-
-        View.OnClickListener hangupClick = v -> {
-            hangup();
-            //go back to previous page
-            finish();
-        };
-
-        switchCameraBtn.setOnClickListener(switchCameraClick);
-        turnVideoOffBtn.setOnClickListener(videoChatClick);
-        muteBtn.setOnClickListener(muteClick);
-        hangupBtn.setOnClickListener(hangupClick);
-
-        if(!checkPermissionForCameraAndMicrophone())
-            requestPermissionForCameraAndMicrophone();
-
         createLocalTracks();
 
         String url = tokenURL + "?identity=" + contact.getPhoneNumber().replace(" ", "%20");
@@ -241,6 +236,7 @@ public class VideoCall extends AppCompatActivity {
 
         Log.i(TAG, accessToken + " " + contact.getFullName());
         connectToRoom(roomName);
+        //notify(roomName);
     }
 
     private void register() {
@@ -488,6 +484,7 @@ public class VideoCall extends AppCompatActivity {
             @Override
             public void onVideoTrackSubscribed(@NonNull RemoteParticipant remoteParticipant, @NonNull RemoteVideoTrackPublication remoteVideoTrackPublication, @NonNull RemoteVideoTrack remoteVideoTrack) {
                 Toast.makeText(getApplicationContext(), "onVideoTrackSubscribed", LENGTH_SHORT).show();
+                addRemoteParticipantVideo(remoteVideoTrack);
             }
 
             @Override
@@ -498,6 +495,7 @@ public class VideoCall extends AppCompatActivity {
             @Override
             public void onVideoTrackUnsubscribed(@NonNull RemoteParticipant remoteParticipant, @NonNull RemoteVideoTrackPublication remoteVideoTrackPublication, @NonNull RemoteVideoTrack remoteVideoTrack) {
                 Toast.makeText(getApplicationContext(), "onVideoTrackUnsubscribed", LENGTH_SHORT).show();
+                removeParticipantVideo(remoteVideoTrack);
             }
 
             @Override
@@ -517,7 +515,9 @@ public class VideoCall extends AppCompatActivity {
 
             @Override
             public void onDataTrackSubscriptionFailed(@NonNull RemoteParticipant remoteParticipant, @NonNull RemoteDataTrackPublication remoteDataTrackPublication, @NonNull TwilioException twilioException) {
-                Toast.makeText(getApplicationContext(), "onDataTrackSubscriptionFailed", LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(
+                        "Failed to subscribe to %s video track",
+                        remoteParticipant.getIdentity()), LENGTH_SHORT).show();
             }
 
             @Override
@@ -715,7 +715,6 @@ public class VideoCall extends AppCompatActivity {
     }
 
 
-
     //permissions
 
     private boolean checkPermissionForCameraAndMicrophone() {
@@ -896,37 +895,6 @@ public class VideoCall extends AppCompatActivity {
         };
     }
 
-    /*
-     * Creates a connect UI dialog
-     */
-    private void showConnectDialog() {
-        EditText roomEditText = new EditText(this);
-        String title = "Connect to a video room";
-        roomEditText.setHint("room name");
-        alertDialog =
-                createConnectDialog(
-                        title,
-                        roomEditText,
-                        connectClickListener(roomEditText),
-                        cancelConnectDialogClickListener(),
-                        this);
-        alertDialog.show();
-    }
-
-    private DialogInterface.OnClickListener connectClickListener(final EditText roomEditText) {
-        return (dialog, which) -> {
-            final String roomName = roomEditText.getText().toString();
-            /*
-             * Connect to room
-             */
-            connectToRoom(roomName);
-            /*
-             * Notify other participants to join the room
-             */
-            VideoCall.this.notify(roomName);
-        };
-    }
-
     void notify(final String roomName) {
         String inviteJsonString;
         Invite invite = new Invite(identity, roomName);
@@ -987,7 +955,15 @@ public class VideoCall extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), REGISTRATION_ERROR, LENGTH_SHORT).show();
         } else {
             createLocalTracks();
-            identity = intent.getStringExtra(REGISTRATION_IDENTITY);
+            //identity = intent.getStringExtra(REGISTRATION_IDENTITY);
+            identity = "5188059149";
+//            HttpGetRequest httpRequest = new HttpGetRequest();
+//            httpRequest.execute("http://34.73.16.73:8080/users/info?user_id=USER1");
+//            try {
+//                identity = httpRequest.get();
+//            } catch (ExecutionException | InterruptedException e) {
+//                e.printStackTrace();
+//            }
             accessToken = intent.getStringExtra(REGISTRATION_TOKEN);
             Toast.makeText(getApplicationContext(), "Registered", LENGTH_SHORT).show();
             if (cachedVideoNotificationIntent != null) {

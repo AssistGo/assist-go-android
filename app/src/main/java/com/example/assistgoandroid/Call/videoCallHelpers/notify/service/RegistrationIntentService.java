@@ -189,4 +189,5 @@ public class RegistrationIntentService extends IntentService {
         intent.putExtra(VideoCall.REGISTRATION_ERROR, message);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
+
 }
