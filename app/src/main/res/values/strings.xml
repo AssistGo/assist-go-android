@@ -1440,7 +1440,8 @@
         <item>@string/Zimbabwe</item>
     </string-array>
 
-    <string-array name="emergency_numbers"><item>"119/112/119"</item>
+    <string-array name="emergency_numbers">
+        <item>"119/112/119"</item>
         <item>"129/127/128"</item>
         <item>"1548/14/14"</item>
         <item>"911/911/911"</item>
@@ -1663,7 +1664,5 @@
         <item>"999/992/993"</item>
         <item>"999/994/993"</item>
     </string-array>
-
-
 
 </resources>
