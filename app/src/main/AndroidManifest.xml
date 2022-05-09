@@ -128,7 +128,8 @@
                 <action android:name="android.intent.action.DIAL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
+        </service>
+
 
         <!-- [START fcm_listener] -->
 <!--        <service-->
@@ -152,7 +153,6 @@
 <!--        <service-->
 <!--            android:name=".Call.videoCallHelpers.notify.service.RegistrationIntentService"-->
 <!--            android:exported="false" />-->
-        </service>
 
         <activity android:name=".emergency.CallActivityGit"></activity>
 
