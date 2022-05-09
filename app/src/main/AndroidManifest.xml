@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- Access photos in local storage permissions -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <!--Phone permissions-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -155,6 +157,14 @@
 <!--            android:exported="false" />-->
 
         <activity android:name=".emergency.CallActivityGit"></activity>
+
+        <receiver android:name=".Messaging.MessageReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
 
     </application>

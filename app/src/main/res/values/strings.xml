@@ -35,6 +35,8 @@
     <string name="call_history">Call History</string>
     <string name="ringing">Ringing...</string>
     <string name ="Allow_system_notifications">Allow system notifications</string>
+    <string name="profile_me">My Profile Pic</string>
+    <string name="profile_other">Other profile pic</string>
     <string-array name="settings_titles">
         <item>@string/profile</item>
         <item>@string/preferences</item>

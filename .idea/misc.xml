@@ -9,6 +9,8 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/favorite_heart.xml" value="0.224" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/favorite_heart_filled.xml" value="0.224" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.226" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/message_incoming.xml" value="0.2335" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/message_outgoing.xml" value="0.2335" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/search_bar_background.xml" value="0.2535" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/splash_background.xml" value="0.226" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/drawable/splash_fg.xml" value="0.1" />
@@ -25,6 +27,9 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_call.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_contact.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/item_homemessage.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/message_incoming.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/message_outgoing.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/message_page.xml" value="0.23052536231884058" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/new_contact_qrcode_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/assist-go-android/app/src/main/res/layout/settings_page_layout.xml" value="0.22282608695652173" />

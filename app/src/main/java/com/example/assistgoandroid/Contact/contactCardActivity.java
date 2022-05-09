@@ -65,6 +65,7 @@ public class contactCardActivity extends AppCompatActivity {
 
     public void onMessageClick(View view){
         Intent intent = new Intent(this, messageActivity.class);
+        intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
     }
 
