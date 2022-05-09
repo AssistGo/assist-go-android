@@ -20,9 +20,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
     private static final int MESSAGE_OUTGOING = 123;
     private static final int MESSAGE_INCOMING = 321;
 
-    private List<Message> mMessages;
-    private Context mContext;
-    private String mUserId;
+    private final List<Message> mMessages;
+    private final Context mContext;
+    private final String mUserId;
 
     public ChatAdapter(Context context, String userId, List<Message> messages) {
         mMessages = messages;
@@ -52,10 +52,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
 
     private boolean isMe(int position) {
         Message message = mMessages.get(position);
-        return message.getUserId() != null && message.getUserId().equals(mUserId);
+        return message.getUserID() != null && message.getUserID().equals(mUserId);
     }
 
-    public abstract class MessageViewHolder extends RecyclerView.ViewHolder {
+    public abstract static class MessageViewHolder extends RecyclerView.ViewHolder {
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,28 +74,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
 
         public IncomingMessageViewHolder(View itemView) {
             super(itemView);
-            imageOther = (ImageView)itemView.findViewById(R.id.ivProfileOther);
-            body = (TextView)itemView.findViewById(R.id.tvBody);
-            name = (TextView)itemView.findViewById(R.id.tvName);
+            imageOther = itemView.findViewById(R.id.ivProfileOther);
+            body = itemView.findViewById(R.id.tvBody);
+            name = itemView.findViewById(R.id.tvName);
         }
 
         @Override
         public void bindMessage(Message message) {
 
-            // Delete the following comment:
-            // TODO: implement later
-
-
-            /*** START OF CHANGE ***/
-
             Glide.with(mContext)
-                    .load(getProfileUrl(message.getUserId()))
+                    .load(message.getProfilePicture())
                     .circleCrop() // create an effect of a round profile picture
                     .into(imageOther);
-            body.setText(message.getBody());
-            name.setText((Integer) message.getUserId()); // in addition to message show user ID
-
-            /*** END OF CHANGE ***/
+            body.setText(message.getMessageBody());
+            name.setText(message.getUserName());
 
         }
     }
@@ -109,31 +101,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
 
         public OutgoingMessageViewHolder(View itemView) {
             super(itemView);
-            imageMe = (ImageView)itemView.findViewById(R.id.ivProfileMe);
-            body = (TextView)itemView.findViewById(R.id.tvBody);
+            imageMe = itemView.findViewById(R.id.ivProfileMe);
+            body = itemView.findViewById(R.id.tvBody);
         }
 
         @Override
         public void bindMessage(Message message) {
 
-            // Delete the following comment:
-            // TODO: implement later
-
-
-            /*** START OF CHANGE ***/
-
             Glide.with(mContext)
-                    .load(getProfileUrl(message.getUserId()))
+                    .load(message.getProfilePicture())
                     .circleCrop() // create an effect of a round profile picture
                     .into(imageMe);
-            body.setText(message.getBody());
-
-            /*** END OF CHANGE ***/
-
+            body.setText(message.getMessageBody());
         }
     }
 
-
+    @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -149,6 +132,4 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
             throw new IllegalArgumentException("Unknown view type");
         }
     }
-
-
 }

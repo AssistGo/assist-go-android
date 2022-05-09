@@ -4,14 +4,11 @@ import android.Manifest;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,9 +18,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.assistgoandroid.Messaging.ChatAdapter;
+import com.example.assistgoandroid.Messaging.Message;
 import com.example.assistgoandroid.models.Contact;
 
 import java.util.ArrayList;
@@ -37,19 +37,24 @@ public class messageActivity extends AppCompatActivity {
     ImageButton btnSendSMS;
     ImageButton btnRecordVoice;
     RecyclerView rvMessages;
-    private List<String> messageList = new ArrayList<>();
+    private final List<Message> messageList = new ArrayList<>();
     IntentFilter intentFilter;
     EditText evMessage;
-    String currUser;
+    String currUserID = "me";
+    ChatAdapter adapter;
 
-    private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             //display msg in text view
-            //todo add it to text view
-            String message = intent.getExtras().getString("message");
+            String messageBody = intent.getExtras().getString("message");
+            Message message = new Message();
+            message.setMessageBody(messageBody);
+            message.setProfilePicture(contact.getProfileImageUrl());
+            message.setUserName(contact.getFullName());
+            message.setUserID(contact.getFullPhoneNumber());
             messageList.add(message);
-            rvMessages.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
         }
     };
     @Override
@@ -79,8 +84,8 @@ public class messageActivity extends AppCompatActivity {
         intentFilter = new IntentFilter();
         intentFilter.addAction("SMS_RECEIVED_ACTION");
 
-        btnSendSMS = (ImageButton) findViewById(R.id.sendSMSBtn);
-        evMessage = (EditText) findViewById(R.id.MessagePhraseInput);
+        btnSendSMS = findViewById(R.id.sendSMSBtn);
+        evMessage = findViewById(R.id.MessagePhraseInput);
 
         btnSendSMS.setOnClickListener(view -> {
             String myMsg = evMessage.getText().toString();
@@ -101,6 +106,15 @@ public class messageActivity extends AppCompatActivity {
         }
     }
 
+    private void populateMessages() {
+        adapter = new ChatAdapter(messageActivity.this, currUserID, messageList);
+        rvMessages.setAdapter(adapter);
+
+        // associate the LayoutManager with the RecylcerView
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(messageActivity.this);
+        rvMessages.setLayoutManager(linearLayoutManager);
+    }
+
     private void sendMsg(String phoneNumber, String myMsg) {
         String SENT = "Message Sent";
         String DELIVERED = "Message Delivered";
@@ -110,6 +124,12 @@ public class messageActivity extends AppCompatActivity {
 
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phoneNumber, null, myMsg, sentPI, deliveredPI);
+
+        Message message = new Message();
+        message.setUserID("me");
+        message.setMessageBody(myMsg);
+        messageList.add(message);
+        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -20,10 +20,10 @@
 
     <ImageView
         android:id="@+id/ivProfileOther"
-        android:layout_alignParentLeft="true"
-        android:contentDescription="profile_other"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="profile_other"
         android:src="@mipmap/ic_launcher" />
     <TextView
         android:layout_width="wrap_content"
