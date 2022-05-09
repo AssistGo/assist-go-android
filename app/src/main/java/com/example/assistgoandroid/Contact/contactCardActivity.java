@@ -1,22 +1,26 @@
 package com.example.assistgoandroid.Contact;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.assistgoandroid.Call.DialerActivity;
-import com.example.assistgoandroid.Call.VideoCall;
 import com.example.assistgoandroid.Call.VideoCallRinging;
-import com.example.assistgoandroid.Call.VoiceCallRinging;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.emergency.DialerActivityGit;
 import com.example.assistgoandroid.messageActivity;
 import com.example.assistgoandroid.models.Contact;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -50,8 +54,7 @@ public class contactCardActivity extends AppCompatActivity {
     }
 
     public void onCallClick(View view){
-        //Intent intent = new Intent(this, VoiceCallRinging.class);
-        Intent intent = new Intent(this, DialerActivity.class);
+        Intent intent = new Intent(this, DialerActivityGit.class);
 
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
@@ -59,10 +62,13 @@ public class contactCardActivity extends AppCompatActivity {
 
     public void onVideoCallClick(View view){
         //Intent intent = new Intent(this, VideoCallRinging.class);
+        /*
         Intent intent = new Intent(this, VideoCall.class);
 
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
+
+         */
     }
 
     public void onMessageClick(View view){
@@ -74,5 +80,23 @@ public class contactCardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, editContactCardActivity.class);
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);
+    }
+
+    public void getSpeechInput(View view) {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start Speaking");
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK){
+            String resultString = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
+            // TODO PARSE STRING HERE!!!!
+
+        }
     }
 }

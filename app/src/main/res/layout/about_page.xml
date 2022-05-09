@@ -22,15 +22,6 @@
         android:textSize="55sp"
         android:textStyle="bold" />
 
-
-        /*Editor: Sena B.
-        Dat:4/28/2022
-        */
-
-
-        /*End of Sena Coding
-        */
-
         <ImageView
             android:layout_width="141dp"
             android:layout_height="138dp"
@@ -110,7 +101,9 @@
             android:layout_width="69dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/mic_icon" />
+            app:srcCompat="@drawable/mic_icon"
+            android:onClick="getSpeechInput"
+            />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

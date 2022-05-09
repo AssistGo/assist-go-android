@@ -994,5 +994,675 @@
     <string name="are_you_sure_you_want_to_delete_your_account">Are you sure you want to delete your account?</string>
     <string name="delete_my_account">Delete My Account</string>
 
+    <string name ="Afghanistan">Afghanistan</string>
+    <string name ="Albania">Albania</string>
+    <string name ="Algeria">Algeria</string>
+    <string name ="AmericanSamoa">American Samoa</string>
+    <string name ="Andorra">Andorra</string>
+    <string name ="Angola">Angola</string>
+    <string name ="Anguilla">Anguilla</string>
+    <string name ="Barbuda">Barbuda</string>
+    <string name ="Antigua">Antigua</string>
+    <string name ="Argentina">Argentina</string>
+    <string name ="Armenia">Armenia</string>
+    <string name ="Aruba">Aruba</string>
+    <string name ="Australia">Australia</string>
+    <string name ="Austria">Austria</string>
+    <string name ="Azerbaijan">Azerbaijan</string>
+    <string name ="Bahamas">Bahamas</string>
+    <string name ="Bahrain">Bahrain</string>
+    <string name ="Bangladesh">Bangladesh</string>
+    <string name ="Barbados">Barbados</string>
+    <string name ="Belarus">Belarus</string>
+    <string name ="Belgium">Belgium</string>
+    <string name ="Belize">Belize</string>
+    <string name ="Benin">Benin</string>
+    <string name ="Bermuda">Bermuda</string>
+    <string name ="Bhutan">Bhutan</string>
+    <string name ="Bolivia">Bolivia</string>
+    <string name ="BosniaandHerzegovina">Bosnia and Herzegovina</string>
+    <string name ="Botswana">Botswana</string>
+    <string name ="Brazil">Brazil</string>
+    <string name ="BritishVirginIslands">British Virgin Islands</string>
+    <string name ="Brunei">Brunei</string>
+    <string name ="Bulgaria">Bulgaria</string>
+    <string name ="BurkinaFaso">Burkina Faso</string>
+    <string name ="Burundi">Burundi</string>
+    <string name ="Cambodia">Cambodia</string>
+    <string name ="Cameroon">Cameroon</string>
+    <string name ="Canada">Canada</string>
+    <string name ="CapeVerde">Cape Verde</string>
+    <string name ="CaymanIslands">Cayman Islands</string>
+    <string name ="CentralAfricanRepublic">Central African Republic</string>
+    <string name ="Chad">Chad</string>
+    <string name ="Chile">Chile</string>
+    <string name ="China">China</string>
+    <string name ="Colombia">Colombia</string>
+    <string name ="Comoros">Comoros</string>
+    <string name ="CookIslands">Cook Islands</string>
+    <string name ="CostaRica">Costa Rica</string>
+    <string name ="Croatia">Croatia</string>
+    <string name ="Cuba">Cuba</string>
+    <string name ="Curacao">Curacao</string>
+    <string name ="Cyprus">Cyprus</string>
+    <string name ="CzechRepublic">Czech Republic</string>
+    <string name ="Denmark">Denmark</string>
+    <string name ="Djibouti">Djibouti</string>
+    <string name ="Dominica">Dominica</string>
+    <string name ="DominicanRepublic">Dominican Republic</string>
+    <string name ="DRCongo">DR Congo</string>
+    <string name ="Ecuador">Ecuador</string>
+    <string name ="Egypt">Egypt</string>
+    <string name ="ElSalvador">El Salvador</string>
+    <string name ="EquatorialGuinea">Equatorial Guinea</string>
+    <string name ="Eritrea">Eritrea</string>
+    <string name ="Estonia">Estonia</string>
+    <string name ="Eswatini">Eswatini</string>
+    <string name ="Ethiopia">Ethiopia</string>
+    <string name ="FalklandIslands">Falkland Islands</string>
+    <string name ="FaroeIslands">Faroe Islands</string>
+    <string name ="Fiji">Fiji</string>
+    <string name ="Finland">Finland</string>
+    <string name ="France">France</string>
+    <string name ="FrenchGuiana">French Guiana</string>
+    <string name ="FrenchPolynesia">French Polynesia</string>
+    <string name ="Gabon">Gabon</string>
+    <string name ="Gambia">Gambia</string>
+    <string name ="Georgia">Georgia</string>
+    <string name ="Germany">Germany</string>
+    <string name ="Ghana">Ghana</string>
+    <string name ="Gibraltar">Gibraltar</string>
+    <string name ="Greece">Greece</string>
+    <string name ="Greenland">Greenland</string>
+    <string name ="Grenada">Grenada</string>
+    <string name ="Guadeloupe">Guadeloupe</string>
+    <string name ="Guam">Guam</string>
+    <string name ="Guatemala">Guatemala</string>
+    <string name ="Guinea">Guinea</string>
+    <string name ="GuineaBissau">Guinea-Bissau</string>
+    <string name ="Guyana">Guyana</string>
+    <string name ="Haiti">Haiti</string>
+    <string name ="Honduras">Honduras</string>
+    <string name ="HongKong">Hong Kong</string>
+    <string name ="Hungary">Hungary</string>
+    <string name ="Iceland">Iceland</string>
+    <string name ="India">India</string>
+    <string name ="Indonesia">Indonesia</string>
+    <string name ="Iran">Iran</string>
+    <string name ="Iraq">Iraq</string>
+    <string name ="Ireland">Ireland</string>
+    <string name ="IsleofMan">Isle of Man</string>
+    <string name ="Israel">Israel</string>
+    <string name ="Italy">Italy</string>
+    <string name ="IvoryCoast">Ivory Coast</string>
+    <string name ="Jamaica">Jamaica</string>
+    <string name ="Japan">Japan</string>
+    <string name ="Jordan">Jordan</string>
+    <string name ="Kazakhstan">Kazakhstan</string>
+    <string name ="Kenya">Kenya</string>
+    <string name ="Kiribati">Kiribati</string>
+    <string name ="Kuwait">Kuwait</string>
+    <string name ="Kyrgyzstan">Kyrgyzstan</string>
+    <string name ="Laos">Laos</string>
+    <string name ="Latvia">Latvia</string>
+    <string name ="Lebanon">Lebanon</string>
+    <string name ="Lesotho">Lesotho</string>
+    <string name ="Liberia">Liberia</string>
+    <string name ="Libya">Libya</string>
+    <string name ="Liechtenstein">Liechtenstein</string>
+    <string name ="Lithuania">Lithuania</string>
+    <string name ="Luxembourg">Luxembourg</string>
+    <string name ="Macau">Macau</string>
+    <string name ="Madagascar">Madagascar</string>
+    <string name ="Malawi">Malawi</string>
+    <string name ="Malaysia">Malaysia</string>
+    <string name ="Maldives">Maldives</string>
+    <string name ="Mali">Mali</string>
+    <string name ="Malta">Malta</string>
+    <string name ="MarshallIslands">Marshall Islands</string>
+    <string name ="Martinique">Martinique</string>
+    <string name ="Mauritania">Mauritania</string>
+    <string name ="Mauritius">Mauritius</string>
+    <string name ="Mayotte">Mayotte</string>
+    <string name ="Mexico">Mexico</string>
+    <string name ="Micronesia">Micronesia</string>
+    <string name ="Moldova">Moldova</string>
+    <string name ="Monaco">Monaco</string>
+    <string name ="Mongolia">Mongolia</string>
+    <string name ="Montenegro">Montenegro</string>
+    <string name ="Montserrat">Montserrat</string>
+    <string name ="Morocco">Morocco</string>
+    <string name ="Mozambique">Mozambique</string>
+    <string name ="Myanmar">Myanmar</string>
+    <string name ="Namibia">Namibia</string>
+    <string name ="Nepal">Nepal</string>
+    <string name ="Netherlands">Netherlands</string>
+    <string name ="NewCaledonia">New Caledonia</string>
+    <string name ="NewZealand">New Zealand</string>
+    <string name ="Nicaragua">Nicaragua</string>
+    <string name ="Niger">Niger</string>
+    <string name ="Nigeria">Nigeria</string>
+    <string name ="NorthKorea">North Korea</string>
+    <string name ="Norway">Norway</string>
+    <string name ="Oman">Oman</string>
+    <string name ="Pakistan">Pakistan</string>
+    <string name ="Palau">Palau</string>
+    <string name ="Panama">Panama</string>
+    <string name ="PapuaNewGuinea">Papua New Guinea</string>
+    <string name ="Paraguay">Paraguay</string>
+    <string name ="Peru">Peru</string>
+    <string name ="Philippines">Philippines</string>
+    <string name ="Poland">Poland</string>
+    <string name ="Portugal">Portugal</string>
+    <string name ="PuertoRico">Puerto Rico</string>
+    <string name ="Qatar">Qatar</string>
+    <string name ="RepublicoftheCongo">Republic of the Congo</string>
+    <string name ="Reunion">Reunion</string>
+    <string name ="Romania">Romania</string>
+    <string name ="Russia">Russia</string>
+    <string name ="Rwanda">Rwanda</string>
+    <string name ="SaintKittsandNevis">Saint Kitts and Nevis</string>
+    <string name ="SaintLucia">Saint Lucia</string>
+    <string name ="SaintPierreandMiquelon">Saint Pierre and Miquelon</string>
+    <string name ="SaintVincentandtheGrenadines">Saint Vincent and the Grenadines</string>
+    <string name ="Samoa">Samoa</string>
+    <string name ="SanMarino">San Marino</string>
+    <string name ="SaoTomeandPrincipe">Sao Tome and Principe</string>
+    <string name ="SaudiArabia">Saudi Arabia</string>
+    <string name ="Senegal">Senegal</string>
+    <string name ="Serbia">Serbia</string>
+    <string name ="Seychelles">Seychelles</string>
+    <string name ="SierraLeone">Sierra Leone</string>
+    <string name ="Singapore">Singapore</string>
+    <string name ="Slovakia">Slovakia</string>
+    <string name ="Slovenia">Slovenia</string>
+    <string name ="SolomonIslands">Solomon Islands</string>
+    <string name ="Somalia">Somalia</string>
+    <string name ="SouthAfrica">South Africa</string>
+    <string name ="SouthKorea">South Korea</string>
+    <string name ="SouthSudan">South Sudan</string>
+    <string name ="Spain">Spain</string>
+    <string name ="SriLanka">Sri Lanka</string>
+    <string name ="Sudan">Sudan</string>
+    <string name ="Suriname">Suriname</string>
+    <string name ="Sweden">Sweden</string>
+    <string name ="Switzerland">Switzerland</string>
+    <string name ="Syria">Syria</string>
+    <string name ="Taiwan">Taiwan</string>
+    <string name ="Tajikistan">Tajikistan</string>
+    <string name ="Tanzania">Tanzania</string>
+    <string name ="Thailand">Thailand</string>
+    <string name ="TimorLeste">Timor-Leste</string>
+    <string name ="Togo">Togo</string>
+    <string name ="TrinidadandTobago">Trinidad and Tobago</string>
+    <string name ="Tunisia">Tunisia</string>
+    <string name ="Turkey">Turkey</string>
+    <string name ="Turkmenistan">Turkmenistan</string>
+    <string name ="Tuvalu">Tuvalu</string>
+    <string name ="Uganda">Uganda</string>
+    <string name ="UnitedArabEmirates">United Arab Emirates</string>
+    <string name ="UnitedKingdom">United Kingdom</string>
+    <string name ="UnitedStates">United States</string>
+    <string name ="UnitedStatesVirginIslands">United States Virgin Islands</string>
+    <string name ="Uruguay">Uruguay</string>
+    <string name ="Uzbekistan">Uzbekistan</string>
+    <string name ="Vanuatu">Vanuatu</string>
+    <string name ="VaticanCity">Vatican City</string>
+    <string name ="Venezuela">Venezuela</string>
+    <string name ="Vietnam">Vietnam</string>
+    <string name ="WesternSahara">Western Sahara</string>
+    <string name ="Yemen">Yemen</string>
+    <string name ="Zambia">Zambia</string>
+    <string name ="Zimbabwe">Zimbabwe</string>
+
+    <string-array name="emergency_country">
+        <item>@string/Afghanistan</item>
+        <item>@string/Albania</item>
+        <item>@string/Algeria</item>
+        <item>@string/AmericanSamoa</item>
+        <item>@string/Andorra</item>
+        <item>@string/Angola</item>
+        <item>@string/Anguilla</item>
+        <item>@string/Barbuda</item>
+        <item>@string/Antigua</item>
+        <item>@string/Argentina</item>
+        <item>@string/Armenia</item>
+        <item>@string/Aruba</item>
+        <item>@string/Australia</item>
+        <item>@string/Austria</item>
+        <item>@string/Azerbaijan</item>
+        <item>@string/Bahamas</item>
+        <item>@string/Bahrain</item>
+        <item>@string/Bangladesh</item>
+        <item>@string/Barbados</item>
+        <item>@string/Belarus</item>
+        <item>@string/Belgium</item>
+        <item>@string/Belize</item>
+        <item>@string/Benin</item>
+        <item>@string/Bermuda</item>
+        <item>@string/Bhutan</item>
+        <item>@string/Bolivia</item>
+        <item>@string/BosniaandHerzegovina</item>
+        <item>@string/Botswana</item>
+        <item>@string/Brazil</item>
+        <item>@string/BritishVirginIslands</item>
+        <item>@string/Brunei</item>
+        <item>@string/Bulgaria</item>
+        <item>@string/BurkinaFaso</item>
+        <item>@string/Burundi</item>
+        <item>@string/Cambodia</item>
+        <item>@string/Cameroon</item>
+        <item>@string/Canada</item>
+        <item>@string/CapeVerde</item>
+        <item>@string/CaymanIslands</item>
+        <item>@string/CentralAfricanRepublic</item>
+        <item>@string/Chad</item>
+        <item>@string/Chile</item>
+        <item>@string/China</item>
+        <item>@string/Colombia</item>
+        <item>@string/Comoros</item>
+        <item>@string/CookIslands</item>
+        <item>@string/CostaRica</item>
+        <item>@string/Croatia</item>
+        <item>@string/Cuba</item>
+        <item>@string/Curacao</item>
+        <item>@string/Cyprus</item>
+        <item>@string/CzechRepublic</item>
+        <item>@string/Denmark</item>
+        <item>@string/Djibouti</item>
+        <item>@string/Dominica</item>
+        <item>@string/DominicanRepublic</item>
+        <item>@string/DRCongo</item>
+        <item>@string/Ecuador</item>
+        <item>@string/Egypt</item>
+        <item>@string/ElSalvador</item>
+        <item>@string/EquatorialGuinea</item>
+        <item>@string/Eritrea</item>
+        <item>@string/Estonia</item>
+        <item>@string/Eswatini</item>
+        <item>@string/Ethiopia</item>
+        <item>@string/FalklandIslands</item>
+        <item>@string/FaroeIslands</item>
+        <item>@string/Fiji</item>
+        <item>@string/Finland</item>
+        <item>@string/France</item>
+        <item>@string/FrenchGuiana</item>
+        <item>@string/FrenchPolynesia</item>
+        <item>@string/Gabon</item>
+        <item>@string/Gambia</item>
+        <item>@string/Georgia</item>
+        <item>@string/Germany</item>
+        <item>@string/Ghana</item>
+        <item>@string/Gibraltar</item>
+        <item>@string/Greece</item>
+        <item>@string/Greenland</item>
+        <item>@string/Grenada</item>
+        <item>@string/Guadeloupe</item>
+        <item>@string/Guam</item>
+        <item>@string/Guatemala</item>
+        <item>@string/Guinea</item>
+        <item>@string/GuineaBissau</item>
+        <item>@string/Guyana</item>
+        <item>@string/Haiti</item>
+        <item>@string/Honduras</item>
+        <item>@string/HongKong</item>
+        <item>@string/Hungary</item>
+        <item>@string/Iceland</item>
+        <item>@string/India</item>
+        <item>@string/Indonesia</item>
+        <item>@string/Iran</item>
+        <item>@string/Iraq</item>
+        <item>@string/Ireland</item>
+        <item>@string/IsleofMan</item>
+        <item>@string/Israel</item>
+        <item>@string/Italy</item>
+        <item>@string/IvoryCoast</item>
+        <item>@string/Jamaica</item>
+        <item>@string/Japan</item>
+        <item>@string/Jordan</item>
+        <item>@string/Kazakhstan</item>
+        <item>@string/Kenya</item>
+        <item>@string/Kiribati</item>
+        <item>@string/Kuwait</item>
+        <item>@string/Kyrgyzstan</item>
+        <item>@string/Laos</item>
+        <item>@string/Latvia</item>
+        <item>@string/Lebanon</item>
+        <item>@string/Lesotho</item>
+        <item>@string/Liberia</item>
+        <item>@string/Libya</item>
+        <item>@string/Liechtenstein</item>
+        <item>@string/Lithuania</item>
+        <item>@string/Luxembourg</item>
+        <item>@string/Macau</item>
+        <item>@string/Madagascar</item>
+        <item>@string/Malawi</item>
+        <item>@string/Malaysia</item>
+        <item>@string/Maldives</item>
+        <item>@string/Mali</item>
+        <item>@string/Malta</item>
+        <item>@string/MarshallIslands</item>
+        <item>@string/Martinique</item>
+        <item>@string/Mauritania</item>
+        <item>@string/Mauritius</item>
+        <item>@string/Mayotte</item>
+        <item>@string/Mexico</item>
+        <item>@string/Micronesia</item>
+        <item>@string/Moldova</item>
+        <item>@string/Monaco</item>
+        <item>@string/Mongolia</item>
+        <item>@string/Montenegro</item>
+        <item>@string/Montserrat</item>
+        <item>@string/Morocco</item>
+        <item>@string/Mozambique</item>
+        <item>@string/Myanmar</item>
+        <item>@string/Namibia</item>
+        <item>@string/Nauru</item>
+        <item>@string/Nepal</item>
+        <item>@string/Netherlands</item>
+        <item>@string/NewCaledonia</item>
+        <item>@string/NewZealand</item>
+        <item>@string/Nicaragua</item>
+        <item>@string/Niger</item>
+        <item>@string/Nigeria</item>
+        <item>@string/NorthKorea</item>
+        <item>@string/Norway</item>
+        <item>@string/Oman</item>
+        <item>@string/Pakistan</item>
+        <item>@string/Palau</item>
+        <item>@string/Panama</item>
+        <item>@string/PapuaNewGuinea</item>
+        <item>@string/Paraguay</item>
+        <item>@string/Peru</item>
+        <item>@string/Philippines</item>
+        <item>@string/Poland</item>
+        <item>@string/Portugal</item>
+        <item>@string/PuertoRico</item>
+        <item>@string/Qatar</item>
+        <item>@string/RepublicoftheCongo</item>
+        <item>@string/Reunion</item>
+        <item>@string/Romania</item>
+        <item>@string/Russia</item>
+        <item>@string/Rwanda</item>
+        <item>@string/SaintKittsandNevis</item>
+        <item>@string/SaintLucia</item>
+        <item>@string/SaintPierreandMiquelon</item>
+        <item>@string/SaintVincentandtheGrenadines</item>
+        <item>@string/Samoa</item>
+        <item>@string/SanMarino</item>
+        <item>@string/SaoTomeandPrincipe</item>
+        <item>@string/SaudiArabia</item>
+        <item>@string/Senegal</item>
+        <item>@string/Serbia</item>
+        <item>@string/Seychelles</item>
+        <item>@string/SierraLeone</item>
+        <item>@string/Singapore</item>
+        <item>@string/Slovakia</item>
+        <item>@string/Slovenia</item>
+        <item>@string/SolomonIslands</item>
+        <item>@string/Somalia</item>
+        <item>@string/SouthAfrica</item>
+        <item>@string/SouthKorea</item>
+        <item>@string/SouthSudan</item>
+        <item>@string/Spain</item>
+        <item>@string/SriLanka</item>
+        <item>@string/Sudan</item>
+        <item>@string/Suriname</item>
+        <item>@string/Sweden</item>
+        <item>@string/Switzerland</item>
+        <item>@string/Syria</item>
+        <item>@string/Taiwan</item>
+        <item>@string/Tajikistan</item>
+        <item>@string/Tanzania</item>
+        <item>@string/Thailand</item>
+        <item>@string/TimorLeste</item>
+        <item>@string/Togo</item>
+        <item>@string/Tonga</item>
+        <item>@string/TrinidadandTobago</item>
+        <item>@string/Tunisia</item>
+        <item>@string/Turkey</item>
+        <item>@string/Turkmenistan</item>
+        <item>@string/Tuvalu</item>
+        <item>@string/Uganda</item>
+        <item>@string/UnitedArabEmirates</item>
+        <item>@string/UnitedKingdom</item>
+        <item>@string/UnitedStates</item>
+        <item>@string/UnitedStatesVirginIslands</item>
+        <item>@string/Uruguay</item>
+        <item>@string/Uzbekistan</item>
+        <item>@string/Vanuatu</item>
+        <item>@string/VaticanCity</item>
+        <item>@string/Venezuela</item>
+        <item>@string/Vietnam</item>
+        <item>@string/WesternSahara</item>
+        <item>@string/Yemen</item>
+        <item>@string/Zambia</item>
+        <item>@string/Zimbabwe</item>
+    </string-array>
+
+    <string-array name="emergency_numbers">
+        <item>"119/112/119"</item>
+        <item>"129/127/128"</item>
+        <item>"1548/14/14"</item>
+        <item>"911/911/911"</item>
+        <item>"110/116/118"</item>
+        <item>"113/112/115"</item>
+        <item>"911/911/911"</item>
+        <item>"999/999/999"</item>
+        <item>"999/999/999"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"0/0/0"</item>
+        <item>"112/144/122"</item>
+        <item>"102/103/101"</item>
+        <item>"911/911/911"</item>
+        <item>"999/999/999"</item>
+        <item>"999/999/999"</item>
+        <item>"911/911/911"</item>
+        <item>"102/103/101"</item>
+        <item>"101/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"117/112/118"</item>
+        <item>"911/911/911"</item>
+        <item>"113/112/110"</item>
+        <item>"911/911/911"</item>
+        <item>"122/124/123"</item>
+        <item>"999/997/998"</item>
+        <item>"190/192/193"</item>
+        <item>"911/911/911"</item>
+        <item>"993/991/995"</item>
+        <item>"112/112/112"</item>
+        <item>"17/112/18"</item>
+        <item>"117/112/118"</item>
+        <item>"117/119/118"</item>
+        <item>"117/119/118"</item>
+        <item>"911/911/911"</item>
+        <item>"132/130/131"</item>
+        <item>"911/911/911"</item>
+        <item>"117/1220/118"</item>
+        <item>"17/22514242/18"</item>
+        <item>"133/131/132"</item>
+        <item>"110/120/119"</item>
+        <item>"123/123/123"</item>
+        <item>"17/7720373/18"</item>
+        <item>"999/998/996"</item>
+        <item>"911/911/911"</item>
+        <item>"192/194/193"</item>
+        <item>"106/104/105"</item>
+        <item>"911/912/911"</item>
+        <item>"112/112/112"</item>
+        <item>"158/155/150"</item>
+        <item>"112/112/112"</item>
+        <item>"17/19/18"</item>
+        <item>"999/999/999"</item>
+        <item>"911/911/911"</item>
+        <item>"112/118/118"</item>
+        <item>"911/911/911"</item>
+        <item>"122/123/180"</item>
+        <item>"911/132/913"</item>
+        <item>"114/115/112"</item>
+        <item>"113/114/116"</item>
+        <item>"112/112/112"</item>
+        <item>"999/977/933"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"17/15/18"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"1730/1300/18"</item>
+        <item>"117/116/118"</item>
+        <item>"112/112/112"</item>
+        <item>"110/112/112"</item>
+        <item>"191/193/192"</item>
+        <item>"112/112/112"</item>
+        <item>"100/166/199"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"110/128/122"</item>
+        <item>"117/18/442020"</item>
+        <item>"117/119/118"</item>
+        <item>"999/999/999"</item>
+        <item>"114/116/115"</item>
+        <item>"911/195/198"</item>
+        <item>"999/999/999"</item>
+        <item>"107/104/105"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"110/115/125"</item>
+        <item>"112/122/115"</item>
+        <item>"999/999/999"</item>
+        <item>"112/112/112"</item>
+        <item>"100/101/102"</item>
+        <item>"112/112/112"</item>
+        <item>"110/185/180"</item>
+        <item>"119/110/110"</item>
+        <item>"110/119/119"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"999/999/999"</item>
+        <item>"112/112/112"</item>
+        <item>"102/103/101"</item>
+        <item>"191/195/190"</item>
+        <item>"112/112/112"</item>
+        <item>"999/140/175"</item>
+        <item>"123/121/122"</item>
+        <item>"911/911/911"</item>
+        <item>"1515/193/1515"</item>
+        <item>"117/144/118"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"999/999/999"</item>
+        <item>"117/124/118"</item>
+        <item>"997/998/999"</item>
+        <item>"999/994/994"</item>
+        <item>"119/102/118"</item>
+        <item>"17/15/18"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"117/101/118"</item>
+        <item>"112/114/115"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"17/15/18"</item>
+        <item>"105/105/105"</item>
+        <item>"122/124/123"</item>
+        <item>"911/911/911"</item>
+        <item>"19/15/15"</item>
+        <item>"119/117/198"</item>
+        <item>"999/999/999"</item>
+        <item>"10111/10111/10111"</item>
+        <item>"110/111/112"</item>
+        <item>"100/102/101"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"111/111/111"</item>
+        <item>"118/128/115"</item>
+        <item>"17/15/18"</item>
+        <item>"112/112/112"</item>
+        <item>"110/119/119"</item>
+        <item>"112/113/110"</item>
+        <item>"9999/9999/9999"</item>
+        <item>"15/115/16"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"112/111/110"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"997/999/998"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"999/999/999"</item>
+        <item>"117/118/118"</item>
+        <item>"112/15/18"</item>
+        <item>"112/112/112"</item>
+        <item>"102/103/101"</item>
+        <item>"112/912/112"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"999/999/999"</item>
+        <item>"113/118/115"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"17/18/1515"</item>
+        <item>"192/194/193"</item>
+        <item>"112/151/112"</item>
+        <item>"19/999/999"</item>
+        <item>"999/995/995"</item>
+        <item>"158/155/150"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"888/999/555"</item>
+        <item>"10111/10177/10177"</item>
+        <item>"112/119/119"</item>
+        <item>"999/999/999"</item>
+        <item>"112/112/112"</item>
+        <item>"119/110/110"</item>
+        <item>"999/999/999"</item>
+        <item>"115/115/115"</item>
+        <item>"112/112/112"</item>
+        <item>"117/144/118"</item>
+        <item>"112/110/113"</item>
+        <item>"110/119/119"</item>
+        <item>"112/112/112"</item>
+        <item>"112/114/115"</item>
+        <item>"191/1669/199"</item>
+        <item>"112/112/112"</item>
+        <item>"117/8200/118"</item>
+        <item>"911/911/911"</item>
+        <item>"999/811/990"</item>
+        <item>"197/198/190"</item>
+        <item>"112/112/112"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"112/911/112"</item>
+        <item>"999/999/999"</item>
+        <item>"999/999/999"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"911/911/911"</item>
+        <item>"102/101/103"</item>
+        <item>"112/911/911"</item>
+        <item>"112/112/112"</item>
+        <item>"911/911/911"</item>
+        <item>"113/115/114"</item>
+        <item>"150/150/150"</item>
+        <item>"194/191/191"</item>
+        <item>"999/992/993"</item>
+        <item>"999/994/993"</item>
+    </string-array>
 
 </resources>

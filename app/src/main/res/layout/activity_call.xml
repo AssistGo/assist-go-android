@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/contactImagePhone"
+        android:layout_width="375dp"
+        android:layout_height="289dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/callInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Call Status" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="293dp"
+        android:layout_height="84dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505"
+        tools:text="NAME" />
+
+
+    <Button
+        android:id="@+id/answer"
+        android:layout_width="148dp"
+        android:layout_height="153dp"
+        android:background="@drawable/call_icon"
+        app:backgroundTint="@color/green"
+        app:layout_constraintBaseline_toBaselineOf="@+id/hangup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hangup" />
+
+    <Button
+        android:id="@+id/hangup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/hangup_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/answer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:backgroundTint="@color/red"
+
+        app:layout_constraintTop_toBottomOf="@+id/audioLayout"
+        app:layout_constraintVertical_bias="0.823" />
+
+    <LinearLayout
+        android:id="@+id/audioLayout"
+        android:layout_width="237dp"
+        android:layout_height="79dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callInfo"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/mute"
+            android:layout_width="87dp"
+            android:layout_height="75dp"
+            app:backgroundTint="@color/black"
+            android:background="@drawable/mute_icon" />
+
+        <Space
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/speaker"
+            android:layout_width="85dp"
+            android:layout_height="76dp"
+            app:backgroundTint="@color/black"
+            android:background="@drawable/speaker_icon" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

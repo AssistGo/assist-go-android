@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.emergency;
+package com.example.assistgoandroid.emergency.unusedFiles;
 
 import android.Manifest;
 import android.app.Activity;
@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.assistgoandroid.R;
+///This file is not being used 9:03 May 8th. - Jie Jie Bennett
 
 public class ambulanceActivity extends AppCompatActivity {
 
