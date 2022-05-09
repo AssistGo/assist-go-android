@@ -19,6 +19,13 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+
+    <!--GPS location permission for emergency number lookup-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 
 
@@ -57,9 +64,9 @@
         <activity android:name=".contactActivity"></activity>
         <activity android:name=".messageActivity"></activity>
         <activity android:name=".emergency.emergencyActivity"></activity>
-        <activity android:name=".emergency.ambulanceActivity"></activity>
-        <activity android:name=".emergency.fiirefighterActivity"></activity>
-        <activity android:name=".emergency.policeActivity"></activity>
+        <activity android:name=".emergency.unusedFiles.ambulanceActivity"></activity>
+        <activity android:name=".emergency.unusedFiles.fiirefighterActivity"></activity>
+        <activity android:name=".emergency.unusedFiles.policeActivity"></activity>
 
         <activity android:name=".homemessageActivity"></activity>
 
@@ -82,7 +89,10 @@
         <activity android:name=".Call.VoiceCallRinging"></activity>
         <activity android:name=".Call.VideoCallRinging"></activity>
 
-        <activity android:name=".emergency.EmergencyDialerActivity"
+
+        <activity
+            android:name=".emergency.DialerActivityGit"
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
             android:exported="true">
             <intent-filter>
                 <!-- Handle links from other applications -->
@@ -99,23 +109,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Call.DialerActivity"
+
+        <service
+            android:name=".emergency.CallServiceGit"
+            android:permission="android.permission.BIND_INCALL_SERVICE"
             android:exported="true">
+            <meta-data
+                android:name="android.telecom.IN_CALL_SERVICE_UI"
+                android:value="true" />
             <intent-filter>
-                <!-- Handle links from other applications -->
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.DIAL" />
-                <!-- Populate the system chooser -->
-                <category android:name="android.intent.category.DEFAULT" />
-                <!-- Handle links in browsers -->
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tel" />
+                <action android:name="android.telecom.InCallService" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.DIAL" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        </service>
+
+        <activity android:name=".emergency.CallActivityGit" />
+
+
     </application>
 
 </manifest>
