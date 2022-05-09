@@ -216,4 +216,10 @@ public class newContactCardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, qrScanPageActivity.class);
         startActivity(intent);
     }
+
+
+    public void QRCodeListener(View view) {
+        Intent intent = new Intent(this, qrScanPageActivity.class);
+        startActivity(intent);
+    }
 }

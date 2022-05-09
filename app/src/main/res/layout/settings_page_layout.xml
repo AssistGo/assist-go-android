@@ -22,17 +22,50 @@
       android:layout_width="352dp"
       android:layout_height="44dp"
       android:layout_marginLeft="27dp"
+      android:layout_marginTop="10dp"
       android:background="@drawable/search_bar_background"
       app:iconifiedByDefault="false"
       app:queryHint="Search Something....">
 
   </androidx.appcompat.widget.SearchView>
 
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="412dp"
+      android:layout_centerInParent="true"
+      android:layout_gravity="center"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="15dp">
+
   <ListView
       android:id="@+id/listView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:cacheColorHint="#00000000"
+      android:drawSelectorOnTop="false"
+      android:layout_weight="5">
 
   </ListView>
+  </LinearLayout>
+
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomNavigationViewTranslate"
+      android:layout_width="412dp"
+      android:layout_height="70dp"
+      android:layout_marginStart="1dp"
+      android:layout_marginEnd="5dp"
+      android:background="@color/app_color"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <ImageView
+        android:id="@+id/ivMicButton"
+        android:layout_width="69dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/mic_icon" />
+
+  </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>

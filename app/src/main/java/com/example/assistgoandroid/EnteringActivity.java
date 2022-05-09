@@ -10,6 +10,8 @@ import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.Settings.profileActivity;
 import com.example.assistgoandroid.models.User;
 
+import org.json.JSONException;
+
 import java.util.UUID;
 
 public class EnteringActivity extends AppCompatActivity {
@@ -40,7 +42,11 @@ public class EnteringActivity extends AppCompatActivity {
         user.setPhoneNumber(String.valueOf(userPhoneNumber.getText()));
 
         localDatabaseHelper.addOrUpdateUser(user);
-        user.syncUser();
+        try {
+            user.syncUser();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

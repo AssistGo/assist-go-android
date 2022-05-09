@@ -3,16 +3,27 @@ package com.example.assistgoandroid.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.Comparator;
 
 public class Contact implements Parcelable {
     String contactID;
+    String country;
+    String countryCode;
     String fullName;
     String phoneNumber;
+    String fullPhoneNumber;
     String profileImageUrl;
+    boolean hasSimCard;
     boolean isFavorite;
     String lastCalled;
+
+    public Contact() {
+
+    }
 
     protected Contact(Parcel in) {
         contactID = in.readString();
@@ -21,7 +32,17 @@ public class Contact implements Parcelable {
         profileImageUrl = in.readString();
     }
 
-    public Contact(){
+    public Contact(String contactID, String country, String countryCode, String phoneNumber, String fullPhoneNumber, String fullName, String profileImageUrl, boolean hasSimCard) {
+        this.contactID = contactID;
+        this.country = country;
+        this.countryCode = countryCode;
+        this.phoneNumber = phoneNumber;
+        this.fullPhoneNumber = fullPhoneNumber;
+        this.fullName = fullName;
+        this.profileImageUrl = profileImageUrl;
+        this.hasSimCard = hasSimCard;
+        this.isFavorite = false;
+        this.lastCalled = null;
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {
@@ -89,6 +110,38 @@ public class Contact implements Parcelable {
         this.lastCalled = lastCalled;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public String getFullPhoneNumber() {
+        return fullPhoneNumber;
+    }
+
+    public void setFullPhoneNumber(String fullPhoneNumber) {
+        this.fullPhoneNumber = fullPhoneNumber;
+    }
+
+    public boolean getHasSimCard() {
+        return hasSimCard;
+    }
+
+    public void setHasSimCard(boolean hasSimCard) {
+        this.hasSimCard = hasSimCard;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(contactID);
@@ -105,6 +158,21 @@ public class Contact implements Parcelable {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", contactPicture='" + profileImageUrl + '\'' +
                 '}';
+    }
+
+    public JSONObject getContactAsJsonMap() throws JSONException {
+        JSONObject jsonContact = new JSONObject();
+
+        jsonContact.put("id", getContactID());
+        jsonContact.put("country", getCountry());
+        jsonContact.put("countryCode", getCountryCode());
+        jsonContact.put("phoneNumber", getPhoneNumber());
+        jsonContact.put("fullPhoneNumber", getFullPhoneNumber());
+        jsonContact.put("fullName", getFullName());
+        jsonContact.put("profileImageUrl", getProfileImageUrl());
+        jsonContact.put("hasSimCard", getHasSimCard());
+
+        return jsonContact;
     }
 
     //todo sort based on fav: bring favs on top

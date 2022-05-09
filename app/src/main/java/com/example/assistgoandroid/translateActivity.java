@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextWatcher;
@@ -28,8 +29,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -38,6 +44,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Le Jie Bennett
@@ -71,12 +83,15 @@ public class translateActivity extends AppCompatActivity {
                             if(result.getData().getStringExtra("language")=="Detected Language")
                                 ///Use API to figure out language code
                                 Log.d("translateActivity", "onActivityResult: detected language");
+
                             else{
                                 inputLanguageCode = languageToCoded.get(result.getData().getStringExtra("language"));
+                                Log.d("translateActivity", inputLanguageCode);
                             }
                         } else {
                             outputLanguageBtn.setText(result.getData().getStringExtra("language"));
                             outputLanguageCode = languageToCoded.get(result.getData().getStringExtra("language"));
+                            Log.d("translateActivity", outputLanguageCode);
 
                         }
                     }
@@ -86,6 +101,11 @@ public class translateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.translate_page);
 
@@ -94,7 +114,7 @@ public class translateActivity extends AppCompatActivity {
         translatedOutput = findViewById(R.id.translatedOutput);
         outputLanguageBtn = findViewById(R.id.outputLanguageBtn);
 
-        //Used to convert to language code
+        // Used to convert to language code
         createLanguageHashmap();
 
         translatePhraseInput.addTextChangedListener(new TextWatcher() {
@@ -118,9 +138,45 @@ public class translateActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        translatedOutput.setText("Translated Word");
+
+//                        ObjectMapper mapper = new ObjectMapper();
+//
+//                        try {
+//                            JSONObject jsonObject = new JSONObject();
+//                            jsonObject.put("message", translatePhraseInput);
+//
+//                            OkHttpClient client = new OkHttpClient();
+//                            MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+//
+//                            Request request = new Request.Builder()
+//                                    .url("http://localhost:8080/translation/" + inputLanguageCode + "/" + outputLanguageCode)
+//                                    .post(RequestBody.create(JSON_TYPE, jsonObject.toString()))
+//                                    .build();
+//                            Response response = client.newCall(request).execute();
+//                            String jsonDataString = null;
+//                            try {
+//                                jsonDataString = response.body().string();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//
+////                            Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
+//
+//                            Log.d("XDDDDD",jsonDataString);
+//
+////
+////                            System.out.println(responseJson.get("user"));
+////                            System.out.println(responseJson.get("message"));
+//
+//
+//                        } catch (IOException | JSONException e) {
+//                            e.printStackTrace();
+//                        }
+
+                        translatedOutput.setText("Përshëndetje");
+
                     }
-                }, 5000);
+                }, 2500);
 
             }
         });

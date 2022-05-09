@@ -55,8 +55,8 @@ public class contactCardActivity extends AppCompatActivity {
     }
 
     public void onVideoCallClick(View view){
-        Intent intent = new Intent(this, VideoCallRinging.class);
-        //Intent intent = new Intent(this, VideoCall.class);
+        //Intent intent = new Intent(this, VideoCallRinging.class);
+        Intent intent = new Intent(this, VideoCall.class);
 
         intent.putExtra(CONTACT_CARD, contact);
         this.startActivity(intent);

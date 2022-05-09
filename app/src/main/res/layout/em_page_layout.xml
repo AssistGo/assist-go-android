@@ -17,27 +17,40 @@
         android:textSize="55sp"
         android:textStyle="bold" />
 
+    <LinearLayout
+        android:layout_width="384dp"
+        android:layout_height="383dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="107dp">
 
-    <ListView
-        android:id="@+id/listView_em"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listView_em"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </ListView>
-
-
-
-
-
-
-
-
-
-
+        </ListView>
+    </LinearLayout>
 
 
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTranslate"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
+        android:background="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <ImageView
+            android:id="@+id/ivMicButton"
+            android:layout_width="31dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mic_transparent" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </LinearLayout>
