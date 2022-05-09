@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- Access photos in local storage permissions -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <!--Phone permissions-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -124,9 +126,45 @@
             <intent-filter>
                 <action android:name="android.telecom.InCallService" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </service>
 
+
+        <!-- [START fcm_listener] -->
+<!--        <service-->
+<!--            android:name=".Call.videoCallHelpers.notify.fcm.NotifyFirebaseMessagingService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+<!--        &lt;!&ndash; [END fcm_listener] &ndash;&gt;-->
+<!--        &lt;!&ndash; [START instanceId_listener] &ndash;&gt;-->
+<!--        <service-->
+<!--            android:name=".Call.videoCallHelpers.notify.fcm.NotifyFirebaseInstanceIDService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+<!--        &lt;!&ndash; [END instanceId_listener] &ndash;&gt;-->
+
+<!--        <service-->
+<!--            android:name=".Call.videoCallHelpers.notify.service.RegistrationIntentService"-->
+<!--            android:exported="false" />-->
+
         <activity android:name=".emergency.CallActivityGit"></activity>
+
+        <receiver android:name=".Messaging.MessageReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
 
     </application>

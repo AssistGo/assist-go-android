@@ -32,3 +32,5 @@ google_text_to_speech_keyfile.json
 
 # Android Profiling
 *.hprof
+app/apikey.properties
+.idea/misc.xml

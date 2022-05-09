@@ -3,6 +3,10 @@ plugins {
     id 'com.google.gms.google-services'//twilio voice
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdk 31
 
@@ -12,6 +16,10 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "TWILIO_ACCOUNT_SID", apikeyProperties['TWILIO_ACCOUNT_SID'])
+        buildConfigField("String", "TWILIO_AUTH_TOKEN", apikeyProperties['TWILIO_AUTH_TOKEN'])
+        buildConfigField("String", "TWILIO_SDK_STARTER_SERVER_URL", apikeyProperties['TWILIO_SDK_STARTER_SERVER_URL'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -74,23 +82,30 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.1.0'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
     //qr code dependencies
     def camerax_version = "1.0.2"
     implementation "androidx.camera:camera-camera2:$camerax_version"
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:1.0.0-alpha27"
     implementation 'com.google.zxing:core:3.3.0'
-    //implementation 'com.dynamsoft:dynamsoftcameraenhancer:2.1.0@aar'
     //end of qr code dependencies
 
     //twilio video
-    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+//    implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation "com.twilio:video-android-ktx:7.1.0"
     implementation "com.twilio.sdk:twilio:7.17.7"
     //Need to have because something related to guava causing build error
     implementation 'com.google.guava:guava:27.0.1-android'
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-jackson:2.1.0"
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
 
-    //
 
     // butterknife
     implementation 'com.jakewharton:butterknife:10.2.0'
@@ -100,8 +115,6 @@ dependencies {
 
     //android phone
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
-
-    //
 
     implementation 'com.google.android.material:material:1.2.1'
     //Json

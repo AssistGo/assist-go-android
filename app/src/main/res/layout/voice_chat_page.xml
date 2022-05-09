@@ -43,7 +43,7 @@
             app:srcCompat="@drawable/emergency_icon" />
 
         <ImageView
-            android:id="@+id/videochatBtn"
+            android:id="@+id/turnVideoOffBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
