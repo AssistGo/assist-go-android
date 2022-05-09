@@ -42,7 +42,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".EnteringActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -126,7 +126,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".emergency.CallActivityGit" />
+        <activity android:name=".emergency.CallActivityGit"></activity>
 
 
     </application>

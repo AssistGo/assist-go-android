@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
     tools:context=".emergency.unusedFiles.ambulanceActivity">
-
-=======
-    tools:context=".emergency.emergencyActivity">
->>>>>>> 8342b6f2db1d23878e89771b23820f71df96dbbf
 
     <TextView
         android:layout_width="match_parent"
