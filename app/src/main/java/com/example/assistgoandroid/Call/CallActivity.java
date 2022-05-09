@@ -18,8 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.emergency.EmergencyCallActivity;
-import com.example.assistgoandroid.emergency.EmergencyOngoingCall;
+import com.example.assistgoandroid.emergency.OngoingCallGit;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +29,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class CallActivity extends AppCompatActivity {
     private CompositeDisposable disposables;
     private String number;
-    private OngoingCall ongoingCall;
+    private OngoingCallGit ongoingCall;
 
     TextView contactName, callStatus;
     ImageView contactImage;
@@ -51,7 +50,7 @@ public class CallActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.phone);
 
-        ongoingCall = new OngoingCall();
+        ongoingCall = new OngoingCallGit();
         disposables = new CompositeDisposable();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
@@ -94,9 +93,10 @@ public class CallActivity extends AppCompatActivity {
         });
 
 
-        disposables.add(OngoingCall.state.subscribe(state->updateUi(state)));
+        disposables.add(OngoingCallGit.state.subscribe(state->updateUi(state)));
 
-        disposables.add(OngoingCall.state
+        disposables.add(OngoingCallGit
+                .state
                 .filter(state-> state == Call.STATE_DISCONNECTED)
                 .delay(1, TimeUnit.SECONDS).firstElement().subscribe(state->finish()));
     }

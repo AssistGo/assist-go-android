@@ -1,4 +1,4 @@
-package com.example.assistgoandroid.emergency;
+package com.example.assistgoandroid.emergency.unusedFiles;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assistgoandroid.R;
-
+///This file is not being used 9:03 May 8th. - Jie Jie Bennett
 public class fiirefighterActivity extends AppCompatActivity {
     private static final int PERMISSION_CODE = 101;
     Button editProfilePicture,changeNumber,editName;
