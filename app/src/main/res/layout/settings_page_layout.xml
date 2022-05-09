@@ -29,13 +29,6 @@
 
   </androidx.appcompat.widget.SearchView>
 
-  <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="412dp"
-      android:layout_centerInParent="true"
-      android:layout_gravity="center"
-      android:layout_marginTop="16dp"
-      android:layout_marginBottom="15dp">
 
   <ListView
       android:id="@+id/listView"
@@ -46,7 +39,7 @@
       android:layout_weight="5">
 
   </ListView>
-  </LinearLayout>
+
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/bottomNavigationViewTranslate"

@@ -20,7 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
 import com.example.assistgoandroid.R;
+import com.example.assistgoandroid.models.Contact;
+import com.example.assistgoandroid.models.User;
 
 public class profileActivity extends AppCompatActivity implements ChangeUserNameDialog.ChangeUserNameDialogListener {
 
@@ -71,7 +74,7 @@ public class profileActivity extends AppCompatActivity implements ChangeUserName
 
     public void setNumber(String number){
         TextView phoneNumber = findViewById(R.id.phoneNumber);
-        phoneNumber.setText(getResources().getString(R.string.number) +":" + " "+ number);
+        phoneNumber.setText(number);
     }
     // check permission to access gallery
     private void checkPermission() {
