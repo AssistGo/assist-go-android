@@ -28,6 +28,7 @@ render.experimental.xml
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json
+google_text_to_speech_keyfile.json
 
 # Android Profiling
 *.hprof

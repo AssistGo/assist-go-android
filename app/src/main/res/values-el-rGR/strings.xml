@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AssistGoAndroid</string>
+    <string name="contact_list">Επαφές</string>
+    <string name="new_contact">Νέα επαφή</string>
+    <string name="edit_contact">Επεξεργασία επαφής</string>
+    <string name="add_new_contact">Νέα επαφή</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="profile">Προφίλ</string>
+    <string name="edit_name">Επεξεργασία ονόματος</string>
+    <string name="edit_profile_picture">Επεξεργασία εικόνας προφίλ</string>
+    <string name="change_number">Αλλαγή αριθμού</string>
+    <string name="new_number">Νέος αριθμός</string>
+    <string name="enter_new_phone_number">Εισαγάγετε νέο αριθμό τηλεφώνου</string>
+    <string name="enter_new_name">Εισαγάγετε νέο όνομα</string>
+    <string name="enter_first_name">Εισαγάγετε Όνομα</string>
+    <string name="enter_last_name">Εισαγάγετε Επώνυμο</string>
+    <string name="enter_verification_code">Βάλτε κωδικό επιβεβαίωσης</string>
+    <string name="contact">Επαφή</string>
+    <string name="call">Κλήση</string>
+    <string name="message">Μήνυμα</string>
+    <string name="translate">Μετάφραση</string>
+    <string name="emergency">Επείγον</string>
+    <string name="save_changes">Αποθήκευσε τις αλλαγές</string>
+    <string name="delete_contact">Διαγραφή επαφής</string>
+    <string name="save_contact">Αποθήκευση επαφής</string>
+    <string name="cancel">Ακύρωσε</string>
+    <string name="preferences">Προτιμήσεις</string>
+    <string name="about">Σχετικά με εμάς</string>
+    <string name="number">Αριθμός</string>
+</resources>
