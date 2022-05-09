@@ -993,6 +993,7 @@
     <string name="homeMessages_list">Messages</string>
     <string name="are_you_sure_you_want_to_delete_your_account">Are you sure you want to delete your account?</string>
     <string name="delete_my_account">Delete My Account</string>
+    <string name="twilio_sdk_starter_server_url">YOUR_TWILIO_SDK_STARTER_SERVER_URL</string>
 
 
 </resources>

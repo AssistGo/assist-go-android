@@ -3,6 +3,9 @@ plugins {
     id 'com.google.gms.google-services'//twilio voice
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdk 31
@@ -13,6 +16,10 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "TWILIO_ACCOUNT_SID", apikeyProperties['TWILIO_ACCOUNT_SID'])
+        buildConfigField("String", "TWILIO_AUTH_TOKEN", apikeyProperties['TWILIO_AUTH_TOKEN'])
+        buildConfigField("String", "TWILIO_SDK_STARTER_SERVER_URL", apikeyProperties['TWILIO_SDK_STARTER_SERVER_URL'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -81,11 +88,19 @@ dependencies {
     //end of qr code dependencies
 
     //twilio video
-    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+//    implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation "com.twilio:video-android-ktx:7.1.0"
     implementation "com.twilio.sdk:twilio:7.17.7"
     //Need to have because something related to guava causing build error
     implementation 'com.google.guava:guava:27.0.1-android'
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-jackson:2.1.0"
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.google.code.gson:gson:2.6.2'
+
 
     //android phone
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"

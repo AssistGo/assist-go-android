@@ -119,6 +119,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!-- [START fcm_listener] -->
+        <service
+            android:name=".Call.videoCallHelpers.notify.fcm.NotifyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END fcm_listener] -->
+        <!-- [START instanceId_listener] -->
+        <service
+            android:name=".Call.videoCallHelpers.notify.fcm.NotifyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END instanceId_listener] -->
+
+        <service
+            android:name=".Call.videoCallHelpers.notify.service.RegistrationIntentService"
+            android:exported="false" />
     </application>
 
 </manifest>

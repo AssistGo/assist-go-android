@@ -4,8 +4,11 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 import android.Manifest;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
@@ -15,13 +18,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.example.assistgoandroid.BuildConfig;
+import com.example.assistgoandroid.Call.videoCallHelpers.notify.api.TwilioSDKStarterAPI;
+import com.example.assistgoandroid.Call.videoCallHelpers.notify.api.model.Invite;
+import com.example.assistgoandroid.Call.videoCallHelpers.notify.api.model.Notification;
+import com.example.assistgoandroid.Call.videoCallHelpers.notify.service.RegistrationIntentService;
 import com.example.assistgoandroid.R;
 import com.example.assistgoandroid.models.Contact;
 import com.twilio.video.CameraCapturer;
@@ -47,18 +59,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tvi.webrtc.Camera1Enumerator;
 import tvi.webrtc.VideoSink;
 
 public class VideoCall extends AppCompatActivity {
     //Resources
     //https://github.com/twilio/video-quickstart-android/blob/master/exampleVideoInvite/src/main/java/com/twilio/video/examples/videoinvite/VideoInviteActivity.java
-    private String TAG = "VideoCall";
+    private final String TAG = "VideoCall";
     private String CURRENT_TIME;
     private Contact contact;
 
@@ -67,7 +84,7 @@ public class VideoCall extends AppCompatActivity {
     private LocalAudioTrack localAudioTrack;
     private LocalVideoTrack localVideoTrack;
     private String accessToken;
-    private String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
+    private final String tokenURL = "https://rackley-iguana-5070.twil.io/video-token";
     private Room room;
 
     /*
@@ -77,6 +94,7 @@ public class VideoCall extends AppCompatActivity {
     private String remoteParticipantIdentity;
 
     String roomName;
+    private String identity;
     private String frontCameraId = null;
     private String backCameraId = null;
     private final Camera1Enumerator camera1Enumerator = new Camera1Enumerator();
@@ -84,14 +102,34 @@ public class VideoCall extends AppCompatActivity {
     private VideoSink localVideoView;
     private boolean disconnectedFromOnDestroy;
     private AudioManager audioManager;
+    private AlertDialog alertDialog;
 
     //notifications
     private boolean isReceiverRegistered;
-//    private LocalBroadcastReceiver localBroadcastReceiver;
+    private LocalBroadcastReceiver localBroadcastReceiver;
     private NotificationManager notificationManager;
     private Intent cachedVideoNotificationIntent;
 
     private int previousAudioMode;
+
+    public static final String TWILIO_SDK_STARTER_SERVER_URL = BuildConfig.TWILIO_SDK_STARTER_SERVER_URL;
+    public static final String ACTION_REGISTRATION = "ACTION_REGISTRATION";
+    public static final String ACTION_VIDEO_NOTIFICATION = "ACTION_VIDEO_NOTIFICATION";
+    public static final String REGISTRATION_ERROR = "REGISTRATION_ERROR";
+    public static final String REGISTRATION_IDENTITY = "REGISTRATION_IDENTITY";
+    public static final String REGISTRATION_TOKEN = "REGISTRATION_TOKEN";
+    public static final String VIDEO_NOTIFICATION_TITLE = "VIDEO_NOTIFICATION_TITLE";
+    public static final String VIDEO_NOTIFICATION_ROOM_NAME = "VIDEO_NOTIFICATION_ROOM_NAME";
+
+    /*
+     * The tag used to notify others when this identity is connecting to a Video room.
+     */
+    public static final List<String> NOTIFY_TAGS =
+            new ArrayList<String>() {
+                {
+                    add("video");
+                }
+            };
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -128,12 +166,32 @@ public class VideoCall extends AppCompatActivity {
         /*
          * Setup the broadcast receiver to be notified of video notification messages
          */
-//        localBroadcastReceiver = new LocalBroadcastReceiver();
-//        registerReceiver();
+        localBroadcastReceiver = new LocalBroadcastReceiver();
+        registerReceiver();
 
-        View.OnClickListener switchCameraClick = v -> {
-            switchCamera();
-        };
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = getIntent();
+
+        /*
+         * Check camera and microphone permissions. Needed in Android M.
+         */
+        if (!checkPermissionForCameraAndMicrophone()) {
+            requestPermissionForCameraAndMicrophone();
+        } else if (intent != null && intent.getAction() == ACTION_REGISTRATION) {
+            handleRegistration(intent);
+        } else if (intent != null && intent.getAction() == ACTION_VIDEO_NOTIFICATION) {
+            /*
+             * Cache the video invite notification intent until an access token is obtained through
+             * registration
+             */
+            cachedVideoNotificationIntent = intent;
+            register();
+        } else {
+            register();
+        }
+
+        View.OnClickListener switchCameraClick = v -> switchCamera();
 
         View.OnClickListener videoChatClick = v -> {
             if (localVideoTrack != null) {
@@ -183,6 +241,38 @@ public class VideoCall extends AppCompatActivity {
 
         Log.i(TAG, accessToken + " " + contact.getFullName());
         connectToRoom(roomName);
+    }
+
+    private void register() {
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        startService(intent);
+    }
+
+    /*
+     * Called when a notification is clicked and this activity is in the background or closed
+     */
+    @Override
+    protected void onNewIntent(final Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getAction() == ACTION_VIDEO_NOTIFICATION) {
+            handleVideoNotificationIntent(intent);
+        }
+    }
+
+    private void registerReceiver() {
+        if (!isReceiverRegistered) {
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(ACTION_VIDEO_NOTIFICATION);
+            intentFilter.addAction(ACTION_REGISTRATION);
+            LocalBroadcastManager.getInstance(this)
+                    .registerReceiver(localBroadcastReceiver, intentFilter);
+            isReceiverRegistered = true;
+        }
+    }
+
+    private void unregisterReceiver() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(localBroadcastReceiver);
+        isReceiverRegistered = false;
     }
 
     public class HttpGetRequest extends AsyncTask<String, Void, String> {
@@ -292,6 +382,8 @@ public class VideoCall extends AppCompatActivity {
                     @Override
                     public void onConnected(@NonNull Room room) {
                         Log.d(TAG,"Connected to " + room.getName());
+                        localParticipant = room.getLocalParticipant();
+                        setTitle(room.getName());
 
                         localParticipant = room.getLocalParticipant();
 
@@ -324,6 +416,9 @@ public class VideoCall extends AppCompatActivity {
                         VideoCall.this.room = null;
                         localParticipant = null;
                         localVideoTrack.release();
+                        if (!disconnectedFromOnDestroy) {
+                            moveLocalVideoToPrimaryView();
+                        }
                     }
 
                     @Override
@@ -347,15 +442,6 @@ public class VideoCall extends AppCompatActivity {
                     }
                 }
         );
-
-        // ... Assume we have received the connected callback
-        // After receiving the connected callback the LocalParticipant becomes available
-        //Log.i("LocalParticipant ", room.getLocalParticipant().getIdentity());
-        //LocalParticipant localParticipant = room.getLocalParticipant();
-
-        // Get the first participant from the room
-        //RemoteParticipant participant = room.getRemoteParticipants().get(0);
-        //Log.i("HandleParticipants", participant.getIdentity() + " is in the room.");
     }
 
     /* In the Participant listener, we can respond when the Participant adds a Video
@@ -628,6 +714,8 @@ public class VideoCall extends AppCompatActivity {
         super.onDestroy();
     }
 
+
+
     //permissions
 
     private boolean checkPermissionForCameraAndMicrophone() {
@@ -695,179 +783,218 @@ public class VideoCall extends AppCompatActivity {
 
     //notifications
 
-//    public static AlertDialog createConnectDialog(
-//            String title,
-//            EditText roomEditText,
-//            DialogInterface.OnClickListener callParticipantsClickListener,
-//            DialogInterface.OnClickListener cancelClickListener,
-//            Context context) {
-//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-//        alertDialogBuilder.setIcon(R.drawable.ic_video_call_black_24dp);
-//        alertDialogBuilder.setTitle(title);
-//        alertDialogBuilder.setPositiveButton("Connect", callParticipantsClickListener);
-//        alertDialogBuilder.setNegativeButton("Cancel", cancelClickListener);
-//        alertDialogBuilder.setCancelable(false);
-//        alertDialogBuilder.setView(roomEditText);
-//        return alertDialogBuilder.create();
-//    }
-//    private DialogInterface.OnClickListener connectClickListener(final EditText roomEditText) {
-//        return (dialog, which) -> {
-//            final String roomName = roomEditText.getText().toString();
-//            /*
-//             * Connect to room
-//             */
-//            connectToRoom(roomName);
-//            /*
-//             * Notify other participants to join the room
-//             */
-//            VideoInviteActivity.this.notify(roomName);
-//        };
-//    }
-//
-//    private DialogInterface.OnClickListener videoNotificationConnectClickListener(
-//            final EditText roomEditText) {
-//        return (dialog, which) -> {
-//            /*
-//             * Connect to room
-//             */
-//            connectToRoom(roomEditText.getText().toString());
-//        };
-//    }
-//
-//    private View.OnClickListener disconnectClickListener() {
-//        return v -> {
-//            /*
-//             * Disconnect from room
-//             */
-//            if (room != null) {
-//                room.disconnect();
-//            }
-//            intializeUI();
-//        };
-//    }
-//
-//    private View.OnClickListener connectActionClickListener() {
-//        return v -> showConnectDialog();
-//    }
-//
-//    private DialogInterface.OnClickListener cancelConnectDialogClickListener() {
-//        return (dialog, which) -> {
-//            intializeUI();
-//            alertDialog.dismiss();
-//        };
-//    }
+    private class LocalBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(ACTION_REGISTRATION)) {
+                handleRegistration(intent);
+            } else if (action.equals(ACTION_VIDEO_NOTIFICATION)) {
+                handleVideoNotificationIntent(intent);
+            }
+        }
+    }
+
+    private void handleVideoNotificationIntent(Intent intent) {
+        notificationManager.cancelAll();
+        /*
+         * Only handle the notification if not already connected to a Video Room
+         */
+        if (room == null) {
+            String title = intent.getStringExtra(VIDEO_NOTIFICATION_TITLE);
+            String dialogRoomName = intent.getStringExtra(VIDEO_NOTIFICATION_ROOM_NAME);
+            showVideoNotificationConnectDialog(title, dialogRoomName);
+        }
+    }
+
+    /*
+     * Creates a connect UI dialog to handle notifications
+     */
+    private void showVideoNotificationConnectDialog(String title, String dialogRoomName) {
+        EditText roomEditText = new EditText(this);
+        roomEditText.setText(roomName);
+        // Use the default color instead of the disabled color
+        int currentColor = roomEditText.getCurrentTextColor();
+        roomEditText.setEnabled(false);
+        roomEditText.setTextColor(currentColor);
+        alertDialog =
+                createConnectDialog(
+                        title,
+                        roomEditText,
+                        videoNotificationConnectClickListener(roomEditText),
+                        cancelConnectDialogClickListener(),
+                        this);
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver();
+        /*
+         * If the local video track was released when the app was put in the background, recreate.
+         */
+        if (localVideoTrack == null
+                && checkPermissionForCameraAndMicrophone()
+                && cameraCapturer != null) {
+            localVideoTrack = LocalVideoTrack.create(this, true, cameraCapturer);
+            localVideoTrack.addSink(localVideoView);
+
+            /*
+             * If connected to a Room then share the local video track.
+             */
+            if (localParticipant != null) {
+                localParticipant.publishTrack(localVideoTrack);
+            }
+        }
+
+        /*
+         * Update reconnecting UI
+         */
+        if (room != null) {
+            Toast.makeText(getApplicationContext(), "Connected to " + room.getName(), LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        unregisterReceiver();
+        /*
+         * Release the local video track before going in the background. This ensures that the
+         * camera can be used by other applications while this app is in the background.
+         *
+         * If this local video track is being shared in a Room, participants will be notified
+         * that the track has been unpublished.
+         */
+        if (localVideoTrack != null) {
+            /*
+             * If this local video track is being shared in a Room, unpublish from room before
+             * releasing the video track. Participants will be notified that the track has been
+             * removed.
+             */
+            if (localParticipant != null) {
+                localParticipant.unpublishTrack(localVideoTrack);
+            }
+            localVideoTrack.release();
+            localVideoTrack = null;
+        }
+        super.onPause();
+    }
+
+    private DialogInterface.OnClickListener cancelConnectDialogClickListener() {
+        return (dialog, which) -> alertDialog.dismiss();
+    }
+
+    private DialogInterface.OnClickListener videoNotificationConnectClickListener(
+            final EditText roomEditText) {
+        return (dialog, which) -> {
+            /*
+             * Connect to room
+             */
+            connectToRoom(roomEditText.getText().toString());
+        };
+    }
+
     /*
      * Creates a connect UI dialog
      */
-//    private void showConnectDialog() {
-//        EditText roomEditText = new EditText(this);
-//        String title = "Connect to a video room";
-//        roomEditText.setHint("room name");
-//        alertDialog =
-//                createConnectDialog(
-//                        title,
-//                        roomEditText,
-//                        connectClickListener(roomEditText),
-//                        cancelConnectDialogClickListener(),
-//                        this);
-//        alertDialog.show();
-//    }
-//    /*
-//     * Register to obtain a token and register a binding with Twilio Notify
-//     */
-//    private void register() {
-//        Intent intent = new Intent(this, RegistrationIntentService.class);
-//        startService(intent);
-//    }
-//
-//    /*
-//     * Called when a notification is clicked and this activity is in the background or closed
-//     */
-//    @Override
-//    protected void onNewIntent(final Intent intent) {
-//        super.onNewIntent(intent);
-//        if (intent.getAction() == ACTION_VIDEO_NOTIFICATION) {
-//            handleVideoNotificationIntent(intent);
-//        }
-//    }
-//
-//    private void handleRegistration(Intent intent) {
-//        String registrationError = intent.getStringExtra(REGISTRATION_ERROR);
-//        if (registrationError != null) {
-//            statusTextView.setText(registrationError);
-//        } else {
-//            createLocalTracks();
-//            identity = intent.getStringExtra(REGISTRATION_IDENTITY);
-//            token = intent.getStringExtra(REGISTRATION_TOKEN);
-//            identityTextView.setText(identity);
-//            statusTextView.setText(R.string.registered);
-//            intializeUI();
-//            if (cachedVideoNotificationIntent != null) {
-//                handleVideoNotificationIntent(cachedVideoNotificationIntent);
-//                cachedVideoNotificationIntent = null;
-//            }
-//        }
-//    }
-//
-//    private void handleVideoNotificationIntent(Intent intent) {
-//        notificationManager.cancelAll();
-//        /*
-//         * Only handle the notification if not already connected to a Video Room
-//         */
-//        if (room == null) {
-//            String title = intent.getStringExtra(VIDEO_NOTIFICATION_TITLE);
-//            String dialogRoomName = intent.getStringExtra(VIDEO_NOTIFICATION_ROOM_NAME);
-//            showVideoNotificationConnectDialog(title, dialogRoomName);
-//        }
-//    }
-//
-//    private void registerReceiver() {
-//        if (!isReceiverRegistered) {
-//            IntentFilter intentFilter = new IntentFilter();
-//            intentFilter.addAction(ACTION_VIDEO_NOTIFICATION);
-//            intentFilter.addAction(ACTION_REGISTRATION);
-//            LocalBroadcastManager.getInstance(this)
-//                    .registerReceiver(localBroadcastReceiver, intentFilter);
-//            isReceiverRegistered = true;
-//        }
-//    }
-//
-//    private void unregisterReceiver() {
-//        LocalBroadcastManager.getInstance(this).unregisterReceiver(localBroadcastReceiver);
-//        isReceiverRegistered = false;
-//    }
-//
-//    private class LocalBroadcastReceiver extends BroadcastReceiver {
-//
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            String action = intent.getAction();
-//            if (action.equals(ACTION_REGISTRATION)) {
-//                handleRegistration(intent);
-//            } else if (action.equals(ACTION_VIDEO_NOTIFICATION)) {
-//                handleVideoNotificationIntent(intent);
-//            }
-//        }
-//    }
-//
-//    /*
-//     * Creates a connect UI dialog to handle notifications
-//     */
-//    private void showVideoNotificationConnectDialog(String title, String roomName) {
-//        EditText roomEditText = new EditText(this);
-//        roomEditText.setText(roomName);
-//        // Use the default color instead of the disabled color
-//        int currentColor = roomEditText.getCurrentTextColor();
-//        roomEditText.setEnabled(false);
-//        roomEditText.setTextColor(currentColor);
-//        alertDialog =
-//                createConnectDialog(
-//                        title,
-//                        roomEditText,
-//                        videoNotificationConnectClickListener(roomEditText),
-//                        cancelConnectDialogClickListener(),
-//                        this);
-//        alertDialog.show();
-//    }
+    private void showConnectDialog() {
+        EditText roomEditText = new EditText(this);
+        String title = "Connect to a video room";
+        roomEditText.setHint("room name");
+        alertDialog =
+                createConnectDialog(
+                        title,
+                        roomEditText,
+                        connectClickListener(roomEditText),
+                        cancelConnectDialogClickListener(),
+                        this);
+        alertDialog.show();
+    }
+
+    private DialogInterface.OnClickListener connectClickListener(final EditText roomEditText) {
+        return (dialog, which) -> {
+            final String roomName = roomEditText.getText().toString();
+            /*
+             * Connect to room
+             */
+            connectToRoom(roomName);
+            /*
+             * Notify other participants to join the room
+             */
+            VideoCall.this.notify(roomName);
+        };
+    }
+
+    void notify(final String roomName) {
+        String inviteJsonString;
+        Invite invite = new Invite(identity, roomName);
+
+        /*
+         * Use Twilio Notify to let others know you are connecting to a Room
+         */
+        Notification notification =
+                new Notification(
+                        "Join " + identity + " in room " + roomName,
+                        identity + " has invited you to join video room " + roomName,
+                        invite.getMap(),
+                        NOTIFY_TAGS);
+        TwilioSDKStarterAPI.notify(notification)
+                .enqueue(
+                        new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (!response.isSuccessful()) {
+                                    String message =
+                                            "Sending notification failed: "
+                                                    + response.code()
+                                                    + " "
+                                                    + response.message();
+                                    Log.e(TAG, message);
+                                    Toast.makeText(getApplicationContext(), message, LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                String message = "Sending notification failed: " + t.getMessage();
+                                Log.e(TAG, message);
+                                Toast.makeText(getApplicationContext(), message, LENGTH_SHORT).show();
+                            }
+                        });
+    }
+
+    public static AlertDialog createConnectDialog(
+            String title,
+            EditText roomEditText,
+            DialogInterface.OnClickListener callParticipantsClickListener,
+            DialogInterface.OnClickListener cancelClickListener,
+            Context context) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setIcon(R.drawable.video_chat_icon);
+        alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setPositiveButton("Connect", callParticipantsClickListener);
+        alertDialogBuilder.setNegativeButton("Cancel", cancelClickListener);
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setView(roomEditText);
+        return alertDialogBuilder.create();
+    }
+
+    private void handleRegistration(Intent intent) {
+        String registrationError = intent.getStringExtra(REGISTRATION_ERROR);
+        if (registrationError != null) {
+            Toast.makeText(getApplicationContext(), REGISTRATION_ERROR, LENGTH_SHORT).show();
+        } else {
+            createLocalTracks();
+            identity = intent.getStringExtra(REGISTRATION_IDENTITY);
+            accessToken = intent.getStringExtra(REGISTRATION_TOKEN);
+            Toast.makeText(getApplicationContext(), "Registered", LENGTH_SHORT).show();
+            if (cachedVideoNotificationIntent != null) {
+                handleVideoNotificationIntent(cachedVideoNotificationIntent);
+                cachedVideoNotificationIntent = null;
+            }
+        }
+    }
 }
 
