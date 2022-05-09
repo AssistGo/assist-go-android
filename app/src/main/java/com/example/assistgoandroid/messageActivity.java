@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class messageActivity extends AppCompatActivity {
     EditText evMessage;
     String currUserID = "me";
     ChatAdapter adapter;
+    String TAG = "messaging";
 
     private final BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
@@ -55,6 +57,8 @@ public class messageActivity extends AppCompatActivity {
             message.setUserID(contact.getFullPhoneNumber());
             messageList.add(message);
             adapter.notifyDataSetChanged();
+
+            Log.i(TAG, "msg received: " + messageBody);
         }
     };
     @Override
@@ -85,7 +89,7 @@ public class messageActivity extends AppCompatActivity {
         intentFilter.addAction("SMS_RECEIVED_ACTION");
 
         btnSendSMS = findViewById(R.id.sendSMSBtn);
-        evMessage = findViewById(R.id.MessagePhraseInput);
+        evMessage = findViewById(R.id.etMessage);
 
         btnSendSMS.setOnClickListener(view -> {
             String myMsg = evMessage.getText().toString();
