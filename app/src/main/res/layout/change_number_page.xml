@@ -75,8 +75,8 @@
         android:layout_marginEnd="130dp"
         android:layout_marginBottom="6dp"
         android:background="@drawable/mic_icon"
-        android:contentDescription="@string/microphone">
-
+        android:contentDescription="@string/microphone"
+        android:onClick="getSpeechInput">
     </ImageButton>
 
 
