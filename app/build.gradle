@@ -30,6 +30,10 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
+        exclude "META-INF/ASL-2.0.txt"
+        exclude "META-INF/LGPL-3.0.txt"
+        exclude "META-INF/INDEX.LIST"
+
     }
 
     compileOptions {
@@ -106,4 +110,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.8.5'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
     implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
+    implementation platform('com.google.cloud:libraries-bom:25.2.0')
+
+    implementation 'com.google.cloud:google-cloud-speech'
 }

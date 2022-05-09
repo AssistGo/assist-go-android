@@ -72,7 +72,9 @@
             android:layout_width="31dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/mic_transparent" />
+            app:srcCompat="@drawable/mic_transparent"
+            android:onClick="getSpeechInput"
+            />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
