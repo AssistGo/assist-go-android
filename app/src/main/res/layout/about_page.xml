@@ -34,7 +34,7 @@
         <ImageView
             android:layout_width="141dp"
             android:layout_height="138dp"
-            android:layout_marginLeft="150dp"
+            android:layout_gravity="center"
             android:background="@drawable/assistgologo"
             tools:layout_editor_absoluteX="110dp"
             tools:layout_editor_absoluteY="110dp">
@@ -93,7 +93,7 @@
         android:textStyle="normal"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="490dp" />
-
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewTranslate"
         android:layout_width="412dp"
@@ -113,6 +113,6 @@
             app:srcCompat="@drawable/mic_icon" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -18,28 +18,18 @@
       android:textStyle="bold" />
 
 
-  //Button for deleting an account.
-
-  <LinearLayout
-      android:layout_width="379dp"
-      android:layout_height="200dp"
-      android:layout_centerInParent="true"
-      android:layout_gravity="center"
-      android:layout_marginTop="16dp"
-      android:background="@drawable/coner">
 
     <ListView
         android:id="@+id/preferencesListView"
-        android:layout_width="379dp"
-        android:layout_height="179dp"
+        android:layout_width= "fill_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="5"
         android:cacheColorHint="#00000000"
         android:drawSelectorOnTop="false">
 
     </ListView>
-  </LinearLayout>
 
-
+  //Button for deleting an account.
   <LinearLayout
       android:layout_width="256dp"
       android:layout_height="284dp"
@@ -56,6 +46,7 @@
         android:text="@string/delete_my_account"
         android:textColor="@color/black" />
 
+
   </LinearLayout>
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -63,7 +54,7 @@
       android:layout_width="412dp"
       android:layout_height="70dp"
       android:layout_marginStart="1dp"
-      android:layout_marginEnd="5dp"
+      android:layout_marginEnd="1dp"
       android:background="@color/app_color"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +66,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         app:srcCompat="@drawable/mic_icon" />
-
   </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </LinearLayout>
