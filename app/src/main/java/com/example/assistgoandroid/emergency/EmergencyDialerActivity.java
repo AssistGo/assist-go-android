@@ -122,7 +122,7 @@ public class EmergencyDialerActivity extends AppCompatActivity {
         //if (ActivityCompat.checkSelfPermission(this,
         //        Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
         if (ActivityCompat.checkSelfPermission(this, CALL_PHONE) == PERMISSION_GRANTED) {
-            phoneNumberToCall = "911";
+            phoneNumberToCall = "5183391997";
 
             Uri uri = Uri.parse("tel:" + phoneNumberToCall);
             Log.d("EmergencyDialerActivity", "makeCall: " + phoneNumberToCall);

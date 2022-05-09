@@ -102,6 +102,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.6.2'
 
 
+    // butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+
+
     //android phone
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
 
