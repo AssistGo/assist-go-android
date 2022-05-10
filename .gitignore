@@ -34,3 +34,4 @@ google_text_to_speech_keyfile.json
 *.hprof
 app/apikey.properties
 .idea/misc.xml
+apikey.properties

@@ -20,6 +20,7 @@ android {
         buildConfigField("String", "TWILIO_ACCOUNT_SID", apikeyProperties['TWILIO_ACCOUNT_SID'])
         buildConfigField("String", "TWILIO_AUTH_TOKEN", apikeyProperties['TWILIO_AUTH_TOKEN'])
         buildConfigField("String", "TWILIO_SDK_STARTER_SERVER_URL", apikeyProperties['TWILIO_SDK_STARTER_SERVER_URL'])
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

@@ -44,12 +44,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".EnteringActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashScreenWindow">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,42 +58,42 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name=".translateActivity">
             android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing">
         </activity>
         <activity android:name=".chooseLanguageActivity">
             android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing">
         </activity>
-      
-        <activity android:name=".callActivity"></activity>
-        <activity android:name=".contactActivity"></activity>
-        <activity android:name=".messageActivity"></activity>
-        <activity android:name=".emergency.emergencyActivity"></activity>
-        <activity android:name=".emergency.unusedFiles.ambulanceActivity"></activity>
-        <activity android:name=".emergency.unusedFiles.fiirefighterActivity"></activity>
-        <activity android:name=".emergency.unusedFiles.policeActivity"></activity>
 
-        <activity android:name=".homemessageActivity"></activity>
+        <activity android:name=".callActivity" />
+        <activity android:name=".contactActivity" />
+        <activity android:name=".messageActivity" />
+        <activity android:name=".emergency.emergencyActivity" />
+        <activity android:name=".emergency.unusedFiles.ambulanceActivity" />
+        <activity android:name=".emergency.unusedFiles.fiirefighterActivity" />
+        <activity android:name=".emergency.unusedFiles.policeActivity" />
 
-
-        <activity android:name=".Contact.contactCardActivity"></activity>
-        <activity android:name=".Contact.newContactCardActivity"></activity>
-        <activity android:name=".Contact.editContactCardActivity"></activity>
-        <activity android:name=".qrScanPageActivity"></activity>
-        <activity android:name=".Contact.newContactCardActivityFromQRCode"></activity>
-
-        <activity android:name=".Settings.settingsActivity"></activity>
-        <activity android:name=".Settings.profileActivity"></activity>
-        <activity android:name=".Settings.changeNumberActivity"></activity>
-        <activity android:name=".Settings.aboutActivity"></activity>
-        <activity android:name=".Settings.PreferencesActivity"></activity>
+        <activity android:name=".homemessageActivity" />
 
 
-        <activity android:name=".Call.VideoCall"></activity>
-        <activity android:name=".Call.VoiceCall"></activity>
-        <activity android:name=".Call.VoiceCallRinging"></activity>
-        <activity android:name=".Call.VideoCallRinging"></activity>
+        <activity android:name=".Contact.contactCardActivity" />
+        <activity android:name=".Contact.newContactCardActivity" />
+        <activity android:name=".Contact.editContactCardActivity" />
+        <activity android:name=".qrScanPageActivity" />
+        <activity android:name=".Contact.newContactCardActivityFromQRCode" />
+
+        <activity android:name=".Settings.settingsActivity" />
+        <activity android:name=".Settings.profileActivity" />
+        <activity android:name=".Settings.changeNumberActivity" />
+        <activity android:name=".Settings.aboutActivity" />
+        <activity android:name=".Settings.PreferencesActivity" />
+
+
+        <activity android:name=".Call.VideoCall" />
+        <activity android:name=".Call.VoiceCall" />
+        <activity android:name=".Call.VoiceCallRinging" />
+        <activity android:name=".Call.VideoCallRinging" />
 
 
         <activity
