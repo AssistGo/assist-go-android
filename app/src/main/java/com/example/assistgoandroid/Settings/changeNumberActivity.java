@@ -32,8 +32,8 @@ public class changeNumberActivity extends AppCompatActivity {
                     Toast.makeText(changeNumberActivity.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    openVerificationDialog();
-//                    displayVerifiedNumber();
+                    //openVerificationDialog();
+                    displayVerifiedNumber();
                 }
             }
         });
