@@ -12,8 +12,15 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="SplashScreenWindow" parent="Theme.AssistGoAndroid">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+<!--    <style name="SplashScreenWindow" parent="Theme.AssistGoAndroid">-->
+<!--        <item name="android:windowBackground">@drawable/splash_screen</item>-->
+<!--    </style>-->
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/app_color</item>
+        <item name="colorPrimaryDark">#071CA1</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/teal_700</item>
     </style>
     <style name="Theme.AppCompat.Translucent" parent="Theme.AssistGoAndroid">
         <item name="android:windowNoTitle">true</item>

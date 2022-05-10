@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_gradient"/>
+    <item
+        android:gravity="center_vertical|center_horizontal"
+        android:drawable="@drawable/assistgo_logo"
+        android:left="60dp"/>
+    <item android:bottom="-250dp">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/assistgo_logo_text"/>
+    </item>
+</layer-list>
