@@ -177,6 +177,8 @@ public class VideoCall extends AppCompatActivity {
         muteBtn.setOnClickListener(muteClick);
         hangupBtn.setOnClickListener(hangupClick);
 
+        requestPermissionForCameraAndMicrophone();
+
         //passed when call is accepted
         contact = getIntent().getParcelableExtra("CONTACT_CARD");
         roomName = contact.getPhoneNumber();

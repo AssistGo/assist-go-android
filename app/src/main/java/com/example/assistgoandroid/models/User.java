@@ -1,32 +1,36 @@
 package com.example.assistgoandroid.models;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import androidx.core.app.ActivityCompat;
-
-import com.codepath.asynchttpclient.AsyncHttpClient;
-
-import com.codepath.asynchttpclient.RequestParams;
-import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import okhttp3.Call;
-import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class User {
@@ -43,29 +47,35 @@ public class User {
     private List<Contact> contactList;
     private List<CallRecord> callRecordList;
     private boolean hasSimCard;
+    private String TAG = "User";
 
 
     @SuppressLint("MissingPermission")
     public User() {
-        TelephonyManager telMgr = (TelephonyManager) userContext.getSystemService(Context.TELEPHONY_SERVICE);
+//        TelephonyManager telMgr = (TelephonyManager) userContext.getSystemService(Context.TELEPHONY_SERVICE);
 
         this.id = generateRandomId();
-        this.country = telMgr.getNetworkCountryIso();
-        this.countryCode = telMgr.getLine1Number().substring(0, telMgr.getLine1Number().length() - 10);
-        this.phoneNumber = telMgr.getLine1Number().substring(telMgr.getLine1Number().length() - 10);
-        this.fullPhoneNumber = telMgr.getLine1Number();
+//        this.country = telMgr.getNetworkCountryIso();
+        this.country = "us";
+//        this.countryCode = telMgr.getLine1Number().substring(0, telMgr.getLine1Number().length() - 10);
+        this.countryCode = "+1";
+//        this.phoneNumber = telMgr.getLine1Number().substring(telMgr.getLine1Number().length() - 10);
+        this.phoneNumber = "5188059149";
+//        this.fullPhoneNumber = telMgr.getLine1Number();
+        this.fullPhoneNumber = "+15188059149";
         this.fullName = "New User";
         this.profileImageUrl = "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
         this.callRecordList = new ArrayList<CallRecord>();
         this.contactList = new ArrayList<Contact>();
 
-        int simState = telMgr.getSimState();
+//        int simState = telMgr.getSimState();
 
-        if (simState == TelephonyManager.SIM_STATE_READY) {
-            this.hasSimCard = true;
-        } else {
-            this.hasSimCard = false;
-        }
+        this.hasSimCard = true;
+//        if (simState == TelephonyManager.SIM_STATE_READY) {
+//            this.hasSimCard = true;
+//        } else {
+//            this.hasSimCard = false;
+//        }
 
     }
 
@@ -201,48 +211,22 @@ public class User {
         }
         jsonUser.put("callHistory", callHistoryArray);
 
-
         return jsonUser;
     }
 
     public void syncUser() throws JSONException {
-
-        Log.d("SYNC REQUEST", "WELCOME TO SYNC FUNCTION");
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        JSONObject jsonBody = new JSONObject();
-
-        jsonBody.put("user", getUserAsJsonMap());
-
-        client.post("http://localhost:8080/users/sync", String.valueOf(jsonBody), new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Headers headers, JSON json) {
-                Log.d("SYNC REQUEST", "Sync request completed!");
-                // TODO SYNC USER HERE
-                // Sync the user data here
-            }
-
-            @Override
-            public void onFailure(int statusCode, Headers headers, String errorResponse, Throwable t) {
-                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                Log.d("SYNC REQUEST", "Sync request failed!");
-                // Throw Error/Exception
-            }
-        });
-
-
+        //todo throws networking on main thread exception
 //        ObjectMapper mapper = new ObjectMapper();
 //
-//        Map map = new HashMap();
-//        map.put("id", this.getId()); //pretend user id
-//
 //        try {
+//            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("user", getUserAsJsonMap());
 //            OkHttpClient client = new OkHttpClient();
-//            //MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+//            MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
 //
 //            Request request = new Request.Builder()
-//                    .url("http://34.73.16.73:8080/users/contact/all/" + this.getId())
-//                    .get()
+//                    .url("http://34.73.16.73:8080/users/sync/")
+//                    .post(RequestBody.create(JSON_TYPE, jsonObject.toString()))
 //                    .build();
 //            Response response = client.newCall(request).execute();
 //            String jsonDataString = null;
@@ -253,15 +237,93 @@ public class User {
 //            }
 //
 //            Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
-//
-//            System.out.println(responseJson.get("resStatus"));
-//            System.out.println(responseJson.get("user"));
-//            System.out.println(responseJson.get("message"));
-//
+//            Log.i(TAG, String.valueOf(responseJson.get("user")));
 //
 //        } catch (IOException e) {
+//            syncUser();
 //            e.printStackTrace();
 //        }
+
+        JSONObject postData = new JSONObject();
+        postData.put("user", getUserAsJsonMap());
+        HttpPostAsyncTask task = new HttpPostAsyncTask(postData);
+        task.execute("http://34.73.16.73:8080/users/sync/");
+    }
+
+    public class HttpPostAsyncTask extends AsyncTask<String, Void, Void> {
+        // This is the JSON body of the post
+        JSONObject postData;
+        // This is a constructor that allows you to pass in the JSON body
+        public HttpPostAsyncTask(JSONObject postData) {
+            if (postData != null) {
+                this.postData = postData;
+            }
+        }
+
+        // This is a function that we are overriding from AsyncTask. It takes Strings as parameters because that is what we defined for the parameters of our async task
+        @Override
+        protected Void doInBackground(String... params) {
+
+            try {
+                // This is getting the url from the string we passed in
+                URL url = new URL(params[0]);
+
+                // Create the urlConnection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(true);
+
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+
+                urlConnection.setRequestMethod("POST");
+
+                MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+
+                // Send the post body
+                if (this.postData != null) {
+                    OutputStreamWriter writer = new OutputStreamWriter(urlConnection.getOutputStream());
+                    writer.write(String.valueOf(RequestBody.create(JSON_TYPE, postData.toString())));
+                    writer.flush();
+                }
+
+                int statusCode = urlConnection.getResponseCode();
+
+                if (statusCode ==  200) {
+
+                    InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
+
+                    String response = convertInputStreamToString(inputStream);
+                    Log.i(TAG, "Successssssssssssssss " + response);
+
+                    // From here you can convert the string to JSON with whatever JSON parser you like to use
+                    // After converting the string to JSON, I call my custom callback. You can follow this process too, or you can implement the onPostExecute(Result) method
+                } else {
+                    // Status code is not 200
+                    // Do something to handle the error
+                    Log.e(TAG, "Failure");
+                }
+
+            } catch (Exception e) {
+                Log.d(TAG, e.getLocalizedMessage());
+            }
+            return null;
+        }
+    }
+
+    private String convertInputStreamToString(InputStream inputStream) {
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try {
+            while((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 
 }
