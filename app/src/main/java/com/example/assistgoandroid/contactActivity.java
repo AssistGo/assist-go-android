@@ -32,6 +32,8 @@ import com.example.assistgoandroid.Contact.newContactCardActivity;
 import com.example.assistgoandroid.models.User;
 import com.fasterxml.jackson.databind.*;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,6 +63,13 @@ public class contactActivity extends AppCompatActivity {
         setContentView(R.layout.contact_page);
 
         localDatabaseHelper = LocalDatabaseHelper.getInstance(this);
+
+        User user = new User();
+        try {
+            user.syncUser();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();

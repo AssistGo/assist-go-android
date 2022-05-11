@@ -3,11 +3,21 @@ package com.example.assistgoandroid.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Contact implements Parcelable {
     String contactID;
@@ -176,7 +186,6 @@ public class Contact implements Parcelable {
         return jsonContact;
     }
 
-    //todo sort based on fav: bring favs on top
     public static Comparator<Contact> ContactComparator
             = (contact1, contact2) -> {
 

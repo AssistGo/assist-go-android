@@ -21,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assistgoandroid.Settings.settingsActivity;
-import com.example.assistgoandroid.api.AssistGoBackendAPI;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,9 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.*;
-import com.loopj.android.http.*;
 
-import cz.msebera.android.httpclient.Header;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
