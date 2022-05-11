@@ -136,7 +136,7 @@ public class VideoCall extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_chat_page);
-
+        requestPermissionForCameraAndMicrophone();
         ImageView switchCameraBtn = findViewById(R.id.switchCamBtn);
         ImageView turnVideoOffBtn = findViewById(R.id.turnVideoOffBtn);
         ImageView muteBtn = findViewById(R.id.muteBtn);
