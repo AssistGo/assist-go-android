@@ -67,7 +67,9 @@
         </activity>
 
         <activity android:name=".callActivity" />
-        <activity android:name=".contactActivity" />
+        <activity android:name=".contactActivity">
+            android:windowSoftInputMode="adjustNothing">
+        </activity>
         <activity android:name=".messageActivity" />
         <activity android:name=".emergency.emergencyActivity" />
         <activity android:name=".emergency.unusedFiles.ambulanceActivity" />

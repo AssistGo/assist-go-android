@@ -139,6 +139,17 @@ public class messageActivity extends AppCompatActivity {
         message.setMessageBody(myMsg);
         messageList.add(message);
         adapter.notifyDataSetChanged();
+
+        //testing purposes
+        if(myMsg.contains("hi") || myMsg.contains("hello") || myMsg.contains("how")) {
+            Message message2 = new Message();
+            message2.setMessageBody("Hello! Today is fantastic! How are you?");
+            message2.setProfilePicture(contact.getProfileImageUrl());
+            message2.setUserName(contact.getFullName());
+            message2.setUserID(contact.getFullPhoneNumber());
+            messageList.add(message2);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
