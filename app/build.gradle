@@ -10,6 +10,8 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdk 31
 
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.example.assistgoandroid"
         minSdk 21
@@ -126,4 +128,10 @@ dependencies {
     implementation platform('com.google.cloud:libraries-bom:25.2.0')
 
     implementation 'com.google.cloud:google-cloud-speech'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.android.volley:volley:1.1.1'
+
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }
