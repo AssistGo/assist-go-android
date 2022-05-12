@@ -26,12 +26,6 @@ render.experimental.xml
 *.jks
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-google_text_to_speech_keyfile.json
-
 # Android Profiling
 *.hprof
-apikey.properties
 .idea/misc.xml
-apikey.properties
