@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AssistGoAndroid</string>
+    <string name="contact_list">連絡先リスト</string>
+    <string name="new_contact">新しい連絡先</string>
+    <string name="edit_contact">連絡先の編集</string>
+    <string name="add_new_contact">新しい連絡先を追加する</string>
+    <string name="settings">セッティング</string>
+    <string name="profile">プロフィール</string>
+    <string name="edit_name">名前を編集</string>
+    <string name="edit_profile_picture">プロフィール写真を編集する</string>
+    <string name="change_number">番号を変更する</string>
+    <string name="new_number">あたらしい番号</string>
+    <string name="enter_new_phone_number">新しい電話番号を入力してください</string>
+    <string name="enter_new_name">新しい名前を入力してください</string>
+    <string name="enter_first_name">名を入力してください</string>
+    <string name="enter_last_name">姓を入力</string>
+    <string name="enter_verification_code">確認コードを入力してください</string>
+    <string name="contact">コンタクト</string>
+    <string name="call">電話</string>
+    <string name="message">メッセージ</string>
+    <string name="translate">翻訳</string>
+    <string name="emergency">緊急</string>
+    <string name="save_changes">メッセージを保存する</string>
+    <string name="delete_contact">連絡先を削除</string>
+    <string name="save_contact">連絡先を保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="preferences">環境設定</string>
+    <string name="about">私たちに関しては</string>
+    <string name="number">番号</string>
+</resources>
