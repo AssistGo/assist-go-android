@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".emergency.emergencyActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="@color/red"
         android:text="@string/emergency"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#ffff"
         android:textSize="55sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="384dp"
-        android:layout_height="383dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="107dp">
-
-        <ListView
-            android:id="@+id/listView_em"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </ListView>
-    </LinearLayout>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ListView
+        android:id="@+id/listView_em"
+        android:layout_width="409dp"
+        android:layout_height="568dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTranslate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewTranslate"
@@ -46,13 +45,13 @@
 
         <ImageView
             android:id="@+id/ivMicButton"
-            android:layout_width="31dp"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/mic_transparent"
+            android:contentDescription="@string/microphone"
             android:onClick="getSpeechInput"
-            />
+            app:srcCompat="@drawable/mic_on" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

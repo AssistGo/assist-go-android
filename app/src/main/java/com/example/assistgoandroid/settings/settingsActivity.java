@@ -38,7 +38,7 @@ public class settingsActivity extends AppCompatActivity {
 
         //Set up the cells and search bar for settings page
         String[] title =  getResources().getStringArray(R.array.settings_titles);
-        int[] images = {R.drawable.profile, R.drawable.preferences, R.drawable.info_icon,};
+        int[] images = {R.drawable.profile, R.drawable.preferences, R.drawable.assistgo_logo_icon,};
 
         searchView = findViewById(R.id.svContactSearch);
         searchView.clearFocus();

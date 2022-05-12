@@ -23,10 +23,10 @@
         android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="169dp"
-            android:layout_height="133dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/assistgo_logo"
+            android:background="@drawable/assistgo_logo_icon"
             tools:layout_editor_absoluteX="110dp"
             tools:layout_editor_absoluteY="110dp">
 
