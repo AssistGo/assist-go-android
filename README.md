@@ -72,6 +72,8 @@ Once you've done that, run the application and [open a browser](localhost:4567/n
 
 ## Run the sample application
 
+[Sample Application](https://github.com/TwilioDevEd/sdk-starter-java)
+
 This application uses the lightweight [Spark Framework](http://www.sparkjava.com), and
 requires Java 8.
 
