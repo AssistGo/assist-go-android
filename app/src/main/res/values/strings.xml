@@ -1217,6 +1217,7 @@
     <string name ="Yemen">Yemen</string>
     <string name ="Zambia">Zambia</string>
     <string name ="Zimbabwe">Zimbabwe</string>
+    <string name="translate">Translate</string>
 
     <string-array name="emergency_country">
         <item>@string/Afghanistan</item>

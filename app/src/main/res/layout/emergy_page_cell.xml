@@ -14,16 +14,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <ImageView
+            android:id="@+id/image"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/image"
-            />
+            android:src="@drawable/assistgo_logo_icon"
+            android:layout_margin="10dp"/>
+
         <TextView
             android:id="@+id/textView_em1"
             android:layout_width="315dp"
-            android:layout_height="103dp"
+            android:layout_height="75dp"
             android:layout_margin="5dp"
             android:text="@string/main_title"
             android:textColor="#000"

@@ -79,23 +79,23 @@
         <activity android:name=".homemessageActivity" />
 
 
-        <activity android:name=".Contact.contactCardActivity" />
-        <activity android:name=".Contact.newContactCardActivity" />
-        <activity android:name=".Contact.editContactCardActivity" />
+        <activity android:name=".contact.contactCardActivity" />
+        <activity android:name=".contact.newContactCardActivity" />
+        <activity android:name=".contact.editContactCardActivity" />
         <activity android:name=".qrScanPageActivity" />
-        <activity android:name=".Contact.newContactCardActivityFromQRCode" />
+        <activity android:name=".contact.newContactCardActivityFromQRCode" />
 
-        <activity android:name=".Settings.settingsActivity" />
-        <activity android:name=".Settings.profileActivity" />
-        <activity android:name=".Settings.changeNumberActivity" />
-        <activity android:name=".Settings.aboutActivity" />
-        <activity android:name=".Settings.PreferencesActivity" />
+        <activity android:name=".settings.settingsActivity" />
+        <activity android:name=".settings.profileActivity" />
+        <activity android:name=".settings.changeNumberActivity" />
+        <activity android:name=".settings.aboutActivity" />
+        <activity android:name=".settings.PreferencesActivity" />
 
 
-        <activity android:name=".Call.VideoCall" />
-        <activity android:name=".Call.VoiceCall" />
-        <activity android:name=".Call.VoiceCallRinging" />
-        <activity android:name=".Call.VideoCallRinging" />
+        <activity android:name=".call.VideoCall" />
+        <activity android:name=".call.VoiceCall" />
+        <activity android:name=".call.VoiceCallRinging" />
+        <activity android:name=".call.VideoCallRinging" />
 
 
         <activity
@@ -160,7 +160,7 @@
 
         <activity android:name=".emergency.CallActivityGit"></activity>
 
-        <receiver android:name=".Messaging.MessageReceiver"
+        <receiver android:name=".message.MessageReceiver"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>

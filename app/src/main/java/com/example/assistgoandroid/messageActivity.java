@@ -3,7 +3,6 @@ package com.example.assistgoandroid;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Intent;
-import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 
@@ -28,10 +25,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.assistgoandroid.Contact.contactCardActivity;
-import com.example.assistgoandroid.Messaging.ChatAdapter;
-import com.example.assistgoandroid.Messaging.Message;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.message.ChatAdapter;
+import com.example.assistgoandroid.message.Message;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.example.assistgoandroid.models.Contact;
 

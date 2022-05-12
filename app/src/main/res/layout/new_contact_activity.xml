@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Contact.newContactCardActivity">
+    tools:context=".contact.newContactCardActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -124,7 +124,7 @@
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:src="@drawable/qr_code_icon"
+            android:src="@drawable/qr"
             android:onClick="scanQRCodeListener"/>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

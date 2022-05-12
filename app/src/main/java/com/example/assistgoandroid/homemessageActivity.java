@@ -1,22 +1,15 @@
 package com.example.assistgoandroid;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.assistgoandroid.Settings.aboutActivity;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
-
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class homemessageActivity extends AppCompatActivity {
     @Override
