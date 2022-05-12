@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "crypto-triode-341517",
+  "private_key_id": "5a4226b80545aa9379ea92ba8a074be1d3e67df9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdSivaPg6QX0nz\nvZow7hGx9g9eiU5GwiLbOGvv4P7iisKTIMkxLErrE5IJAjHLa1SP7n1BAGThJu9X\nTuCt3GzRZR2shtWAmfNc7xUGx2aPN5eATK5gsmba6Z6xBGQfeGFHde6e9vUHTjHp\nhhmZ/4CfuK7z+JLK1lDGW+5mepXco6UoD9tt56e7Lld3NQUAyerNb0r58ZgXxBZR\nMcemGFKrpyanV776D/2Vm50iDXDivuX02/DOBezAnw8If5Q1OVTZUsfDiOv3xiWM\n19oY2AZ/eN/qDHNp1Vrd8LHUNM4g8gnT9FUR9YmPP73jTAAitvIOFj0D3VC4bCxK\nd823HeJpAgMBAAECggEABBcejWTwUATTfzbjUsL+Js91TSV9hQ2LYe95+D4ifif3\nVay44PkOL2rOA2esohy+/xKjNYJjHTRgkiWHQavqEIbPyCrKnW3RMOk3456rSq2V\n/QNKn+P6pw0Dq70VNXjfFZvMXaVZS5wyZBZDPL9pp3SG6DMC7j0lHAgC2Ikbj29G\nbc4WThnlu4oG1Kk0UTUWAoVbHdPSXh6Fl9Ley1HLQYZR9gjstIoGpHcv4SjBSdE8\nUA8eBB9SMkMFRaw16ch7vKNKdWjYfPHSsF9GCK7IMsFq1Td4yaHr4HNmqc7s02v1\ntGmuxYxsUcWT3Es0yiY2EOoDFZCT6Iq5+mVRtxF8YQKBgQDNFqM6IJAW8SomEyzy\n5xVF4xZtTZktnL+UbIS3XenkCUGp7teu0psi4Cg69phiEmFyI/w67y7MmXhfPWwo\nOl4e3IqTgu81j8V7ay5GkV+l3mw1NkBc5j717w2Vs5DKROr9cOFDzfsmrygLYaIR\nlZ194oC4SuRhI4jjWPAqB8/6/QKBgQDEVe2fQblbA03IcPG8VVI5bKcSf3wi8l1u\nh1kGbOpzdSPFzEfcATGC/5gRkACZhYZgLhbj8uV0djFxaqIY5LzE3IaXSRLh9KNK\nDcwmOeHoJQi8wtC46vQy4QEy8wnu/h1IKEjLFTvPxPwHM3r9U1q9u48Uxc/8gMsL\nZ1BYepfu3QKBgDJcVbanWlqX286/tLDs97dSnSY4AN5HeG/c+fYBFLcPYtV0tffS\n9Y9p1dcsyJyEgPNDTOO36hkJsppIfe+e7Y/Mfibc5xqS9F5rIlDnz8HuTUn/yWxG\nib1gd0iEcJCKvd2AQ4Cf6wVDy6SH1AFXaPYJkawvj8cer7WMGGVpx7ONAoGBALXo\na4Z/za3uzLWnN8JoRwufiNiRt8FlT33l920FouAgq2lLkVTc4jPeftXe1z9mwI8C\nhQDkfwY9sCfGRbPM0r2PGUC4Wr9x+4zUZc8RGCcPkR3bXqnGP0WYxZSgLBb76MN/\nV5qZ7NXfTCeb4hsujMd4LORxNvhbmETTj1S7GWQdAoGADjjOz6fJt/jg9CQz2Pnp\nCKdGP0HrowZMZ4NPlPwVtJTlzpYt4zAGWEEO0qaMK8ZT8sfVQEkqNf1lRY+ES0Nb\nlqeump8HAQUnt587mcnXgswMUeZRM9y55bTDw454dyHv4JeD4fyoEzS9PTEzLNXH\nQcN0sQ9zxL18lBJL7bNwe0Y=\n-----END PRIVATE KEY-----\n",
+  "client_email": "text-to-speech@crypto-triode-341517.iam.gserviceaccount.com",
+  "client_id": "105557711930388796234",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/text-to-speech%40crypto-triode-341517.iam.gserviceaccount.com"
+}

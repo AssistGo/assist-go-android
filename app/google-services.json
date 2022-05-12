@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "768985094468",
+    "project_id": "assistgo-89aed",
+    "storage_bucket": "assistgo-89aed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768985094468:android:25865d7415c09ed88f1f11",
+        "android_client_info": {
+          "package_name": "com.example.assistgoandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768985094468-ju8ebi8qf3ql02aralni7t01k0q10477.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHbSJQUW98QrThgLFzUy_PECddEF4Uegw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768985094468-ju8ebi8qf3ql02aralni7t01k0q10477.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
