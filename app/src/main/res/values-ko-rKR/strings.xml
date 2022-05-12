@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AssistGoAndroid</string>
+    <string name="contact_list">연락처 목록</string>
+    <string name="new_contact">새 연락처</string>
+    <string name="edit_contact">연락처 편집</string>
+    <string name="add_new_contact">새 연락처 추가</string>
+    <string name="settings">설정</string>
+    <string name="profile">프로필</string>
+    <string name="edit_name">이름 수정</string>
+    <string name="edit_profile_picture">프로필 사진 수정</string>
+    <string name="change_number">번호 변경</string>
+    <string name="new_number">새 번호</string>
+    <string name="enter_new_phone_number">새 전화번호 입력</string>
+    <string name="enter_new_name">새 이름 입력</string>
+    <string name="enter_first_name">이름을 입력하세요</string>
+    <string name="enter_last_name">성 입력</string>
+    <string name="enter_verification_code">인증 코드 입력</string>
+    <string name="contact">연락하다</string>
+    <string name="call">부르다</string>
+    <string name="message">메시지</string>
+    <string name="translate">번역하다</string>
+    <string name="emergency">비상</string>
+    <string name="save_changes">변경 사항을 저장하다</string>
+    <string name="delete_contact">연락처 삭제</string>
+    <string name="save_contact">연락처 저장</string>
+    <string name="cancel">취소</string>
+    <string name="preferences">기본 설정</string>
+    <string name="about">에 대한</string>
+    <string name="number">숫자</string>
+</resources>

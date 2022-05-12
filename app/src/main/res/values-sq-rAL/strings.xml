@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AssistGoAndroid</string>
+    <string name="contact_list">Lista e Kontakteve</string>
+    <string name="new_contact">Kontakt i ri</string>
+    <string name="edit_contact">Redakto kontaktin</string>
+    <string name="add_new_contact">Shto kontakt të ri</string>
+    <string name="settings">Cilësimet</string>
+    <string name="profile">Profili</string>
+    <string name="edit_name">Redakto emrin</string>
+    <string name="edit_profile_picture">Redakto foton e profilit</string>
+    <string name="change_number">Ndrysho numrin</string>
+    <string name="new_number">Numër i ri</string>
+    <string name="enter_new_phone_number">Fut numrin e ri të telefonit</string>
+    <string name="enter_new_name">shkruani një emër të ri</string>
+    <string name="enter_first_name">Shkruani emrin e parë</string>
+    <string name="enter_last_name">Shkruani mbiemrin</string>
+    <string name="enter_verification_code">Vendos kodin e verifikimit</string>
+    <string name="contact">Kontakt</string>
+    <string name="call">Telefonatë</string>
+    <string name="message">Mesazh</string>
+    <string name="translate">Përkthejnë</string>
+    <string name="emergency">Emergjencë</string>
+    <string name="save_changes">Ruaj ndryshimet</string>
+    <string name="delete_contact">Fshini kontaktin</string>
+    <string name="save_contact">Ruaj kontaktin</string>
+    <string name="cancel">Anulo</string>
+    <string name="preferences">Preferencat</string>
+    <string name="about">Rreth nesh</string>
+    <string name="number">Numri</string>
+</resources>
