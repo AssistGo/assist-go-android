@@ -53,6 +53,7 @@ public class translateActivity extends AppCompatActivity {
     TextView translatedOutput;
     Button inputLanguageBtn, outputLanguageBtn;
     LinearLayout translateButtonsLayout;
+    Button translateBtn;
 
     String[] codedTranslatedLanguageList;
     String[] translatedLanguageList;
@@ -102,67 +103,10 @@ public class translateActivity extends AppCompatActivity {
         translatePhraseInput = findViewById(R.id.translatePhraseInput);
         translatedOutput = findViewById(R.id.translatedOutput);
         outputLanguageBtn = findViewById(R.id.outputLanguageBtn);
+        translateBtn = findViewById(R.id.translateBtn);
 
         // Used to convert to language code
         createLanguageHashmap();
-
-        translatePhraseInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                //Updates the translation ouput text field
-                //Will need to add the actual translation function here
-                translatedOutput.setText(editable.toString());
-
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        String url = "/translation/translate/" + inputLanguageCode + "/" + outputLanguageCode;
-                        ObjectMapper mapper = new ObjectMapper();
-
-                        try {
-                            JSONObject jsonObject = new JSONObject();
-                            jsonObject.put("message", editable.toString());
-
-                            OkHttpClient client = new OkHttpClient();
-                            MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
-
-                            Request request = new Request.Builder()
-                                    .url("http://192.168.1.148:8080/translation/translate/" + inputLanguageCode + "/" + outputLanguageCode)
-                                    .post(RequestBody.create(JSON_TYPE, jsonObject.toString()))
-                                    .build();
-                            Response response = client.newCall(request).execute();
-                            String jsonDataString = null;
-                            try {
-                                jsonDataString = response.body().string();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                            Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
-                            translatedOutput.setText((CharSequence) responseJson.get("translation"));
-
-                        } catch (IOException | JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-
-                    }
-                }, 2500);
-            }
-        });
-
-
 
         outputLanguageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +123,37 @@ public class translateActivity extends AppCompatActivity {
                 Intent intent = new Intent(translateActivity.this, chooseLanguageActivity.class);
                 intent.putExtra("isInputLanguage", true);
                 activityResultLaunch.launch(intent);
+            }
+        });
+
+        translateBtn.setOnClickListener(view -> {
+            String url = "/translation/translate/" + inputLanguageCode + "/" + outputLanguageCode;
+            ObjectMapper mapper = new ObjectMapper();
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("message", translatePhraseInput.toString());
+
+                OkHttpClient client = new OkHttpClient();
+                MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+
+                Request request = new Request.Builder()
+                        .url("http://192.168.1.148:8080/translation/translate/" + inputLanguageCode + "/" + outputLanguageCode)
+                        .post(RequestBody.create(JSON_TYPE, jsonObject.toString()))
+                        .build();
+                Response response = client.newCall(request).execute();
+                String jsonDataString = null;
+                try {
+                    jsonDataString = response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Map<String, ?> responseJson = mapper.readValue(jsonDataString, Map.class);
+                translatedOutput.setText((CharSequence) responseJson.get("translation"));
+
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
             }
         });
     }
