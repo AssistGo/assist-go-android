@@ -8,10 +8,9 @@ import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
-import com.example.assistgoandroid.Settings.aboutActivity;
-import com.example.assistgoandroid.Settings.profileActivity;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.helpers.LocalDatabaseHelper;
+import com.example.assistgoandroid.settings.profileActivity;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.example.assistgoandroid.models.User;
 
@@ -19,6 +18,9 @@ import org.json.JSONException;
 
 import java.util.UUID;
 
+/**
+ * Unused class
+ */
 public class EnteringActivity extends AppCompatActivity {
 
     public static User user;

@@ -20,29 +20,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 
-import com.example.assistgoandroid.Contact.editContactCardActivity;
 import com.example.assistgoandroid.MainActivity;
 import com.example.assistgoandroid.R;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.callActivity;
 import com.example.assistgoandroid.contactActivity;
 import com.example.assistgoandroid.homemessageActivity;
 import com.example.assistgoandroid.translateActivity;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+
 /**
  * Le Jie Bennett and Sena
  * https://stackoverflow.com/questions/57863500/how-can-i-get-my-current-location-in-android-using-gps

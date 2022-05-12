@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.assistgoandroid.Call.callAdapter;
-import com.example.assistgoandroid.Contact.contactListAdapter;
-import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
-import com.example.assistgoandroid.Helpers.TimeFormatter;
-import com.example.assistgoandroid.Settings.aboutActivity;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.call.callAdapter;
+import com.example.assistgoandroid.helpers.LocalDatabaseHelper;
+import com.example.assistgoandroid.helpers.TimeFormatter;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.example.assistgoandroid.models.Contact;
 

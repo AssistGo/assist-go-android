@@ -252,7 +252,7 @@ public class CallActivityGit extends AppCompatActivity {
                 contactImagePhone.setImageResource(R.drawable.image_fire);
                 break;
             default:
-                contactImagePhone.setImageResource(R.drawable.default_profile_pic);
+                contactImagePhone.setImageResource(R.drawable.loading_contact);
                 break;
         }
     }

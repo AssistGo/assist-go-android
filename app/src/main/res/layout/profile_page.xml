@@ -34,7 +34,7 @@
             android:layout_height="246dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:background="@drawable/default_profile_pic" />
+            android:background="@drawable/loading_contact" />
 
         <Button
             android:id="@+id/editProfilePicture"

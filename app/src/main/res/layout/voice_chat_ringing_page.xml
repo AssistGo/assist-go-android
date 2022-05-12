@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Call.VoiceCallRinging">
+    tools:context=".call.VoiceCallRinging">
 
     <ImageView
         android:id="@+id/ivContactImage"

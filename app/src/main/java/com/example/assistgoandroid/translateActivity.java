@@ -20,7 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.textfield.TextInputEditText;

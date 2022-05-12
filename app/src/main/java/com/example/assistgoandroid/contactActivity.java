@@ -1,6 +1,5 @@
 package com.example.assistgoandroid;
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -8,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.speech.RecognizerIntent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -22,29 +20,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.assistgoandroid.Helpers.LocalDatabaseHelper;
-import com.example.assistgoandroid.Settings.aboutActivity;
-import com.example.assistgoandroid.Settings.settingsActivity;
+import com.example.assistgoandroid.helpers.LocalDatabaseHelper;
+import com.example.assistgoandroid.settings.settingsActivity;
 import com.example.assistgoandroid.emergency.emergencyActivity;
 import com.example.assistgoandroid.models.Contact;
-import com.example.assistgoandroid.Contact.contactListAdapter;
-import com.example.assistgoandroid.Contact.newContactCardActivity;
+import com.example.assistgoandroid.contact.contactListAdapter;
+import com.example.assistgoandroid.contact.newContactCardActivity;
 import com.example.assistgoandroid.models.User;
-import com.fasterxml.jackson.databind.*;
 
 import org.json.JSONException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class contactActivity extends AppCompatActivity {
 
